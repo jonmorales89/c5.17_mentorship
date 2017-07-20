@@ -3,8 +3,9 @@
 ### Producer
 - Greg
 
-### Project Manager
+### Project Managers
 - Tim
+- Andy
 
 ### Senior Members
 - Jonathan
