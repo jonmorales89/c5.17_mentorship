@@ -1,7 +1,10 @@
 # c5.17_mentorship
 
-### Mentor
+### Producer
 - Greg
+
+### Project Manager
+- Tim
 
 ### Senior Members
 - Jonathan
