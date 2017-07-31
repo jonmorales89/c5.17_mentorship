@@ -1,15 +1,15 @@
 import React from "react";
-
 import "./app.css";
 
 import Navbar from "./navbar";
 import Footer from "./footer";
+import Banner from "./home_banner";
 
 const Home = () => {
 	return (
 		<div>
 			<Navbar />
-			<h1>Welcome to Dansu Mentor</h1>
+		  <Banner />
 			<Footer />
 		</div>
 	);
