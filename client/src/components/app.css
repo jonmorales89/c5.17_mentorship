@@ -21,9 +21,14 @@
         transform: rotate(360deg);
     }
 }
-.greeting{
-  text-align: center;
+
+#button {
+    margin-left: auto;
 }
-.text-center{
-  text-align: center;
+
+.nav-link {
+    font-family: sans-serif;
+    font-size: 25px;
+    color: black;  
+    font-weight: bold;
 }

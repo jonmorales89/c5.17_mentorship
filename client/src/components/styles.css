@@ -31,3 +31,26 @@ footer { background-color:#222; font-family: 'Open Sans', sans-serif; }
   padding-left: 22vw;
 
 }
+.header {
+    text-align: center;
+    font-size: 80px;
+    color: forestgreen;
+}
+
+.margin_text{
+    margin-bottom: 20px;
+    font-size: 180%;
+    color: cornflowerblue;
+}
+
+Checkbox {
+
+}
+
+.login_container {
+    text-align: center;
+}
+
+.form {
+    margin-top: 40px;
+}
