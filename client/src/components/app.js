@@ -1,17 +1,10 @@
-import React from 'react';
-import './app.css';
+import React from "react";
+import Home from "./home";
+import { Route, Link } from "react-router-dom";
 
-
-import Navbar from './navbar';
-import LogIn from './logIn';
-import Footer from './footer';
-
-const App = () => (
-    <div>
-        <Navbar />
-        <LogIn />
-        <Footer />
-    </div>
-);
+const App = () =>
+	<div>
+		<Route path="/" component={Home} />
+	</div>;
 
 export default App;
