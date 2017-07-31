@@ -1,20 +1,10 @@
-import React from 'react';
-import './app.css';
+import React from "react";
+import Home from "./home";
+import { Route, Link } from "react-router-dom";
 
-
-import logo from './imgs/logo.svg';
-import Navbar from './navbar';
-import Footer from './footer';
-
-const App = () => (
-    <div>
-    		<Navbar />
-        <div className="app">
-            <img src={logo} className="rotate"/>
-            <h1>Welcome to React!</h1>
-        </div>
-        <Footer />
-    </div>
-);
+const App = () =>
+	<div>
+		<Route path="/" component={Home} />
+	</div>;
 
 export default App;
