@@ -12,8 +12,8 @@ class Search extends Component {
 
 	componentDidMount() {
 		db.ref('Mentors').on('value', snapshot => {
-			const data = snapshot.val();
-			console.log(this.props.getMentors(data));
+			var data = snapshot.val();
+			console.log('firebase data', data);
 			this.props.getMentors(data);
 		});
 	}
@@ -46,16 +46,19 @@ class Search extends Component {
 	render() {
 		const { mentors } = this.props;
 
-		if(!mentors){
+		if (!mentors) {
 			return <h1>Loading...</h1>;
 		}
 
 		const list = this.displayMentee(mentors);
 		return (
 			<div>
-				{list}
+				<Navbar />
+				<div>
+					{list}
+				</div>
+				<Footer />
 			</div>
-				
 		);
 	}
 }
