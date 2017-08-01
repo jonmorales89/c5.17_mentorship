@@ -73,3 +73,27 @@ footer {
 	color: #fff;
 	font-size: 12px;
 }
+
+#login {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#homeSearch {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 300px;
+	height: 100px;
+	margin-top: -50px; /* Half of total height */
+	margin-left: -150px; /* Half of total width */
+}
+
+#carouselExampleSlidesOnly {
+	z-index: -1;
+}
+
+.d-block2 {
+	height: 73vh;
+	margin: 0 auto;
+}

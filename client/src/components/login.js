@@ -6,7 +6,7 @@ import { addPerson } from '../actions/index';
 import Navbar from './navbar';
 import Footer from './footer';
 
-class SignUp extends Component {
+class Login extends Component {
     submitForm(vals, reset) {
         this.props.addPerson(vals);
         reset();
@@ -34,12 +34,12 @@ class SignUp extends Component {
         return (
             <div>
                 <Navbar />
-                <div id="login" className="my-5 row">
+                <div id="Login" className="my-5 row">
                     <div className="col-12">
                         <h2 className="header text-center">Sign Up</h2>
                     </div>
-                    <div className="col-12">
-                        <img className="rounded mx-auto mb-2" src={dancer} />
+                    <div className="col-12 text-center">
+                        <img className="rounded mb-2" src={dancer} />
                     </div>
                     <div className="col-12">
                         <form
@@ -63,7 +63,7 @@ class SignUp extends Component {
                             </div>
                             <div className="d-block text-center">
                                 <button className="btn btn-outline-success mr-3">
-                                    SignUp
+                                    Login
                                 </button>
                                 <button className="btn btn-outline-danger">
                                     Cancel
@@ -91,9 +91,9 @@ function validate(values) {
     return errors;
 }
 
-SignUp = reduxForm({
+Login = reduxForm({
     form: 'add-person',
     validate: validate
-})(SignUp);
+})(Login);
 
-export default connect(null, { addPerson })(SignUp);
+export default connect(null, { addPerson })(Login);
