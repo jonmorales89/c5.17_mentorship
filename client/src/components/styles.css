@@ -23,11 +23,6 @@ footer { background-color:#222; font-family: 'Open Sans', sans-serif; }
 
 .d-block {
   display: inline-block;
-
   height: 73vh;
-}
-
-.carousel-inner{
-  padding-left: 22vw;
-
+  margin: 0 auto;
 }
