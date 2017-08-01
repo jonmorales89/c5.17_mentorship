@@ -12,26 +12,31 @@ class Search extends Component {
 
 	componentDidMount() {
 		db.ref('Mentors').on('value', snapshot => {
-			var data = snapshot.val();
+			const data = snapshot.val();
+			console.log(this.props.getMentors(data));
 			this.props.getMentors(data);
 		});
 	}
 
-	displayMentee(id) {
-		console.log('id data', id);
+	displayMentee(mentors) {
+		console.log('mentors data', mentors);
+
+		const { bio, mentees, name } = mentors.id;
+
+		// return <h1>Hello</h1>;
 		return (
 			<li>
 				<div>
-					Name: {id.name}
+					Name: {name}
 				</div>
 				<div>
 					Bio:
-					<div>About Me: </div>
-					<div>Style: </div>
-					<div>Experience: </div>
-					<div>Location: </div>
-					<div>Affiliates: </div>
-					<div>Awards: </div>
+					<div>About Me: {bio.aboutme} </div>
+					<div>Style: {bio.style} </div>
+					<div>Experience: {bio.experience} </div>
+					<div>Location: {bio.location} </div>
+					<div>Affiliates: {bio.affiliates} </div>
+					<div>Awards: {bio.awards} </div>
 				</div>
 				<div>Mentee:</div>
 			</li>
@@ -39,23 +44,25 @@ class Search extends Component {
 	}
 
 	render() {
-		console.log(this.props);
+		const { mentors } = this.props;
+
+		if(!mentors){
+			return <h1>Loading...</h1>;
+		}
+
+		const list = this.displayMentee(mentors);
 		return (
 			<div>
-				<Navbar />
-				<ul>
-					<li>List of Mentors</li>
-					<li />
-				</ul>
-				<Footer />
+				{list}
 			</div>
+				
 		);
 	}
 }
 
 function mapStateToProps(state) {
 	return {
-		mentors: state.list
+		mentors: state.list.mentors
 	};
 }
 
