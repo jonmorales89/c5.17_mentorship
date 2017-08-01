@@ -1,6 +1,8 @@
-import { combineReducers } from "redux";
-import mentorReducer from "./mentor_reducer";
+import { combineReducers } from 'redux';
+import mentorReducer from './mentor_reducer';
+import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
-	list: mentorReducer
+	list: mentorReducer,
+	form: formReducer
 });

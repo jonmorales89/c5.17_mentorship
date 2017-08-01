@@ -14,7 +14,7 @@ class SignUp extends Component {
 
     renderInput({ input, label, meta: { touched, error } }) {
         return (
-            <div className="form-group">
+            <div className="form-group my-1">
                 <label className="mr-2">
                     {label}
                 </label>
@@ -22,7 +22,7 @@ class SignUp extends Component {
                     {...input}
                     name={input.name}
                     type="text"
-                    className="form-control mr-2"
+                    className="form-control mr-2 mb-2"
                 />
                 {/*<p className="form-text text-danger">{touched && error}</p>*/}
             </div>
@@ -36,10 +36,10 @@ class SignUp extends Component {
                 <Navbar />
                 <div id="login" className="my-5 row">
                     <div className="col-12">
-                        <h2 className="header text-center">Dansu Mentors</h2>
+                        <h2 className="header text-center">Sign Up</h2>
                     </div>
                     <div className="col-12">
-                        <img className="rounded mx-auto" src={dancer} />
+                        <img className="rounded mx-auto mb-2" src={dancer} />
                     </div>
                     <div className="col-12">
                         <form
@@ -57,9 +57,9 @@ class SignUp extends Component {
                                 label="Password"
                                 component={this.renderInput}
                             />
-                            <div className="d-block text-center mb-2">
+                            <div className="d-block text-center mb-2 mr-2">
                                 <input type="checkbox" />
-                                Remember Me
+                                <p className="ml-2 d-inline">Remember Me</p>
                             </div>
                             <div className="d-block text-center">
                                 <button className="btn btn-outline-success mr-3">
@@ -81,83 +81,19 @@ class SignUp extends Component {
 function validate(values) {
     const errors = {};
 
-    if (values.title && values.title.length < 3) {
-        errors.title = 'Title must be at least 3 characters';
+    if (!values.email) {
+        errors.email = 'Please enter a valid email or password';
     }
-
-    if (!values.title) {
-        errors.title = 'Please enter a title';
-    }
-    if (!values.details) {
-        errors.details = 'Please enter some details about your to do item';
+    if (!values.password) {
+        errors.password = 'Please enter a valid email or password';
     }
 
     return errors;
 }
 
 SignUp = reduxForm({
-    form: 'add-item',
+    form: 'add-person',
     validate: validate
 })(SignUp);
 
-export default connect(null, { addPerson: addPerson })(SignUp);
-
-// class SignUp extends Component {
-//     render() {
-//         return (
-//             <div>
-//                 <Navbar />
-//                 <div className="SignUp_container">
-//                     <Form horizontal className="form">
-//                         <FormGroup
-//                             bsSize="large"
-//                             controlId="formHorizontalEmail">
-//                             <Col className="margin_text">Email</Col>
-//                             <Col>
-//                                 <FormControl type="email" placeholder="Email" />
-//                             </Col>
-//                         </FormGroup>
-
-//                         <FormGroup
-//                             bsSize="large"
-//                             controlId="formHorizontalPassword">
-//                             <Col className="margin_text">Password</Col>
-//                             <Col>
-//                                 <FormControl
-//                                     type="password"
-//                                     placeholder="Password"
-//                                 />
-//                             </Col>
-//                         </FormGroup>
-
-//                         <FormGroup>
-//                             <Col>
-//                                 <Checkbox>Remember me</Checkbox>
-//                             </Col>
-//                         </FormGroup>
-
-//                         <FormGroup>
-//                             <Col>
-//                                 <Button
-//                                     bsSize="large"
-//                                     className="btn btn-outline-success mr-2"
-//                                     type="submit">
-//                                     Sign in
-//                                 </Button>
-//                                 <Button
-//                                     bsSize="large"
-//                                     className="btn btn-outline-danger mr-2"
-//                                     type="submit">
-//                                     Cancel
-//                                 </Button>
-//                             </Col>
-//                         </FormGroup>
-//                     </Form>
-//                 </div>
-//                 <Footer />
-//             </div>
-//         );
-//     }
-// }
-
-// export default SignUp;
+export default connect(null, { addPerson })(SignUp);
