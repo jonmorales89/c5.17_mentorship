@@ -35,23 +35,15 @@ const Navbar = () => {
 							Find by Location
 						</a>
 					</li>
-					<li className="nav-item">
-						<Link className="nav-link" to="/login">
-							Login
-						</Link>
-					</li>
+					<li className="nav-item" />
 				</ul>
 				<form className="form-inline my-2 my-lg-0">
-					<input
-						className="form-control mr-sm-2"
-						type="text"
-						placeholder="Search"
-					/>
-					<button
-						className="btn btn-outline-success my-2 my-sm-0"
-						type="submit">
-						Search
-					</button>
+					<Link className="form-control mr-sm-2" to="/login">
+						Login
+					</Link>
+					<Link className="form-control mr-sm-2" to="/signup">
+						Sign Up
+					</Link>
 				</form>
 			</div>
 		</nav>
