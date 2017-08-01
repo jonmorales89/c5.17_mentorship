@@ -4,12 +4,13 @@ import "./app.css";
 
 import Navbar from "./navbar";
 import Footer from "./footer";
+// import Login from "./login";
 
 const Home = () => {
 	return (
 		<div>
 			<Navbar />
-			<h1>Welcome to Dansu Mentor</h1>
+			{/*<Login />*/}
 			<Footer />
 		</div>
 	);
