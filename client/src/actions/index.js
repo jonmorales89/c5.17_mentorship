@@ -9,13 +9,11 @@ export function getMentors(snapshot) {
 }
 
 export function addPerson(person) {
-	const newPerson = {
-		email: person.email
-	};
-
-	db.ref('Mentors').push(newPerson);
-
+	db.ref('Mentors').push(person).then(resp => {
+		console.log('Data added:', resp.key);
+	});
 	return {
-		type: types.ADD_PERSON
+		type: types.ADD_PERSON,
+		payload: person
 	};
 }

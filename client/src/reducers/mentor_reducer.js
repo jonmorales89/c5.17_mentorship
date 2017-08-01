@@ -6,6 +6,9 @@ export default function(state = DEFAULT_STATE, action) {
 		case types.GET_MENTORS:
 			console.log('Get Mentors reducer:', action);
 			return {...state, mentors: action.payload};
+		case types.ADD_PERSON:
+			console.log('Add Mentors reducer:', action);
+			return {...state, mentors: action.person}
 		default:
 			return state;
 	}
