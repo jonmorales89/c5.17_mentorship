@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { db } from '../firebase/index';
 import { connect } from 'react-redux';
-import { getMentors } from '../actions/index';
+import { getMentors, addPerson } from '../actions/index';
 import Navbar from './navbar';
 import Footer from './footer';
 
@@ -11,15 +11,15 @@ class Search extends Component {
 	}
 
 	componentDidMount() {
-
-		db.ref('mentors').on('value', snapshot => {
+		db.ref('Mentors').on('value', snapshot => {
 			const data = snapshot.val();
 			console.log(this.props.getMentors(data));
 			this.props.getMentors(data);
 		});
 	}
 
-	displayMentee(mentors) {
+
+	displayMentors(mentors) {
 		console.log('mentors data', mentors);
 
 		const { bio, mentees, name } = mentors.id;
@@ -51,14 +51,13 @@ class Search extends Component {
 			return <h1>Loading...</h1>;
 		}
 
-		const list = this.displayMentee(mentors);
+		const list = this.displayMentors(mentors);
 		return (
 			<div>
 				<Navbar />
 				<div>
 					{list}
 				</div>
-				<Footer />
 			</div>
 		);
 	}
