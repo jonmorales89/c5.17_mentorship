@@ -11,7 +11,7 @@ class Search extends Component {
 	}
 
 	componentDidMount() {
-		db.ref('Mentors').on('value', snapshot => {
+		db.ref('mentors').on('value', snapshot => {
 			const data = snapshot.val();
 			console.log(this.props.getMentors(data));
 			this.props.getMentors(data);

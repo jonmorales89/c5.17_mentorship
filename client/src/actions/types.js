@@ -1,5 +1,5 @@
 export default {
-	GET_MENTORS: "get_mentor"
+	GET_MENTORS: "get_mentors"
 	// ADD_ITEM: "add_item",
 	// GET_SINGLE: "get_single",
 	// DELETE_ITEM: "delete_item",
