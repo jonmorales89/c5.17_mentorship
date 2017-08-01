@@ -13,6 +13,7 @@ class Search extends Component {
 	componentDidMount() {
 		db.ref('Mentors').on('value', snapshot => {
 			var data = snapshot.val();
+			console.log('firebase data', data);
 			this.props.getMentors(data);
 		});
 	}
