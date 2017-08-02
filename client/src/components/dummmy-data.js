@@ -5,6 +5,7 @@ export default {
 		awards: 'no'
 		experience: 'yes',
 		location: 'nah',
-		style: 'none'
+		style: 'none',
+		location: '92677'
 	}
 };
