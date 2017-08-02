@@ -1,5 +1,5 @@
 import React from 'react';
-import Example from './searchbar';
+import SearchBar from './searchbar';
 import './styles.css';
 
 export default () =>
@@ -14,7 +14,7 @@ export default () =>
         {/*Search*/}
       {/*</button>*/}
     {/*</form>*/}
-    <Example />
+    <SearchBar />
     <div
       id="carouselExampleSlidesOnly"
       className="carousel slide"

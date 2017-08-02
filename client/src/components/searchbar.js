@@ -37,7 +37,7 @@ const renderSuggestion = suggestion => (
     </div>
 );
 
-class Example extends Component {
+class SearchBar extends Component {
     constructor(){
         super();
 
@@ -65,26 +65,34 @@ class Example extends Component {
         })
     };
 
+    submitForm(values){
+        console.log('submit button clicked', values);
+    }
+
     render() {
         const { value, suggestions } = this.state;
 
         const inputProps = {
-            palceholder: 'Type a dance style',
+            placeholder: 'Enter zip code',
             value,
             onChange: this.onChange
         };
 
         return (
-            <Autosuggest
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                inputProps={inputProps}
-            />
+            <form>
+                <Autosuggest
+                    suggestions={suggestions}
+                    onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    inputProps={inputProps}
+                    ref="autosuggest"
+                />
+                <button onClick={() => {this.submitForm(inputProps.value)}} type="button" className="btn"><i className="fa fa-search"></i></button>
+            </form>
         );
     }
 }
 
-export default Example;
+export default SearchBar;
