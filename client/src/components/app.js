@@ -6,11 +6,9 @@ import Home from './home';
 import Search from './search_list';
 import Login from './authentication/login';
 import MentorsSignUp from './authentication/mentor_signup_form';
-import FBLogin from './authentication/facebook_login';
 
 const App = () =>
 	<div>
-		<Route path="/login/facebook" component={FBLogin} />
 		<Route exact path="/login" component={Login} />
 		<Route path="/mentors/signup" component={MentorsSignUp} />
 		<Route path="/results" component={Search} />

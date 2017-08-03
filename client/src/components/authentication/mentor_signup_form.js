@@ -21,7 +21,8 @@ class MentorsSignUp extends Component {
                 affiliates: vals.affiliates,
                 experience: vals.experience,
                 location: vals.location,
-                style: vals.style
+                style: vals.style,
+                email: vals.email
             },
             name: vals.name
         };
