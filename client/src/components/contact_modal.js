@@ -1,5 +1,8 @@
-import React, { Component } from "react";
-import "./modal.css";
+import React, { Component } from 'react';
+import axios from 'axios';
+import './modal.css';
+
+const BASE_URL = 'http://localhost:3001/mail';
 
 class Confirm extends Component {
     constructor(props) {
@@ -9,8 +12,28 @@ class Confirm extends Component {
         };
     }
 
-    handleConfirm() {
-        this.props.onClick();
+    sendMail() {
+        const email = {
+            to: this.email.value
+        };
+
+        const name = {
+            subject: this.name.value
+        };
+
+        const text = {
+            text: this.text.value
+        };
+        console.log('TEXT OBJECT WORKS:', text);
+
+        axios
+            .post(`${BASE_URL}`, { email, name, text })
+            .then(resp => {
+                console.log('Its working!');
+            })
+            .catch(error => {
+                console.warn('Error adding to server', error);
+            });
         this.setState({ showModal: false });
     }
 
@@ -35,7 +58,16 @@ class Confirm extends Component {
                             rows="6"
                             placeholder="Goals"
                         />
+                        <textarea ref={name => (this.name = name)} />
                         <textarea
+                            type="text"
+                            className="form-control mb-3"
+                            rows="7"
+                            placeholder="About me & Goals"
+                            ref={text => (this.text = text)}
+                        />
+                        <textarea
+                            type="text"
                             className="form-control mb-3"
                             rows="7"
                             placeholder="Questions"
@@ -44,9 +76,10 @@ class Confirm extends Component {
                             type="text"
                             className="form-control mb-3"
                             placeholder="Email"
+                            ref={email => (this.email = email)}
                         />
                         <button
-                            onClick={() => this.handleConfirm()}
+                            onClick={() => this.sendMail()}
                             className="btn btn-outline-success mr-2"
                         >
                             Submit
