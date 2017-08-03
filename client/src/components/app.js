@@ -1,22 +1,18 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import firebase from 'firebase';
+import { provider, auth } from '../firebase';
+import { Route } from 'react-router-dom';
 import Home from './home';
-import Search from "./search_list_item";
+import Search from './search_list';
 import Login from './login';
-import DashBoard from './dashboard.js';
-import Add from './tempAdd';
-import Form from './contact_mentor.js';
+import MentorsSignUp from './mentor_signup_form';
 
 const App = () =>
 	<div>
-		<Switch>
-			<Route path="/add" component={Add} />
-			<Route path="/login" component={Login} />
-      		<Route path="/results" component={Search} />
-		  	<Route path="/dashboard" component={DashBoard} />
-			<Route path="/" component={Home} />
-			<Route path="/contact" component={Form} />
-		</Switch>
+		<Route path="/mentors/signup" component={MentorsSignUp} />
+		<Route path="/login" component={Login} />
+		<Route path="/results" component={Search} />
+		<Route exact path="/" component={Home} />
 	</div>;
 
 export default App;
