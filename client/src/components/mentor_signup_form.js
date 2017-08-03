@@ -163,7 +163,7 @@ function validate(values) {
         errors.aboutme = 'Hey, tell us more about yourself!';
     }
 
-    if (!values.experience || values.aboutme.length < 75) {
+    if (!values.experience || values.experience.length < 75) {
         errors.experience = "Hey, tell us what you've been doing!";
     }
 
