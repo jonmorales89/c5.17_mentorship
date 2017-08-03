@@ -20,10 +20,7 @@ class Search extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Zipcode:
-                    <input type="text" value={this.state.value} onChange={this.handleChange}/>
-                </label>
+                <input placeholder="Enter your zipcode" type="text" value={this.state.value} onChange={this.handleChange}/>
                 <input type="submit" value="Submit"/>
             </form>
         );
