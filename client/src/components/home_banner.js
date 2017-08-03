@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from './searchbar';
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 export default () =>
   <div>
