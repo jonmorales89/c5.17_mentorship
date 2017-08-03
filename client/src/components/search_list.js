@@ -19,9 +19,9 @@ export default class SearchList extends Component {
     const { data } = this.state;
     const list = Object.keys(data).map((key, index) => {
       const path = window.location.pathname;
-      const loc = parseInt(path.substring(path.lastIndexOf('/'), path.length));
-      console.log(loc);
-      if(data[key].bio.location === loc){
+      const loc = path.substring(path.lastIndexOf('/') + 1, path.length);
+      console.log("Location: ",loc);
+      if(data[key].bio.location.split(" ").join("") === loc){
       return (
           <li className="list-group-item" key={index}>
             <span>Name: {data[key].name}<br/></span>
