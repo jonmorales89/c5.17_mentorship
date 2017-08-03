@@ -8,10 +8,6 @@ import Footer from './footer';
 
 class MentorsSignUp extends Component {
     submitForm(vals) {
-        // this.props.addPerson(vals);
-
-        console.log('adding mentor');
-        console.log('vals', vals);
         const data = {
             bio: {
                 aboutme: vals.aboutme,
