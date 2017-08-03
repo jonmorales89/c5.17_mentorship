@@ -1,18 +1,18 @@
 import React from 'react';
+import firebase from 'firebase';
+import { provider, auth } from '../firebase';
 import { Route, Link, Switch } from 'react-router-dom';
 import Home from './home';
 import Search from "./search_list";
 import Login from './login';
-import Add from './tempAdd';
+import MentorsSignUp from './mentor_signup_form';
 
 const App = () =>
 	<div>
-		<Switch>
-			<Route path="/add" component={Add} />
-			<Route path="/login" component={Login} />
-      		<Route path="/results" component={Search} />
-			<Route path="/" component={Home} />
-		</Switch>
+		<Route path="/mentors/signup" component={MentorsSignUp} />
+		<Route path="/login" component={Login} />
+		<Route path="/results" component={Search} />
+		<Route exact path="/" component={Home} />
 	</div>;
 
 export default App;
