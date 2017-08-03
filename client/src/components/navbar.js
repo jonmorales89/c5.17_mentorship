@@ -1,23 +1,24 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './css/navbarStyle.css';
 
 const Navbar = () => {
-	return (
-		<nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-			<button
-				className="navbar-toggler navbar-toggler-right"
-				type="button"
-				data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent"
-				aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span className="navbar-toggler-icon" />
-			</button>
-			<Link className="navbar-brand" to="/">
-				DansuMentors
-			</Link>
-
+  return (
+    <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse font">
+      <button
+        className="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+      <Link className="navbar-brand" to="/">
+        DansuMentors
+      </Link>
 			<div
 				className="collapse navbar-collapse"
 				id="navbarSupportedContent">
@@ -58,6 +59,4 @@ const Navbar = () => {
 			</div>
 		</nav>
 	);
-};
-
 export default Navbar;
