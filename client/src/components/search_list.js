@@ -9,40 +9,39 @@ export default class SearchList extends Component {
       data: {}
     };
   }
-  renderList(data) {
-    if (!data) {
-      return 'Loading....';
-    } else {
-      console.log('data is: ', this.state.data);
-      return (
-        <li className="list-group-item">
-          {data.name}
-        </li>
-      );
-    }
-  }
   componentDidMount() {
     db.ref('Mentors').on('value', snapshot => {
       const data = snapshot.val();
       this.setState({ data });
-      console.log(data);
     });
   }
-
-  render() {
+  renderList(){
     const { data } = this.state;
     const list = Object.keys(data).map((key, index) => {
+      const path = window.location.pathname;
+      const loc = parseInt(path.substring(path.lastIndexOf('/'), path.length));
+      console.log(loc);
+      if(data[key].bio.location === loc){
       return (
-        <li key={index}>
-          {data[key].name}
-        </li>
-      );
+          <li className="list-group-item" key={index}>
+            <span>Name: {data[key].name}<br/></span>
+            <span>About Me: {data[key].bio.aboutme}<br/></span>
+            <span>Affiliates: {data[key].bio.affiliates}<br/></span>
+            <span>Awards and Accolades: {data[key].bio.awards}<br/></span>
+            <span>Experience: {data[key].bio.experience}<br/></span>
+            <span>Zip Code: {data[key].bio.location}<br/></span>
+          </li>
+        )
+      }
     });
+    return list
+  }
+  render() {
     return (
       <div>
         <Navbar />
-        <ul>
-          {list}
+        <ul className="list-group">
+          {this.renderList()}
         </ul>
       </div>
     );
