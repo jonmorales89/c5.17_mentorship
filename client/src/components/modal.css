@@ -1,0 +1,29 @@
+.del-modal {
+    position: fixed;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.7);
+}
+
+.del-modal-content {
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    height: 88vh;
+    width: 40vw;
+    box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2), 0 40px 40px 0 rgba(0, 0, 0, 0.19);
+}
+
+.del-modal-content p:first-child{
+    font-size: 1.8em;
+    font-weight: bold;
+
+}
+
+.del-modal-content p:nth-child(2) {
+    font-size: 1.5em;
+    color: #717171 ;
+}

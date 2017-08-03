@@ -5,6 +5,7 @@ import Search from "./search_list_item";
 import Login from './login';
 import DashBoard from './dashboard.js';
 import Add from './tempAdd';
+import Form from './contact_mentor.js';
 
 const App = () =>
 	<div>
@@ -14,6 +15,7 @@ const App = () =>
       		<Route path="/results" component={Search} />
 		  	<Route path="/dashboard" component={DashBoard} />
 			<Route path="/" component={Home} />
+			<Route path="/contact" component={Form} />
 		</Switch>
 	</div>;
 
