@@ -17,8 +17,6 @@ class Search extends Component {
 			this.props.getMentors(data);
 		});
 	}
-
-
 	displayMentors(mentors) {
 		console.log('mentors data', mentors);
 
@@ -43,7 +41,6 @@ class Search extends Component {
 			</li>
 		);
 	}
-
 	render() {
 		const { mentors } = this.props;
 
@@ -62,11 +59,9 @@ class Search extends Component {
 		);
 	}
 }
-
 function mapStateToProps(state) {
 	return {
 		mentors: state.list.mentors
 	};
 }
-
 export default connect(mapStateToProps, { getMentors })(Search);
