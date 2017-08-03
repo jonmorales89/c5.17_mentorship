@@ -9,7 +9,7 @@ export default () =>
       id="carouselExampleSlidesOnly"
       className="carousel slide"
       data-ride="carousel">
-      <div className="carousel-inner" role="listbox">
+      <div className="blur carousel-inner" role="listbox">
         <div className="carousel-item active">
           <img
             className="d-block2 img-fluid"
