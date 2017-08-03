@@ -9,25 +9,13 @@ export default class SearchList extends Component {
       data: {}
     };
   }
-  renderList(data) {
-    if (!data) {
-      return 'Loading....';
-    } else {
-      console.log('data is: ', this.state.data);
-      return (
-        <li className="list-group-item">
-          {data.name}
-        </li>
-      );
-    }
-  }
   componentDidMount() {
     db.ref('Mentors').on('value', snapshot => {
       const data = snapshot.val();
       this.setState({ data });
-      console.log(data);
     });
   }
+<<<<<<< HEAD
 
   charLimit(value){
     for(let i=0; i < value.length; i++){
@@ -42,9 +30,17 @@ export default class SearchList extends Component {
 
 
   render() {
+=======
+  renderList(){
+>>>>>>> d91f395f6bdbafaf89d989745907a3b315070768
     const { data } = this.state;
     const list = Object.keys(data).map((key, index) => {
+      const path = window.location.pathname;
+      const loc = path.substring(path.lastIndexOf('/') + 1, path.length);
+      console.log("Location: ",loc);
+      if(data[key].bio.location.split(" ").join("") === loc){
       return (
+<<<<<<< HEAD
         <div key={index} className="col-xs-4">
           <div className="card mr-3 mb-3" style={{ width: '20rem' }}>
             <img className="card-img-top" src="http://lorempixel.com/output/people-q-c-318-180-1.jpg" alt="Card image cap" />
@@ -65,13 +61,34 @@ export default class SearchList extends Component {
           </div>
         </div>
       );
+=======
+          <li className="list-group-item" key={index}>
+            <span>Name: {data[key].name}<br/></span>
+            <span>About Me: {data[key].bio.aboutme}<br/></span>
+            <span>Affiliates: {data[key].bio.affiliates}<br/></span>
+            <span>Awards and Accolades: {data[key].bio.awards}<br/></span>
+            <span>Experience: {data[key].bio.experience}<br/></span>
+            <span>Zip Code: {data[key].bio.location}<br/></span>
+          </li>
+        )
+      }
+>>>>>>> d91f395f6bdbafaf89d989745907a3b315070768
     });
+    return list
+  }
+  render() {
     return (
       <div>
         <Navbar />
+<<<<<<< HEAD
         <div className="row">
             {list}
         </div>
+=======
+        <ul className="list-group">
+          {this.renderList()}
+        </ul>
+>>>>>>> d91f395f6bdbafaf89d989745907a3b315070768
       </div>
     );
   }
