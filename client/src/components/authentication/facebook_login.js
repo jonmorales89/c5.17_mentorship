@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { login, resetPassword } from '../firebase/auth';
+import { login, resetPassword } from '../../firebase/auth';
 
 function setErrorMsg(error) {
   return {
