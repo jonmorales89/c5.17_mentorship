@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import Home from './home';
-import Search from "./search_list_item";
+import Search from "./search_list";
 import Login from './login';
 import Add from './tempAdd';
 
