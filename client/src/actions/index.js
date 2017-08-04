@@ -1,5 +1,5 @@
 import types from './types';
-import { db } from '../firebase';
+import { db, auth } from '../firebase';
 
 export function getMentors(snapshot) {
 	return {
@@ -17,3 +17,5 @@ export function addPerson(person) {
 		payload: person
 	};
 }
+
+

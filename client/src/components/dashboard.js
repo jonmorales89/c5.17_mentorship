@@ -1,16 +1,12 @@
-import React from 'react';
-import Navbar from './navbar';
-import MenteeList from './mentee_list.js';
-import SideBar from './mentee_sidebar.js';
+import React, { Component } from 'react';
 
-const DashBoard = () => {
-	return (
-		<div>
-			<Navbar />
-			<MenteeList />
-			<SideBar />
-		</div>
-	);
-};
-
-export default DashBoard;
+export default class Dashboard extends Component {
+	render() {
+		return (
+			<div>
+				Dashboard. This is a protected route. You can only see this if
+				you're authed.
+			</div>
+		);
+	}
+}
