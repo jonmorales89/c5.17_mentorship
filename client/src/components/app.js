@@ -7,13 +7,15 @@ import Search from './search_list';
 import Login from './authentication/login';
 import MentorsSignUp from './authentication/mentor_signup_form';
 import MentorsRegister from './authentication/register';
+import Dashboard from './dashboard';
 
 const App = () => {
 	return (
 		<div>
+			<Route path="/mentors/dashboard" component={Dashboard} />
 			<Route path="/mentors/register" component={MentorsRegister} />
 			<Route path="/mentors/signup" component={MentorsSignUp} />
-			<Route exact path="/login" component={Login} />
+			<Route path="/mentors/login" component={Login} />
 			<Route path="/results" component={Search} />
 			<Route exact path="/" component={Home} />
 		</div>

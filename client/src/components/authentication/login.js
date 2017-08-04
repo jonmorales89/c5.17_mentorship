@@ -1,96 +1,84 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
 import { login, resetPassword } from '../../firebase/auth';
-import Navbar from '../navbar';
-import Footer from '../footer';
 
-class Login extends Component {
-    submitForm(vals) {
-        console.log('vals', vals);
+function setErrorMsg(error) {
+    return {
+        loginMessage: error
+    };
+}
+
+export default class Login extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { loginMessage: null };
     }
 
-    renderInput({ input, label, meta: { touched, error } }) {
-        return (
-            <div className="form-group my-1">
-                <label className="mr-2">
-                    {label}
-                </label>
-                <input
-                    {...input}
-                    name={input.name}
-                    type="text"
-                    className="form-control mr-2 mb-2"
-                />
-                <p className="form-text text-danger">
-                    {touched && error}
-                </p>
-            </div>
-        );
-    }
-
+    handleSubmit = e => {
+        e.preventDefault();
+        login(this.email.value, this.pw.value)
+            .then(() => {
+                this.props.history.push('/mentors/dashboard');
+            })
+            .catch(error => {
+                this.setState(setErrorMsg('Invalid username/password.'));
+            });
+    };
+    resetPassword = () => {
+        resetPassword(this.email.value)
+            .then(() =>
+                this.setState(
+                    setErrorMsg(
+                        `Password reset email sent to ${this.email.value}.`
+                    )
+                )
+            )
+            .catch(error =>
+                this.setState(setErrorMsg(`Email address not found.`))
+            );
+    };
     render() {
-        const { handleSubmit } = this.props;
         return (
-            <div>
-                <Navbar />
-                <div id="login" className="my-5 row">
-                    <div className="col-12">
-                        <h2 className="header text-center">Login</h2>
+            <div className="col-sm-6 col-sm-offset-3">
+                <h1> Login </h1>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input
+                            className="form-control"
+                            ref={email => (this.email = email)}
+                            placeholder="Email"
+                        />
                     </div>
-                    <div className="col-12">
-                        <form
-                            className="form"
-                            onSubmit={handleSubmit(values =>
-                                this.submitForm(values, reset)
-                            )}>
-                            <Field
-                                name="email"
-                                label="Email"
-                                component={this.renderInput}
-                            />
-                            <Field
-                                name="password"
-                                label="Password"
-                                component={this.renderInput}
-                            />
-                            <div className="d-block text-center mb-2 mr-2">
-                                <input type="checkbox" />
-                                <p className="ml-2 d-inline">Remember Me</p>
-                            </div>
-                            <div className="d-block text-center">
-                                <button className="btn btn-outline-success mr-3">
-                                    Login
-                                </button>
-                                <button className="btn btn-outline-danger">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            placeholder="Password"
+                            ref={pw => (this.pw = pw)}
+                        />
                     </div>
-                </div>
-                <Footer />
+                    {this.state.loginMessage &&
+                        <div className="alert alert-danger" role="alert">
+                            <span
+                                className="glyphicon glyphicon-exclamation-sign"
+                                aria-hidden="true"
+                            />
+                            <span className="sr-only">Error:</span>
+                            &nbsp;{this.state.loginMessage}{' '}
+                            <a
+                                href="#"
+                                onClick={this.resetPassword}
+                                className="alert-link">
+                                Forgot Password?
+                            </a>
+                        </div>}
+                    <button type="submit" className="btn btn-primary">
+                        Login
+                    </button>
+                </form>
             </div>
         );
     }
 }
-
-function validate(values) {
-    const errors = {};
-
-    if (!values.email) {
-        errors.email = 'Please enter a valid email or password';
-    }
-    if (!values.password) {
-        errors.password = 'Please enter a valid email or password';
-    }
-
-    return errors;
-}
-
-Login = reduxForm({
-    form: 'add-person',
-    validate: validate
-})(Login);
-
-export default connect(null)(Login);
