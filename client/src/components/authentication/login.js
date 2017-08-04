@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import dancer from './img/hip.png';
-import { addPerson } from '../actions/index';
-import Navbar from './navbar';
-import Footer from './footer';
+import { login, resetPassword } from '../../firebase/auth';
+import Navbar from '../navbar';
+import Footer from '../footer';
 
 class Login extends Component {
-    submitForm(vals, reset) {
-        this.props.addPerson(vals);
-        reset();
+    submitForm(vals) {
+        console.log('vals', vals);
     }
 
     renderInput({ input, label, meta: { touched, error } }) {
@@ -24,7 +22,9 @@ class Login extends Component {
                     type="text"
                     className="form-control mr-2 mb-2"
                 />
-                {/*<p className="form-text text-danger">{touched && error}</p>*/}
+                <p className="form-text text-danger">
+                    {touched && error}
+                </p>
             </div>
         );
     }
@@ -36,10 +36,7 @@ class Login extends Component {
                 <Navbar />
                 <div id="login" className="my-5 row">
                     <div className="col-12">
-                        <h2 className="header text-center">Sign Up</h2>
-                    </div>
-                    <div className="col-12 text-center">
-                        <img className="rounded mb-2" src={dancer} />
+                        <h2 className="header text-center">Login</h2>
                     </div>
                     <div className="col-12">
                         <form
@@ -96,4 +93,4 @@ Login = reduxForm({
     validate: validate
 })(Login);
 
-export default connect(null, { addPerson })(Login);
+export default connect(null)(Login);
