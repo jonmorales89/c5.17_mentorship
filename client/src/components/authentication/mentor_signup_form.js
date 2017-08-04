@@ -187,7 +187,7 @@ function validate(values) {
     }
 
     if (!values.location) {
-        errors.location = 'Please enter your serving location.';
+        errors.location = 'Please enter your serving city.';
     }
 
     if (!values.aboutme || values.aboutme.length < 75) {

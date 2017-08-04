@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-// import { login, resetPassword } from '../firebase/auth';
+import { login, resetPassword } from '../../firebase/auth';
 import Navbar from '../navbar';
 import Footer from '../footer';
 

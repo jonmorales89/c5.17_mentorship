@@ -1,6 +1,6 @@
 import { db, firebaseAuth } from '../firebase';
 
-export function auth(email, pw) {
+export function authenticate(email, pw) {
   return firebaseAuth()
     .createUserWithEmailAndPassword(email, pw)
     .then(saveUser);
