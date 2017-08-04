@@ -22,9 +22,6 @@ class Search extends Component {
       alert("Please input a valid zip code!")
      }
   }
-  removeSpaces(string){
-    return string.split(" ").join('')
-  }
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -34,7 +31,7 @@ class Search extends Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <Link to={`/results/${this.removeSpaces(this.state.value)}`}><input type="submit" value="Submit" /></Link>
+        <Link to={`/results/${this.state.value}`}><input type="submit" value="Submit" /></Link>
       </form>
     );
   }
