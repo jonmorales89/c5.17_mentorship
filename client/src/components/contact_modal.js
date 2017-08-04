@@ -22,7 +22,7 @@ class Confirm extends Component {
         };
 
         const text = {
-            text: this.text.value
+            text: `${this.text_two.value} AND ${this.text_one.value}`
         };
         console.log('TEXT OBJECT WORKS:', text);
 
@@ -54,13 +54,14 @@ class Confirm extends Component {
                             className="form-control mb-3"
                             rows="7"
                             placeholder="About me & Goals"
-                            ref={text => (this.text = text)}
+                            ref={text => (this.text_one = text)}
                         />
                         <textarea
                             type="text"
                             className="form-control mb-3"
                             rows="7"
                             placeholder="Questions"
+                            ref={text => (this.text_two = text)}
                         />
                         <input
                             type="text"
