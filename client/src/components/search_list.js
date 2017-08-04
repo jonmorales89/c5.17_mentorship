@@ -33,32 +33,6 @@ export default class SearchList extends Component {
       console.log('Location: ', loc);
       if (data[key].bio.location.split(' ').join('') === loc) {
         return (
-          <li className="list-group-item" key={index}>
-            <span>
-              Name: {data[key].name}
-              <br />
-            </span>
-            <span>
-              About Me: {data[key].bio.aboutme}
-              <br />
-            </span>
-            <span>
-              Affiliates: {data[key].bio.affiliates}
-              <br />
-            </span>
-            <span>
-              Awards and Accolades: {data[key].bio.awards}
-              <br />
-            </span>
-            <span>
-              Experience: {data[key].bio.experience}
-              <br />
-            </span>
-            <span>
-              Zip Code: {data[key].bio.location}
-              <br />
-            </span>
-
           <div className="col-xs-4" key={index}>
             <div className="card" style={{ width: '20rem' }}>
               <img
