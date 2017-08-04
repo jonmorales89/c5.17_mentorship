@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import dancer from './img/hip.png';
-import { addPerson } from '../actions/index';
-import Navbar from './navbar';
-import Footer from './footer';
+import { addPerson } from '../../actions/index';
+import Navbar from '../navbar';
+import Footer from '../footer';
 
 class MentorsSignUp extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            successMessage: false
+        };
+    }
+
     submitForm(vals) {
         const data = {
             bio: {
@@ -19,14 +26,33 @@ class MentorsSignUp extends Component {
             },
             name: vals.name
         };
+        const { reset } = this.props;
+        // this.props.addPerson(data).then(() => {
+        // });
 
-        this.props.addPerson(data);
+        reset();
+        this.setState({
+            successMessage: true
+        });
     }
 
     styleObj = {
         width: '50%',
         minWidth: '30%'
     };
+
+    Message() {
+        if (this.state.successMessage) {
+            return (
+                <div className="form-group has-success">
+                    <div className="form-control-feedback text-center">
+                        Success! You've done it. Thank you for your
+                        participation!
+                    </div>
+                </div>
+            );
+        }
+    }
 
     renderInput({ input, label, meta: { touched, error } }) {
         return (
@@ -81,6 +107,9 @@ class MentorsSignUp extends Component {
                         <h2 className="header text-center">
                             Sign Up to Become a Mentor
                         </h2>
+                        <p className="text-center">
+                            *BETA* We are currently operating only in California
+                        </p>
                     </div>
                     <div className="col-12">
                         <form
@@ -105,12 +134,12 @@ class MentorsSignUp extends Component {
                             />
                             <Field
                                 name="location"
-                                label="Serving Location"
+                                label="Serving City"
                                 component={this.renderInput}
                             />
                             <Field
                                 name="affiliates"
-                                label="Affiliates"
+                                label="Company(s)"
                                 component={this.renderInput}
                             />
                             <Field
@@ -124,10 +153,11 @@ class MentorsSignUp extends Component {
                                 component={this.renderTextArea}
                             />
                             <div className="d-block text-center">
-                                <button className="btn btn-outline-success mr-3">
+                                <button className="btn btn-outline-primary mr-3">
                                     Sign-Up
                                 </button>
                             </div>
+                            {this.Message()}
                         </form>
                     </div>
                 </div>
@@ -141,19 +171,23 @@ function validate(values) {
     const errors = {};
 
     if (!values.name) {
-        errors.name = 'Please enter your name';
+        errors.name = 'Please enter your name.';
     }
 
     if (!values.email) {
-        errors.email = 'Please enter a valid email';
+        errors.email = 'Please enter a valid email.';
     }
 
     if (!values.style) {
-        errors.style = 'Please enter your preferred genre or form of dance';
+        errors.style = 'Please enter your preferred genre or form of dance.';
+    }
+
+    if (!values.affiliates) {
+        errors.affiliates = 'Please enter your company or organization.';
     }
 
     if (!values.location) {
-        errors.location = 'Please enter your serving location';
+        errors.location = 'Please enter your serving city.';
     }
 
     if (!values.aboutme || values.aboutme.length < 75) {
