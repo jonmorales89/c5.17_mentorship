@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { db } from '../firebase';
 import Navbar from './navbar';
 
+const GOOGLE_API = "http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" + window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1, window.location.pathname.length); + "&sensor=false"
+
 export default class SearchList extends Component {
   constructor(props) {
     super(props);
@@ -15,13 +17,30 @@ export default class SearchList extends Component {
       this.setState({ data });
     });
   }
+
+
+  charLimit(value){
+    for(let i=0; i < value.length; i++){
+      if(value.length > 80) {
+          let result = value.substring(0, 80);
+          return result + " ...";
+      } else {
+        return value;
+      }
+    }
+  }
+
+
+
   renderList(){
+    console.log(GOOGLE_API);
     const { data } = this.state;
     const list = Object.keys(data).map((key, index) => {
       const path = window.location.pathname;
-      const loc = path.substring(path.lastIndexOf('/') + 1, path.length);
+      const loc = parseInt(path.substring(path.lastIndexOf('/') + 1, path.length));
       console.log("Location: ",loc);
-      if(data[key].bio.location.split(" ").join("") === loc){
+      console.log("Data: ", data[key].bio.location);
+      if(data[key].bio.location === loc){
       return (
           <li className="list-group-item" key={index}>
             <span>Name: {data[key].name}<br/></span>
@@ -33,6 +52,7 @@ export default class SearchList extends Component {
           </li>
         )
       }
+
     });
     return list
   }
@@ -40,6 +60,7 @@ export default class SearchList extends Component {
     return (
       <div>
         <Navbar />
+
         <ul className="list-group">
           {this.renderList()}
         </ul>
