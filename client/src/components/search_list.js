@@ -15,44 +15,63 @@ export default class SearchList extends Component {
       this.setState({ data });
     });
   }
-  charLimit(value){
-    for(let i=0; i < value.length; i++){
-      if(value.length > 80) {
-          let result = value.substring(0, 80);
-          return result + " ...";
+  charLimit(value) {
+    for (let i = 0; i < value.length; i++) {
+      if (value.length > 75) {
+        let result = value.substring(0, 75);
+        return result + ' ...';
       } else {
         return value;
       }
     }
   }
-  renderList(){
+  renderList() {
     const { data } = this.state;
     const list = Object.keys(data).map((key, index) => {
       const path = window.location.pathname;
       const loc = path.substring(path.lastIndexOf('/') + 1, path.length);
-      console.log("Location: ",loc);
-      if(data[key].bio.location.split(" ").join("") === loc){
-      return (
-          <li className="list-group-item" key={index}>
-            <span>Name: {data[key].name}<br/></span>
-            <span>About Me: {data[key].bio.aboutme}<br/></span>
-            <span>Affiliates: {data[key].bio.affiliates}<br/></span>
-            <span>Awards and Accolades: {data[key].bio.awards}<br/></span>
-            <span>Experience: {data[key].bio.experience}<br/></span>
-            <span>Zip Code: {data[key].bio.location}<br/></span>
-          </li>
-        )
+      console.log('Location: ', loc);
+      if (data[key].bio.location.split(' ').join('') === loc) {
+        return (
+          <div className="col-xs-4" key={index}>
+            <div className="card" style={{ width: '20rem' }}>
+              <img
+                className="card-img-top"
+                src="https://dummyimage.com/318X180/b3b3b3/fff.png"
+              />
+              <div className="card-block">
+                <h6 className="card-title">
+                  Name: {data[key].name}
+                </h6>
+                <div className="card-text">
+                  <p>About Me:</p>
+                  <p>
+                    {this.charLimit(data[key].bio.aboutme)}
+                  </p>
+                  <p>
+                    Affiliates: {data[key].bio.affiliates}
+                  </p>
+                  <p>
+                    Serving Location: {data[key].bio.location}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
       }
     });
-    return list
+    return list;
   }
   render() {
     return (
       <div>
         <Navbar />
-        <ul className="list-group">
-          {this.renderList()}
-        </ul>
+        <div className="container">
+          <div className="row">
+            {this.renderList()}
+          </div>
+        </div>
       </div>
     );
   }
