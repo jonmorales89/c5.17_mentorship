@@ -15,36 +15,54 @@ export default class SearchList extends Component {
       this.setState({ data });
     });
   }
-  charLimit(value){
-    for(let i=0; i < value.length; i++){
-      if(value.length > 80) {
-          let result = value.substring(0, 80);
-          return result + " ...";
+  charLimit(value) {
+    for (let i = 0; i < value.length; i++) {
+      if (value.length > 80) {
+        let result = value.substring(0, 80);
+        return result + ' ...';
       } else {
         return value;
       }
     }
   }
-  renderList(){
+  renderList() {
     const { data } = this.state;
     const list = Object.keys(data).map((key, index) => {
       const path = window.location.pathname;
       const loc = path.substring(path.lastIndexOf('/') + 1, path.length);
-      console.log("Location: ",loc);
-      if(data[key].bio.location.split(" ").join("") === loc){
-      return (
+      console.log('Location: ', loc);
+      if (data[key].bio.location.split(' ').join('') === loc) {
+        return (
           <li className="list-group-item" key={index}>
-            <span>Name: {data[key].name}<br/></span>
-            <span>About Me: {data[key].bio.aboutme}<br/></span>
-            <span>Affiliates: {data[key].bio.affiliates}<br/></span>
-            <span>Awards and Accolades: {data[key].bio.awards}<br/></span>
-            <span>Experience: {data[key].bio.experience}<br/></span>
-            <span>Zip Code: {data[key].bio.location}<br/></span>
+            <span>
+              Name: {data[key].name}
+              <br />
+            </span>
+            <span>
+              About Me: {data[key].bio.aboutme}
+              <br />
+            </span>
+            <span>
+              Affiliates: {data[key].bio.affiliates}
+              <br />
+            </span>
+            <span>
+              Awards and Accolades: {data[key].bio.awards}
+              <br />
+            </span>
+            <span>
+              Experience: {data[key].bio.experience}
+              <br />
+            </span>
+            <span>
+              Zip Code: {data[key].bio.location}
+              <br />
+            </span>
           </li>
-        )
+        );
       }
     });
-    return list
+    return list;
   }
   render() {
     return (
