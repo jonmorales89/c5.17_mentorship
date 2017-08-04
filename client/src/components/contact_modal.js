@@ -47,18 +47,8 @@ class Confirm extends Component {
                             type="text"
                             className="form-control mb-3"
                             placeholder="Name"
+                            ref={name => (this.name = name)}
                         />
-                        <textarea
-                            className="form-control mb-3"
-                            rows="5"
-                            placeholder="About me"
-                        />
-                        <textarea
-                            className="form-control mb-3"
-                            rows="6"
-                            placeholder="Goals"
-                        />
-                        <textarea ref={name => (this.name = name)} />
                         <textarea
                             type="text"
                             className="form-control mb-3"
