@@ -15,6 +15,7 @@
     width: 40vw;
     box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2),
         0 40px 40px 0 rgba(0, 0, 0, 0.19);
+}
 
 .del-modal-content p:first-child {
     font-size: 1.8em;
