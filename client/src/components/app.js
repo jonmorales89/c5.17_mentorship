@@ -8,6 +8,7 @@ import Login from './authentication/login';
 import MentorsSignUp from './authentication/mentor_signup_form';
 import MentorsRegister from './authentication/register';
 import Dashboard from './dashboard';
+import ContactForm from './contact_mentor.js';
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 			<Route path="/mentors/login" component={Login} />
 			<Route path="/results" component={Search} />
 			<Route exact path="/" component={Home} />
+			<Route exact path="/contact" component={ContactForm} />
 		</div>
 	);
 };
