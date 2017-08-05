@@ -3,13 +3,9 @@ import { Link } from 'react-router-dom';
 import Confirm from './contact_modal.js';
 import firebase from 'firebase';
 
-const BASE_URL = 'localhost:3000/mail';
+// const BASE_URL = 'localhost:3001/mail';
 
 class ContactForm extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<div>
