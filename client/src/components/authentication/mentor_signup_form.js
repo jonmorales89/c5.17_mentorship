@@ -25,9 +25,7 @@ class MentorsSignUp extends Component {
             name: vals.name
         };
         const { reset } = this.props;
-        // this.props.addPerson(data).then(() => {
-        // });
-
+        this.props.addPerson(data);
         reset();
         this.setState({
             successMessage: true
