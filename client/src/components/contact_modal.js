@@ -29,7 +29,7 @@ class Confirm extends Component {
         axios
             .post(`${BASE_URL}`, { email, name, text })
             .then(resp => {
-                console.log('Its working!');
+                console.log('Its working!', resp);
             })
             .catch(error => {
                 console.warn('Error adding to server', error);
