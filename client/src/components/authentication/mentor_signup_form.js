@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { addPerson } from '../../actions/index';
-import Navbar from '../navbar';
-import Footer from '../footer';
 
 class MentorsSignUp extends Component {
     constructor(props) {
@@ -98,7 +96,6 @@ class MentorsSignUp extends Component {
         const { handleSubmit } = this.props;
         return (
             <div>
-                <Navbar />
                 <div
                     id="MentorSignUp"
                     className="my-5 row mx-auto"
@@ -161,7 +158,6 @@ class MentorsSignUp extends Component {
                         </form>
                     </div>
                 </div>
-                <Footer />
             </div>
         );
     }

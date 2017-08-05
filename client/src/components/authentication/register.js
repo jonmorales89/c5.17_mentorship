@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../../firebase/auth';
 import { Field, reduxForm } from 'redux-form';
-import Navbar from '../navbar';
-import Footer from '../footer';
 import SuccessMessage from './successMessage';
 
 class MentorsRegister extends Component {
@@ -72,7 +70,6 @@ class MentorsRegister extends Component {
     const { error, handleSubmit, pristine, reset, submitting } = this.props;
     return (
       <div>
-        <Navbar />
         <div className="col-4 mx-auto my-5">
           <h1 className="text-center">Mentor Registration</h1>
           <form
