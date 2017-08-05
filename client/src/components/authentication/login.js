@@ -39,6 +39,7 @@ export default class Login extends Component {
     };
     render() {
         return (
+<<<<<<< HEAD
             <div className="col-sm-6 col-sm-offset-3">
                 <h1> Login </h1>
                 <form onSubmit={this.handleSubmit}>
@@ -49,6 +50,12 @@ export default class Login extends Component {
                             ref={email => (this.email = email)}
                             placeholder="Email"
                         />
+=======
+            <div>
+                <div id="login" className="my-5 row">
+                    <div className="col-12">
+                        <h2 className="header text-center">Login</h2>
+>>>>>>> 9a6f350ec9e5036450942c60915014225344666e
                     </div>
                     <div className="form-group">
                         <label>Password</label>
@@ -59,6 +66,7 @@ export default class Login extends Component {
                             ref={pw => (this.pw = pw)}
                         />
                     </div>
+<<<<<<< HEAD
                     {this.state.loginMessage &&
                         <div className="alert alert-danger" role="alert">
                             <span
@@ -78,6 +86,9 @@ export default class Login extends Component {
                         Login
                     </button>
                 </form>
+=======
+                </div>
+>>>>>>> 9a6f350ec9e5036450942c60915014225344666e
             </div>
         );
     }
