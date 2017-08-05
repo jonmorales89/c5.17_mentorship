@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { db } from '../firebase/index';
 import { connect } from 'react-redux';
 import { getMentors, addPerson } from '../actions/index';
-import Navbar from './navbar';
-import Footer from './footer';
 
 class Search extends Component {
 	constructor(props) {
@@ -17,7 +15,6 @@ class Search extends Component {
 			this.props.getMentors(data);
 		});
 	}
-	displayMentors(mentors) {
 		console.log('mentors data', mentors);
 
 		const { bio, mentees, name } = mentors.id;
@@ -51,7 +48,6 @@ class Search extends Component {
 		const list = this.displayMentors(mentors);
 		return (
 			<div>
-				<Navbar />
 				<div>
 					{list}
 				</div>
