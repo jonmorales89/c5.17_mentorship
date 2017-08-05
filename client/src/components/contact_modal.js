@@ -99,3 +99,7 @@ class Confirm extends Component {
 }
 
 export default Confirm;
+
+//need to do an axios call to firebase to grab their email and id which will just be Dansu.Mentoru@gmail.com
+//After grabbing email I need to correnspond that email and id to whichever card's contact button is clicked
+//whichever card is clicked I need that cards inputs to send through nodemailer to Dansu.Mentoru@gmail.com

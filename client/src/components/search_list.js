@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { db } from '../firebase';
 import axios from 'axios';
+
 export default class SearchList extends Component {
   constructor(props) {
     super(props);
