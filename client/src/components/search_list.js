@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { db } from '../firebase';
-import Navbar from './navbar';
 
 const GOOGLE_API =
   'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
@@ -72,7 +71,6 @@ export default class SearchList extends Component {
   render() {
     return (
       <div>
-        <Navbar />
         <div className="container">
           <div className="row">
             {this.renderList()}
