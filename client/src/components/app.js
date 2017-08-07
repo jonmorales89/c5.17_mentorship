@@ -18,7 +18,7 @@ const App = () => {
 			<Route path="/mentors/register" component={MentorsRegister} />
 			<Route path="/mentors/signup" component={MentorsSignUp} />
 			<Route exact path="/login" component={Login} />
-			<Route path="/results" component={Search} />
+			<Route path="/results/:id" component={Search} />
 			<Route exact path="/" component={Home} />
 			<Route exact path="/contact" component={ContactForm} />
 			<Footer />
