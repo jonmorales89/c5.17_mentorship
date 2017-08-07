@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { login, resetPassword } from '../../firebase/auth';
-import Navbar from '../navbar';
-import Footer from '../footer';
 
 class Login extends Component {
     submitForm(vals) {
@@ -33,7 +31,6 @@ class Login extends Component {
         const { handleSubmit } = this.props;
         return (
             <div>
-                <Navbar />
                 <div id="login" className="my-5 row">
                     <div className="col-12">
                         <h2 className="header text-center">Login</h2>
@@ -69,7 +66,6 @@ class Login extends Component {
                         </form>
                     </div>
                 </div>
-                <Footer />
             </div>
         );
     }

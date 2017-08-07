@@ -1,21 +1,39 @@
 import React from 'react';
-import './app.css';
+import SearchBar from './searchbar';
+import './styles.css';
 
-
-import Navbar from './navbar';
-import Footer from './footer';
-import Banner from './home_banner';
-import Profile from './profile_card'
-
-const Home = () => {
+export default () => {
 	return (
 		<div>
-			<Navbar />
-			<Banner />
-			<Profile />
-			<Footer />
+			<SearchBar />
+			<div
+				id="carouselExampleSlidesOnly"
+				className="carousel slide"
+				data-ride="carousel">
+				<div className="blur carousel-inner" role="listbox">
+					<div className="carousel-item active">
+						<img
+							className="d-block2 img-fluid"
+							src="./dansu1.jpg"
+							alt="First slide"
+						/>
+					</div>
+					<div className="carousel-item">
+						<img
+							className="d-block2 img-fluid"
+							src="./dansu2.jpg"
+							alt="Second slide"
+						/>
+					</div>
+					<div className="carousel-item">
+						<img
+							className="d-block2 img-fluid"
+							src="./dansu3.jpg"
+							alt="Third slide"
+						/>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
-
-export default Home;
