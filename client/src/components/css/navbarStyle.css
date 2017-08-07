@@ -1,9 +1,15 @@
 .navbar {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: #023242;
 }
 
 .navbar-brand {
-    font-size: 240%;
-    color: navy;
+    font-size: 340%;
+    color: white;
+    margin-bottom: 0.6%;
 }
 
+.nav-link {
+    font-size: 130%;
+    color: white;
+}
