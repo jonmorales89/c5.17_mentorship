@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './modal.css';
+import './css/modal.css';
 
 const BASE_URL = 'http://localhost:3001/mail';
 
@@ -41,8 +41,8 @@ class Confirm extends Component {
         const { text, className, message, title } = this.props;
         if (this.state.showModal) {
             return (
-                <div className="del-modal">
-                    <div className="del-modal-content">
+                <div className="c-modal">
+                    <div className="c-modal-content">
                         <input
                             type="text"
                             className="form-control mb-3"
@@ -70,18 +70,18 @@ class Confirm extends Component {
                             ref={email => (this.email = email)}
                         />
                         <button
-                            onClick={() => this.sendMail()}
-                            className="btn btn-outline-success mr-2"
-                        >
-                            Submit
-                        </button>
-                        <button
                             onClick={() => {
                                 this.setState({ showModal: false });
                             }}
-                            className="btn btn-outline-danger"
+                            className="btn btn-outline-danger mr-6"
                         >
                             Cancel
+                        </button>
+                        <button
+                            onClick={() => this.sendMail()}
+                            className="btn btn-outline-success"
+                        >
+                            Submit
                         </button>
                     </div>
                 </div>
