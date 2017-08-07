@@ -155,6 +155,7 @@ export default class SearchList extends Component {
       <div>
         <div className="container">
           <div className="row" />
+          {list}
         </div>
       </div>
     );
