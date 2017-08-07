@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import { db } from '../firebase/index';
 import { connect } from 'react-redux';
-import { getMentors, addPerson } from '../actions/index';
+import { getAllMentors } from '../actions/index';
 
-class Search extends Component {
+class Search2 extends Component {
 	constructor(props) {
 		super(props);
 	}
 
 	componentDidMount() {
-		db.ref('Mentors').on('value', snapshot => {
-			const data = snapshot.val();
-			console.log(this.props.getMentors(data));
-			this.props.getMentors(data);
-		});
+		// this.props.getAllMentors();
+		console.log('mounting');
+		this.props.getAllMentors();
 	}
 
 	displayMentors(mentors) {
-		console.log('mentors data', mentors);
-
 		const { bio, mentees, name } = mentors.id;
 
 		// return <h1>Hello</h1>;
@@ -42,18 +38,9 @@ class Search extends Component {
 	}
 
 	render() {
-		const { mentors } = this.props;
-
-		if (!mentors) {
-			return <h1>Loading...</h1>;
-		}
-
-		const list = this.displayMentors(mentors);
 		return (
 			<div>
-				<div>
-					{list}
-				</div>
+				<h1>Testing</h1>
 			</div>
 		);
 	}
@@ -61,8 +48,8 @@ class Search extends Component {
 
 function mapStateToProps(state) {
 	return {
-		mentors: state.list.mentors
+		mentors: state.mentors.allMentors
 	};
 }
 
-export default connect(mapStateToProps, { getMentors })(Search);
+export default connect(mapStateToProps, { getAllMentors })(Search2);

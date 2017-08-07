@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { renderInput } from '../helper_functions';
 import { login, resetPassword } from '../../firebase/auth';
 
 function setErrorMsg(error) {
@@ -7,13 +10,7 @@ function setErrorMsg(error) {
     };
 }
 
-export default class Login extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = { loginMessage: null };
-    }
-
+class Login extends Component {
     handleSubmit = e => {
         e.preventDefault();
         login(this.email.value, this.pw.value)
@@ -24,6 +21,17 @@ export default class Login extends Component {
                 this.setState(setErrorMsg('Invalid username/password.'));
             });
     };
+
+    handleSignin(vals) {
+        this.props.signin(vals);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth) {
+            this.props.history.push('/features');
+        }
+    }
+
     resetPassword = () => {
         resetPassword(this.email.value)
             .then(() =>
@@ -37,36 +45,34 @@ export default class Login extends Component {
                 this.setState(setErrorMsg(`Email address not found.`))
             );
     };
+
     render() {
+        const { handleSubmit, reset, signinError } = this.props;
         return (
-<<<<<<< HEAD
-            <div className="col-sm-6 col-sm-offset-3">
-                <h1> Login </h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label>Email</label>
-                        <input
-                            className="form-control"
-                            ref={email => (this.email = email)}
-                            placeholder="Email"
-                        />
-=======
             <div>
-                <div id="login" className="my-5 row">
-                    <div className="col-12">
-                        <h2 className="header text-center">Login</h2>
->>>>>>> 9a6f350ec9e5036450942c60915014225344666e
-                    </div>
-                    <div className="form-group">
-                        <label>Password</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Password"
-                            ref={pw => (this.pw = pw)}
-                        />
-                    </div>
-<<<<<<< HEAD
+                <h1>Sign In</h1>
+                <form onSubmit={handleSubmit(vals => this.handleSignin(vals))}>
+                    <Field
+                        name="email"
+                        label="Email"
+                        type="email"
+                        component={renderInput}
+                    />
+                    <Field
+                        name="password"
+                        label="Password"
+                        type="password"
+                        component={renderInput}
+                    />
+                    <p className="text-danger">
+                        {signinError}
+                    </p>
+                    <button className="btn btn-outline-primary mr-2">
+                        Sign In
+                    </button>
+                    <button className="btn btn-outline-primary" onClick={reset}>
+                        Clear Form
+                    </button>
                     {this.state.loginMessage &&
                         <div className="alert alert-danger" role="alert">
                             <span
@@ -82,14 +88,36 @@ export default class Login extends Component {
                                 Forgot Password?
                             </a>
                         </div>}
-                    <button type="submit" className="btn btn-primary">
-                        Login
-                    </button>
                 </form>
-=======
-                </div>
->>>>>>> 9a6f350ec9e5036450942c60915014225344666e
             </div>
         );
     }
 }
+
+function validate(vals) {
+    const error = {};
+
+    if (!vals.email) {
+        error.email = 'Please enter an email';
+    }
+
+    if (!vals.password) {
+        error.password = 'Please enter a password';
+    }
+
+    return error;
+}
+
+Login = reduxForm({
+    form: 'login',
+    validate
+})(Login);
+
+function mapStateToProps(state) {
+    return {
+        signinError: state.auth.error,
+        auth: state.auth.authorized
+    };
+}
+
+export default connect(mapStateToProps, { login })(Login);
