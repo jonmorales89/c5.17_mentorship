@@ -4,7 +4,7 @@ import { authenticate } from '../../firebase/auth';
 import { Field, reduxForm } from 'redux-form';
 import SuccessMessage from './successMessage';
 
-class MentorsRegister extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
 
@@ -105,4 +105,4 @@ function validate(values) {
 export default reduxForm({
   form: 'mentors-register',
   validate: validate
-})(MentorsRegister);
+})(Register);

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { db } from '../firebase';
+import { connect } from 'react-redux';
 import axios from 'axios';
-export default class SearchList extends Component {
+import { getAllMentors } from '../actions/';
+
+class SearchList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
-      mentors: {},
       list: []
     };
 
@@ -14,11 +14,7 @@ export default class SearchList extends Component {
   }
 
   componentDidMount() {
-    db.ref('Mentors').on('value', snapshot => {
-      const data = snapshot.val();
-      this.setState({ data });
-      this.checkBounds();
-    });
+    this.props.getAllMentors();
   }
 
   charLimit(value) {
@@ -33,9 +29,8 @@ export default class SearchList extends Component {
   }
 
   // version 2: not working
-  checkBounds() {
+  checkBounds(list) {
     let mentCord = {};
-    const { data } = this.state;
 
     const GOOGLE_URL = `http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${this
       .props.match.params.zipcode}&sensor=false`;
@@ -55,13 +50,15 @@ export default class SearchList extends Component {
         };
         return bounds;
       };
-      const list = Object.keys(data).map((key, index) => {
+      const List = Object.keys(list).map((key, index) => {
         const URL =
           'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
-          data[key].bio.location +
+          list[key].bio.location +
           '&sensor=false';
         axios.get(`${URL}`).then(resp => {
+          console.log('resp', resp);
           mentCord = resp.data.results[0].geometry.location;
+          console.log('mentCord', mentCord);
           if (
             mentCord.lat > area(lat, lng).latitude_min &&
             mentCord.lat < area(lat, lng).latitude_max &&
@@ -77,25 +74,25 @@ export default class SearchList extends Component {
                   />
                   <div className="card-block">
                     <h6 className="card-title">
-                      Name: {data[key].name}
+                      Name: {list[key].name}
                     </h6>
                     <div className="card-text">
                       <p>About Me:</p>
                       <p>
-                        {this.charLimit(data[key].bio.aboutme)}
+                        {this.charLimit(list[key].bio.aboutme)}
                       </p>
                       <p>
-                        Affiliates: {data[key].bio.affiliates}
+                        Affiliates: {list[key].bio.affiliates}
                       </p>
                       <p>
-                        Serving Location: {data[key].bio.location}
+                        Serving Location: {list[key].bio.location}
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
             );
-            this.setState({ list: [...this.state.list, item] });
+            // this.setState({ list: [...this.state.list, item] });
           }
         });
       });
@@ -103,12 +100,29 @@ export default class SearchList extends Component {
   }
 
   render() {
+    console.log('mentors', this.props.mentors);
+    // const { mentors } = this.props;
+    // console.log('mentors', mentors);
+
+    // console.log('this.state.list', this.state.list);
+    // if (!list) {
+    //   return <div>loading...</div>;
+    // }
+
     return (
       <div>
         <div className="container">
-          <div className="row">hi</div>
+          <div className="row" />
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    mentors: state.mentors.allMentors
+  };
+}
+
+export default connect(mapStateToProps, { getAllMentors })(SearchList);

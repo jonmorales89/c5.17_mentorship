@@ -73,21 +73,6 @@ class Login extends Component {
                     <button className="btn btn-outline-primary" onClick={reset}>
                         Clear Form
                     </button>
-                    {this.state.loginMessage &&
-                        <div className="alert alert-danger" role="alert">
-                            <span
-                                className="glyphicon glyphicon-exclamation-sign"
-                                aria-hidden="true"
-                            />
-                            <span className="sr-only">Error:</span>
-                            &nbsp;{this.state.loginMessage}{' '}
-                            <a
-                                href="#"
-                                onClick={this.resetPassword}
-                                className="alert-link">
-                                Forgot Password?
-                            </a>
-                        </div>}
                 </form>
             </div>
         );
@@ -121,3 +106,19 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { login })(Login);
+
+// {this.state.loginMessage &&
+//     <div className="alert alert-danger" role="alert">
+//         <span
+//             className="glyphicon glyphicon-exclamation-sign"
+//             aria-hidden="true"
+//         />
+//         <span className="sr-only">Error:</span>
+//         &nbsp;{this.state.loginMessage}{' '}
+//         <a
+//             href="#"
+//             onClick={this.resetPassword}
+//             className="alert-link">
+//             Forgot Password?
+//         </a>
+//     </div>}

@@ -1,9 +1,9 @@
 import types from '../actions/types';
-const DEFAULT_STATE = { allMentors: null };
+const DEFAULT_STATE = { mentors: {}, allMentors: {} };
 
 export default function(state = DEFAULT_STATE, action) {
 	switch (action.type) {
-		case types.GET_ALL_MENTORS:
+		case types.GET_MENTORS:
 			console.log('Get Mentors reducer:', action);
 			return { ...state, allMentors: action.payload };
 		case types.ADD_PERSON:
