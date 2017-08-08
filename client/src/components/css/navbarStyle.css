@@ -1,4 +1,21 @@
 .navbar {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    background-color: #003343;
 }
 
+.navbar-brand {
+    font-size: 200%;
+    color: white;
+    margin-top: -1.2%;
+    margin-bottom: -1%;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 130%;
+    color: white;
+}
+
+.mdl-button:hover{
+    background-color: white;
+}
