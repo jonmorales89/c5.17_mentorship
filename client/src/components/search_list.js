@@ -32,11 +32,7 @@ class SearchList extends Component {
     let mentCord = {};
 
     const GOOGLE_URL = `http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${this
-<<<<<<< HEAD
-      .props.match.params.id}&sensor=false`;
-=======
       .props.match.params.zipcode}&sensor=false`;
->>>>>>> 8d0920e44d37919cdd3644d1936f889c9cc61953
 
     axios.get(`${GOOGLE_URL}`).then(resp => {
       const lat = resp.data.results[0].geometry.location.lat;
@@ -91,7 +87,7 @@ class SearchList extends Component {
                         Serving Location: {list[key].bio.location}
                       </p>
                     </div>
-                    <ContactForm/>
+                    <ContactForm />
                   </div>
                 </div>
               </div>
@@ -104,31 +100,11 @@ class SearchList extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-    const { list } = this.state;
-    console.log('THE LIST:', list);
-=======
-    console.log('mentors', this.props.mentors);
-    // const { mentors } = this.props;
-    // console.log('mentors', mentors);
->>>>>>> 8d0920e44d37919cdd3644d1936f889c9cc61953
-
-    // console.log('this.state.list', this.state.list);
-    // if (!list) {
-    //   return <div>loading...</div>;
-    // }
-
     return (
-        <div className="container">
-<<<<<<< HEAD
-          <div className="row" />
-          {list}
-=======
-            <div className="row">
-                {list}
-            </div>
->>>>>>> 8d0920e44d37919cdd3644d1936f889c9cc61953
-        </div>
+      <div className="container">
+        <div className="row" />
+        {list}
+      </div>
     );
   }
 }
