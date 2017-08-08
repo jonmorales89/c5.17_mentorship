@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './searchbar';
-import './styles.css';
+import './css/styles.css';
 
 export default () => {
 	return (
