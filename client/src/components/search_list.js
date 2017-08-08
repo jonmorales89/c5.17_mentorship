@@ -126,7 +126,6 @@ export default class SearchList extends Component {
         super(props);
         this.state = {
             data: {},
-            mentors: {},
             list: []
         };
         this.checkBounds = this.checkBounds.bind(this);
@@ -137,6 +136,24 @@ export default class SearchList extends Component {
             this.setState({ data });
             this.checkBounds();
         });
+    }
+    degreesToRadians(degrees) {
+      return degrees * Math.PI / 180;
+    }
+
+    distanceFromCoords(lat1, lon1, lat2, lon2) {
+      const earthRadius = 6371;
+
+      let dLat = this.degreesToRadians(lat2-lat1);
+      let dLon = this.degreesToRadians(lon2-lon1);
+
+      lat1 = this.degreesToRadians(lat1);
+      lat2 = this.degreesToRadians(lat2);
+
+      let a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
+      let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      return earthRadius * c;
     }
     charLimit(value) {
         for (let i = 0; i < value.length; i++) {
@@ -162,6 +179,7 @@ export default class SearchList extends Component {
         axios.get(`${GOOGLE_URL}`).then(resp => {
             const lat = resp.data.results[0].geometry.location.lat;
             const lng = resp.data.results[0].geometry.location.lng;
+            const searchCoord = {lat,lng}
             const area = function(lat, lng) {
                 const lat_change = 32 / 111.2;
                 const lon_change = Math.abs(Math.cos(lat * (Math.PI / 180)));
@@ -180,14 +198,14 @@ export default class SearchList extends Component {
                     '&sensor=false';
                 axios.get(`${URL}`).then(resp => {
                     mentCord = resp.data.results[0].geometry.location;
-                    if (
-                        mentCord.lat > area(lat, lng).latitude_min &&
+                    let distFromMentor = this.distanceFromCoords(mentCord.lat, mentCord.lng, searchCoord.lat, searchCoord.lng);
+                    console.log("Distance from mentor: ", distFromMentor);
+                    if (mentCord.lat > area(lat, lng).latitude_min &&
                         mentCord.lat < area(lat, lng).latitude_max &&
                         mentCord.lng > area(lat, lng).longitude_min &&
-                    mentCord.lng < area(lat, lng).longitude_max
-                ) {
+                        mentCord.lng < area(lat, lng).longitude_max){
                         const item = (
-                            <div className="col-xs-4" key={index}>
+                            <div className="col-xs-4" key={index} dist={distFromMentor}>
                               <div className="card" style={{ width: '20rem' }}>
                                 <img
                                     className="card-img-top"
@@ -221,7 +239,9 @@ export default class SearchList extends Component {
     }
     render() {
         const { list } = this.state;
-        console.log('THE LIST:', list);
+        list.sort(function(item, item1){
+          return item.props.dist - item1.props.dist;
+        })
         if (!list) {
             return <h1>Loading...</h1>;
         }
