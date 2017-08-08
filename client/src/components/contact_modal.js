@@ -45,44 +45,46 @@ class Confirm extends Component {
                     <div className="c-modal-content">
                         <input
                             type="text"
-                            className="form-control mb-3"
+                            className="materialFormBorders form-control mb-3"
                             placeholder="Name"
                             ref={name => (this.name = name)}
                         />
                         <textarea
                             type="text"
-                            className="form-control mb-3"
+                            className="materialFormBorders form-control mb-3"
                             rows="7"
                             placeholder="About me & Goals"
                             ref={text => (this.text_one = text)}
                         />
                         <textarea
                             type="text"
-                            className="form-control mb-3"
+                            className="materialFormBorders form-control mb-3"
                             rows="7"
                             placeholder="Questions"
                             ref={text => (this.text_two = text)}
                         />
                         <input
                             type="text"
-                            className="form-control mb-3"
+                            className="materialFormBorders form-control mb-3"
                             placeholder="Email"
                             ref={email => (this.email = email)}
                         />
-                        <button
-                            onClick={() => {
-                                this.setState({ showModal: false });
-                            }}
-                            className="btn btn-outline-danger mr-6"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            onClick={() => this.sendMail()}
-                            className="btn btn-outline-success"
-                        >
-                            Submit
-                        </button>
+                        <div className="right">
+                            <button
+                                onClick={() => {
+                                    this.setState({ showModal: false });
+                                }}
+                                className="btn c-btn mr-6"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => this.sendMail()}
+                                className="btn c-btn"
+                            >
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
             );
