@@ -1,34 +1,26 @@
-.app {
-    background-color: #000;
-    color: #fff;
-    padding: 50px;
-    text-align: center;
+/*** MATERIAL DESIGN COLORS --- USE THESE **
+	INCLUDE THESE AT THE END OF YOUR CLASSNAMES FOR DESIRED COLORS
+*/
+.mdl-color--secondary {
+	background: #a33a51;
 }
 
-.app img {
-    height: 100px;
+.mdl-color--secondary-light {
+	background: #d8697d;
 }
 
-.rotate {
-    animation: spin 10s linear infinite;
+.mdl-color--secondary-dark {
+	background: #700029;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.mdl-color--primary {
+	background: #295c6d;
 }
 
-#button {
-    margin-left: auto;
+.mdl-color--primary-light {
+	background: #58899b;
 }
 
-.nav-link {
-    font-family: sans-serif;
-    font-size: 25px;
-    color: black;  
-    font-weight: bold;
+.mdl-color--primary-dark {
+	background: #003242;
 }
