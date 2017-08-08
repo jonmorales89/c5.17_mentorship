@@ -19,12 +19,12 @@ const Navbar = props => {
     }
     return [
       <li key="1" className="nav-item">
-        <Link className="nav-link" to="/mentors/login">
+        <Link className="nav-link btn btn-info mr-3" to="/mentors/login">
           Login
         </Link>
       </li>,
       <li key="2" className="nav-item">
-        <Link className="nav-link" to="/mentors/signup">
+        <Link className="nav-link btn btn-warning" to="/mentors/signup">
           Register
         </Link>
       </li>
@@ -50,27 +50,27 @@ const Navbar = props => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link className="nav-link btn btn-outline-info mr-4" to="/results">
+            <Link className="nav-link mr-4" to="/results">
               Find a Mentor
             </Link>
           </li>
             <li className="nav-item dropdown">
-                <Link className="nav-link btn btn-outline-info mr-4 dropdown-toggle" to="/results">
+                <Link className="nav-link mr-4 dropdown-toggle" to="/results">
                     Styles
                 </Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link btn btn-outline-info mr-4" to="/results">
+                <Link className="nav-link mr-4" to="/results">
                     Community
                 </Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link btn btn-outline-info mr-4" to="/results">
+                <Link className="nav-link mr-4" to="/results">
                     Become a DansuMentor
                 </Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link btn btn-outline-info" to="/results">
+                <Link className="nav-link" to="/results">
                     How It Works
                 </Link>
             </li>
