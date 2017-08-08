@@ -1,0 +1,26 @@
+/*** MATERIAL DESIGN COLORS --- USE THESE **
+	INCLUDE THESE AT THE END OF YOUR CLASSNAMES FOR DESIRED COLORS
+*/
+.mdl-color--secondary {
+	background: #a33a51;
+}
+
+.mdl-color--secondary-light {
+	background: #d8697d;
+}
+
+.mdl-color--secondary-dark {
+	background: #700029;
+}
+
+.mdl-color--primary {
+	background: #295c6d;
+}
+
+.mdl-color--primary-light {
+	background: #58899b;
+}
+
+.mdl-color--primary-dark {
+	background: #003242;
+}

@@ -1,3 +1,4 @@
+//make into a modal in such that when you sign up you also have to register
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../../firebase/auth';
@@ -34,7 +35,8 @@ class Register extends Component {
         <h1 className="text-center">Mentor Registration</h1>
         <form
           onSubmit={handleSubmit(values => this.handleSubmit(values))}
-          className="form">
+          className="form"
+        >
           <Field
             name="email"
             type="email"
