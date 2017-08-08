@@ -111,9 +111,7 @@ class SearchList extends Component {
 
     return (
       <div className="container">
-        <div className="row">
-          {list}
-        </div>
+        <div className="row" />
       </div>
     );
   }

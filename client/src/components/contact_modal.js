@@ -8,34 +8,50 @@ class Confirm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal: false
+            showModal: false,
+            email: '',
+            text_one: '',
+            text_two: '',
+            name: ''
         };
     }
 
+    emailInput(e) {
+        console.log('EMAIL INPUT', e.target.value);
+        this.setState({
+            email: e.target.value
+        });
+    }
+    textInputOne(e) {
+        console.log('INPUT ONE', e.target.value);
+        this.setState({
+            text_one: e.target.value
+        });
+    }
+    textInputTwo(e) {
+        console.log('INPUT TWO', e.target.value);
+        this.setState({
+            text_two: e.target.value
+        });
+    }
+    nameInput(e) {
+        console.log('NAME INPUT', e.target.value);
+        this.setState({
+            name: e.target.value
+        });
+    }
+
     sendMail() {
-        const email = {
-            to: this.email.value
-        };
-
-        const name = {
-            subject: this.name.value
-        };
-
-        const text = {
-            text: `${this.text_two.value} and ${this.text_one.value} and ${this
-                .email.value}`
-        };
         console.log('TEXT OBJECT WORKS:', text);
-
-        axios
-            .post(`${BASE_URL}`, { email, name, text })
-            .then(resp => {
-                console.log('Its working!', resp);
-            })
-            .catch(error => {
-                console.warn('Error adding to server', error);
-            });
-        this.setState({ showModal: false });
+        // axios
+        //     .post(`${BASE_URL}`, { email, name, text })
+        //     .then(resp => {
+        //         console.log('Its working!', resp);
+        //     })
+        //     .catch(error => {
+        //         console.warn('Error adding to server', error);
+        //     });
+        // this.setState({ showModal: false });
     }
 
     render() {
@@ -48,27 +64,31 @@ class Confirm extends Component {
                             type="text"
                             className="materialFormBorders form-control mb-3"
                             placeholder="Name"
-                            ref={name => (this.name = name)}
+                            onChange={e => this.nameInput(e)}
+                            // ref={name => (this.name = name)}
                         />
                         <textarea
                             type="text"
                             className="materialFormBorders form-control mb-3"
                             rows="7"
                             placeholder="About me & Goals"
-                            ref={text => (this.text_one = text)}
+                            onChange={e => this.textInputOne(e)}
+                            // ref={text => (this.text_one = text)}
                         />
                         <textarea
                             type="text"
                             className="materialFormBorders form-control mb-3"
                             rows="7"
                             placeholder="Questions"
-                            ref={text => (this.text_two = text)}
+                            onChange={e => this.textInputTwo(e)}
+                            // ref={text => (this.text_two = text)}
                         />
                         <input
                             type="text"
                             className="materialFormBorders form-control mb-3"
                             placeholder="Email"
-                            ref={email => (this.email = email)}
+                            onChange={e => this.emailInput(e)}
+                            // ref={email => (this.email = email)}
                         />
                         <div className="right">
                             <button
