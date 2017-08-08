@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { db } from '../firebase';
 import axios from 'axios';
-import { getAllMentors } from '../actions/';
-
-class SearchList extends Component {
+export default class SearchList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: {},
+      mentors: {},
       list: []
     };
-
     this.checkBounds = this.checkBounds.bind(this);
   }
-
   componentDidMount() {
-    this.props.getAllMentors();
+    db.ref('Mentors').on('value', snapshot => {
+      const data = snapshot.val();
+      this.setState({ data });
+      this.checkBounds();
+    });
   }
-
-
+    
   charLimit(value) {
     for (let i = 0; i < value.length; i++) {
       if (value.length > 75) {
-        let result = value.substring(0, 200);
+        let result = value.substring(0, 75);
         return result + ' ...';
 
 
@@ -31,17 +32,20 @@ class SearchList extends Component {
     }
   }
 
-
-  checkBounds(list) {
+  // version 2: not working
+  checkBounds() {
     let mentCord = {};
-
-    const GOOGLE_URL = `http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:${this
-      .props.match.params.zipcode}&sensor=false`;
-
+    const { data } = this.state;
+    const GOOGLE_URL =
+      'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
+      window.location.pathname.substring(
+        window.location.pathname.lastIndexOf('/') + 1,
+        window.location.pathname.length
+      ) +
+      '&sensor=false';
     axios.get(`${GOOGLE_URL}`).then(resp => {
       const lat = resp.data.results[0].geometry.location.lat;
       const lng = resp.data.results[0].geometry.location.lng;
-
       const area = function(lat, lng) {
         const lat_change = 32 / 111.2;
         const lon_change = Math.abs(Math.cos(lat * (Math.PI / 180)));
@@ -53,15 +57,13 @@ class SearchList extends Component {
         };
         return bounds;
       };
-      const List = Object.keys(list).map((key, index) => {
+      const list = Object.keys(data).map((key, index) => {
         const URL =
           'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
-          list[key].bio.location +
+          data[key].bio.location +
           '&sensor=false';
         axios.get(`${URL}`).then(resp => {
-          console.log('resp', resp);
           mentCord = resp.data.results[0].geometry.location;
-          console.log('mentCord', mentCord);
           if (
             mentCord.lat > area(lat, lng).latitude_min &&
             mentCord.lat < area(lat, lng).latitude_max &&
@@ -77,47 +79,77 @@ class SearchList extends Component {
                   />
                   <div className="card-block">
                     <h6 className="card-title">
-                      Name: {list[key].name}
+                      Name: {data[key].name}
                     </h6>
                     <div className="card-text">
                       <p>About Me:</p>
                       <p>
-                        {this.charLimit(list[key].bio.aboutme)}
+                        {this.charLimit(data[key].bio.aboutme)}
                       </p>
                       <p>
-                        Affiliates: {list[key].bio.affiliates}
+                        Affiliates: {data[key].bio.affiliates}
                       </p>
                       <p>
-                        Serving Location: {list[key].bio.location}
+                        Serving Location: {data[key].bio.location}
                       </p>
                     </div>
-                    <ContactForm />
                   </div>
                 </div>
               </div>
             );
-            // this.setState({ list: [...this.state.list, item] });
+            this.setState({ list: [...this.state.list, item] });
           }
         });
       });
     });
   }
-
+  // version 1 - temporary, but displays cards
+  renderList() {
+    const { data } = this.state;
+    const list = Object.keys(data).map((key, index) => {
+      return (
+        <div className="col-xs-4" key={index}>
+          <div className="card" style={{ width: '20rem' }}>
+            <img
+              className="card-img-top"
+              src="https://dummyimage.com/318X180/b3b3b3/fff.png"
+            />
+            <div className="card-block">
+              <h6 className="card-title">
+                Name: {data[key].name}
+              </h6>
+              <div className="card-text">
+                <p>About Me:</p>
+                <p>
+                  {this.charLimit(data[key].bio.aboutme)}
+                </p>
+                <p>
+                  Affiliates: {data[key].bio.affiliates}
+                </p>
+                <p>
+                  Serving Location: {data[key].bio.location}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+    return list;
+  }
   render() {
+    const { list } = this.state;
+    console.log('THE LIST:', list);
+    if (!list) {
+      return <h1>Loading...</h1>;
+    }
     return (
-
-      <div className="container">
-        <div className="row" />
-        {list}
+      <div>
+        <div className="container">
+          <div className="row" />
+          {list}
+        </div>
       </div>
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    mentors: state.mentors.allMentors
-  };
-}
-
-export default connect(mapStateToProps, { getAllMentors })(SearchList);
