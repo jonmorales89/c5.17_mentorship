@@ -17,41 +17,38 @@ class Confirm extends Component {
     }
 
     emailInput(e) {
-        console.log('EMAIL INPUT', e.target.value);
         this.setState({
             email: e.target.value
         });
     }
     textInputOne(e) {
-        console.log('INPUT ONE', e.target.value);
         this.setState({
             text_one: e.target.value
         });
     }
     textInputTwo(e) {
-        console.log('INPUT TWO', e.target.value);
         this.setState({
             text_two: e.target.value
         });
     }
     nameInput(e) {
-        console.log('NAME INPUT', e.target.value);
         this.setState({
             name: e.target.value
         });
     }
 
     sendMail() {
-        console.log('TEXT OBJECT WORKS:', text);
-        // axios
-        //     .post(`${BASE_URL}`, { email, name, text })
-        //     .then(resp => {
-        //         console.log('Its working!', resp);
-        //     })
-        //     .catch(error => {
-        //         console.warn('Error adding to server', error);
-        //     });
-        // this.setState({ showModal: false });
+        const data = this.state;
+        console.log(data);
+        axios
+            .post(`${BASE_URL}`, { data })
+            .then(resp => {
+                console.log('Its working!', resp);
+            })
+            .catch(error => {
+                console.warn('Error adding to server', error);
+            });
+        this.setState({ showModal: false });
     }
 
     render() {
@@ -65,7 +62,6 @@ class Confirm extends Component {
                             className="materialFormBorders form-control mb-3"
                             placeholder="Name"
                             onChange={e => this.nameInput(e)}
-                            // ref={name => (this.name = name)}
                         />
                         <textarea
                             type="text"
@@ -73,7 +69,6 @@ class Confirm extends Component {
                             rows="7"
                             placeholder="About me & Goals"
                             onChange={e => this.textInputOne(e)}
-                            // ref={text => (this.text_one = text)}
                         />
                         <textarea
                             type="text"
@@ -81,14 +76,12 @@ class Confirm extends Component {
                             rows="7"
                             placeholder="Questions"
                             onChange={e => this.textInputTwo(e)}
-                            // ref={text => (this.text_two = text)}
                         />
                         <input
                             type="text"
                             className="materialFormBorders form-control mb-3"
                             placeholder="Email"
                             onChange={e => this.emailInput(e)}
-                            // ref={email => (this.email = email)}
                         />
                         <div className="right">
                             <button
