@@ -20,12 +20,12 @@ const Navbar = props => {
     }
     return [
       <li key="1" className="nav-item">
-        <Link className="nav-link btn btn-info mr-3" to="/mentors/login">
+        <Link className="nav-link mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--secondary-light mr-3" to="/mentors/login">
           Login
         </Link>
       </li>,
       <li key="2" className="nav-item">
-        <Link className="nav-link btn btn-warning" to="/mentors/signup">
+        <Link className="nav-link mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light" to="/mentors/signup">
           Register
         </Link>
       </li>
@@ -94,3 +94,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, { logout })(Navbar);
+
