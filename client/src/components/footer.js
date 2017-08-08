@@ -1,5 +1,6 @@
 import React from 'react';
-import './css/styles.css';
+import './css/footer.css';
+
 
 export default () =>
   <div>
@@ -10,6 +11,7 @@ export default () =>
             <h3 className="logofooter">Logo Goes Here</h3>
             <h5 className="buff-f cap">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
+
               lacus eget metus euismod lobortis eget vel eros.
             </h5>
           </div>
