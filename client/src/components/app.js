@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from 'firebase';
+import './app.css';
 import { provider, auth } from '../firebase';
 import { Route } from 'react-router-dom';
 import AuthUser from '../hoc/auth_user';
