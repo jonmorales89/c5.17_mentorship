@@ -28,7 +28,6 @@ class SearchList extends Component {
     }
   }
 
-  // version 2: not working
   checkBounds(list) {
     let mentCord = {};
 
@@ -88,6 +87,7 @@ class SearchList extends Component {
                         Serving Location: {list[key].bio.location}
                       </p>
                     </div>
+                    <ContactForm/>
                   </div>
                 </div>
               </div>
@@ -110,11 +110,11 @@ class SearchList extends Component {
     // }
 
     return (
-      <div>
         <div className="container">
-          <div className="row" />
+            <div className="row">
+                {list}
+            </div>
         </div>
-      </div>
     );
   }
 }
