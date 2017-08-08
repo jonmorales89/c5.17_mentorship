@@ -8,13 +8,14 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers/index';
 
 import App from './components/app';
+import types from './actions/types';
 
 const createStoreWithMiddleWare = applyMiddleware(thunk, promise)(createStore);
 
 const store = createStoreWithMiddleWare(rootReducer);
-// if (localStorage.getItem('token')) {
-// 	store.dispatch({ type: types.SIGNIN });
-// }
+if (localStorage.getItem('token')) {
+	store.dispatch({ type: types.LOGIN });
+}
 
 ReactDOM.render(
 	<Provider store={store}>

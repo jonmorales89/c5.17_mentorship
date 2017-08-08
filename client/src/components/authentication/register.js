@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../../firebase/auth';
 import { Field, reduxForm } from 'redux-form';
+import { renderInput } from '../helper_functions';
 import SuccessMessage from './successMessage';
 
 class Register extends Component {
@@ -26,63 +27,37 @@ class Register extends Component {
     });
   }
 
-  renderInput({ input, label, meta: { touched, error } }) {
-    return (
-      <div className="form-group my-1">
-        <label className="mr-2">
-          {label}
-        </label>
-        <input
-          {...input}
-          name={input.name}
-          type="text"
-          className="form-control mr-2 mb-2"
-          placeholder="Enter your email"
-        />
-        <p className="form-text text-danger">
-          {touched && error}
-        </p>
-      </div>
-    );
-  }
-
-  renderPWInput({ input, label, meta: { touched, error } }) {
-    return (
-      <div className="form-group my-1">
-        <label className="mr-2">
-          {label}
-        </label>
-        <input
-          {...input}
-          name={input.name}
-          type="password"
-          className="form-control mr-2 mb-2"
-          placeholder="Enter a password"
-        />
-        <p className="form-text text-danger">
-          {touched && error}
-        </p>
-      </div>
-    );
-  }
-
   render() {
-    const { error, handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit } = this.props;
     return (
-      <div>
-        <div className="col-4 mx-auto my-5">
-          <h1 className="text-center">Mentor Registration</h1>
-          <form
-            onSubmit={handleSubmit(values => this.handleSubmit(values))}
-            className="form">
-            <Field name="email" component={this.renderInput} />
-            <Field name="password" component={this.renderPWInput} />
-            <SuccessMessage success={this.state.messageSuccess} />
-            <button type="submit" className="btn btn-primary">
-              Register
-            </button>
-          </form>
-        </div>
+      <div className="col-4 mx-auto my-5">
+        <h1 className="text-center">Mentor Registration</h1>
+        <form
+          onSubmit={handleSubmit(values => this.handleSubmit(values))}
+          className="form">
+          <Field
+            name="email"
+            type="email"
+            label="Email"
+            component={renderInput}
+          />
+          <Field
+            name="password"
+            type="password"
+            label="Password"
+            component={renderInput}
+          />
+          <Field
+            name="confirmPW"
+            label="Confirm Password"
+            type="password"
+            component={renderInput}
+          />
+          <SuccessMessage success={this.state.messageSuccess} />
+          <button type="submit" className="btn btn-primary">
+            Register
+          </button>
+        </form>
       </div>
     );
   }
@@ -99,10 +74,16 @@ function validate(values) {
     errors.password = 'Please enter a password!';
   }
 
+  if (values.password !== values.confirmPW) {
+    errors.confirmPW = 'Your passwords do not match';
+  }
+
   return errors;
 }
 
-export default reduxForm({
+Register = reduxForm({
   form: 'mentors-register',
   validate: validate
 })(Register);
+
+export default connect(null)(Register);
