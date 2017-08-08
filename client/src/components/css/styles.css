@@ -1,0 +1,94 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+
+footer {
+  background-color: #222;
+  font-family: 'Open Sans', sans-serif;
+  height: 10vh;
+}
+
+.buff-f {
+  margin-top: 50px;
+}
+
+.cap {
+  color: #fff;
+  font-weight: 700;
+}
+
+.footerleft {
+  padding: 0 36px;
+}
+
+.logofooter {
+  margin-bottom: 10px;
+  font-size: 25px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.footerleft p {
+  color: #fff;
+  font-size: 12px !important;
+  font-family: 'Open Sans', sans-serif;
+  margin-bottom: 15px;
+}
+
+.footerleft p i {
+  width: 20px;
+  color: #999;
+}
+
+.copyright {
+  min-height: 40px;
+  background-color: #000000;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.copyright p {
+  font-size: 12px;
+  text-align: left;
+  color: #fff;
+  padding: 10px 0;
+  margin-bottom: 0px;
+}
+
+.bottom_ul {
+  list-style-type: none;
+  float: right;
+  margin-bottom: 0px;
+}
+
+.bottom_ul li {
+  float: left;
+  line-height: 40px;
+}
+
+.bottom_ul li:after {
+  content: "/";
+  color: #fff;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.bottom_ul li a {
+  color: #fff;
+  font-size: 12px;
+}
+
+#login {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.d-block2 {
+  height: 73vh;
+  margin: 0 auto;
+}
+
+div.carousel-item > img {
+  opacity: 0.5;
+}
+
+#carouselExampleSlidesOnly {
+  background-color: rgb(3, 3, 3);
+}
