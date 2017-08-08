@@ -93,7 +93,7 @@ class MentorsSignUp extends Component {
     render() {
         const { handleSubmit } = this.props;
         return (
-            <div>
+            <div className="mdl-background-color">
                 <div
                     id="MentorSignUp"
                     className="my-5 row mx-auto"
@@ -148,8 +148,11 @@ class MentorsSignUp extends Component {
                                 component={this.renderTextArea}
                             />
                             <div className="d-block text-center">
-                                <button className="btn btn-outline-primary mr-3">
+                                <button className="btn mdl-color--secondary-light mr-3">
                                     Sign-Up
+                                </button>
+                                <button className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--secondary">
+                                    <i className="material-icons">add</i>
                                 </button>
                             </div>
                             {this.Message()}
