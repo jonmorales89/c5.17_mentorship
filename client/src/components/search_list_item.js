@@ -1,68 +1,32 @@
-import React, { Component } from 'react';
-import { db } from '../firebase/index';
-import { connect } from 'react-redux';
-import { getMentors, addPerson } from '../actions/index';
+import React from 'react';
 
-class Search extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	componentDidMount() {
-		db.ref('Mentors').on('value', snapshot => {
-			const data = snapshot.val();
-			console.log(this.props.getMentors(data));
-			this.props.getMentors(data);
-		});
-	}
-
-	displayMentors(mentors) {
-		console.log('mentors data', mentors);
-
-		const { bio, mentees, name } = mentors.id;
-
-		// return <h1>Hello</h1>;
-		return (
-			<li>
-				<div>
-					Name: {name}
-				</div>
-				<div>
-					Bio:
-					<div>About Me: {bio.aboutme} </div>
-					<div>Style: {bio.style} </div>
-					<div>Experience: {bio.experience} </div>
-					<div>Location: {bio.location} </div>
-					<div>Affiliates: {bio.affiliates} </div>
-					<div>Awards: {bio.awards} </div>
-				</div>
-				<div>Mentee:</div>
-			</li>
-		);
-	}
-
-	render() {
-		const { mentors } = this.props;
-
-		if (!mentors) {
-			return <h1>Loading...</h1>;
-		}
-
-		const list = this.displayMentors(mentors);
-		return (
-			<div>
-				<div>
-					{list}
+export default props => {
+	return (
+		<div className="col-xs-4" key={index}>
+			<div className="card" style={{ width: '20rem' }}>
+				<img
+					className="card-img-top"
+					src="https://dummyimage.com/318X180/b3b3b3/fff.png"
+				/>
+				<div className="card-block">
+					<h6 className="card-title">
+						Name: {list[key].name}
+					</h6>
+					<div className="card-text">
+						<p>About Me:</p>
+						<p>
+							{this.charLimit(list[key].bio.aboutme)}
+						</p>
+						<p>
+							Affiliates: {list[key].bio.affiliates}
+						</p>
+						<p>
+							Serving Location: {list[key].bio.location}
+						</p>
+					</div>
 				</div>
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
-function mapStateToProps(state) {
-	return {
-		mentors: state.list.mentors
-	};
-}
-
-export default connect(mapStateToProps, { getMentors })(Search);

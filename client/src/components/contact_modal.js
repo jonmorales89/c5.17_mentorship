@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './modal.css';
+import './css/modal.css';
 
 const BASE_URL = 'http://localhost:3001/mail';
 
@@ -8,28 +8,42 @@ class Confirm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal: false
+            showModal: false,
+            email: '',
+            text_one: '',
+            text_two: '',
+            name: ''
         };
     }
 
+    emailInput(e) {
+        this.setState({
+            email: e.target.value
+        });
+    }
+    textInputOne(e) {
+        this.setState({
+            text_one: e.target.value
+        });
+    }
+    textInputTwo(e) {
+        this.setState({
+            text_two: e.target.value
+        });
+    }
+    nameInput(e) {
+        this.setState({
+            name: e.target.value
+        });
+    }
+
     sendMail() {
-        const email = {
-            to: this.email.value
-        };
-
-        const name = {
-            subject: this.name.value
-        };
-
-        const text = {
-            text: `${this.text_two.value} AND ${this.text_one.value}` //whitespace
-        };
-        console.log('TEXT OBJECT WORKS:', text);
-
+        const data = this.state;
+        console.log(data);
         axios
-            .post(`${BASE_URL}`, { email, name, text })
+            .post(`${BASE_URL}`, { data })
             .then(resp => {
-                console.log('Its working!');
+                console.log('Its working!', resp);
             })
             .catch(error => {
                 console.warn('Error adding to server', error);
@@ -41,48 +55,50 @@ class Confirm extends Component {
         const { text, className, message, title } = this.props;
         if (this.state.showModal) {
             return (
-                <div className="del-modal">
-                    <div className="del-modal-content">
+                <div className="c-modal">
+                    <div className="c-modal-content">
                         <input
                             type="text"
-                            className="form-control mb-3"
+                            className="materialFormBorders form-control mb-3"
                             placeholder="Name"
-                            ref={name => (this.name = name)}
+                            onChange={e => this.nameInput(e)}
                         />
                         <textarea
                             type="text"
-                            className="form-control mb-3"
+                            className="materialFormBorders form-control mb-3"
                             rows="7"
                             placeholder="About me & Goals"
-                            ref={text => (this.text_one = text)}
+                            onChange={e => this.textInputOne(e)}
                         />
                         <textarea
                             type="text"
-                            className="form-control mb-3"
+                            className="materialFormBorders form-control mb-3"
                             rows="7"
                             placeholder="Questions"
-                            ref={text => (this.text_two = text)}
+                            onChange={e => this.textInputTwo(e)}
                         />
                         <input
                             type="text"
-                            className="form-control mb-3"
+                            className="materialFormBorders form-control mb-3"
                             placeholder="Email"
-                            ref={email => (this.email = email)}
+                            onChange={e => this.emailInput(e)}
                         />
-                        <button
-                            onClick={() => this.sendMail()}
-                            className="btn btn-outline-success mr-2"
-                        >
-                            Submit
-                        </button>
-                        <button
-                            onClick={() => {
-                                this.setState({ showModal: false });
-                            }}
-                            className="btn btn-outline-danger"
-                        >
-                            Cancel
-                        </button>
+                        <div className="right">
+                            <button
+                                onClick={() => {
+                                    this.setState({ showModal: false });
+                                }}
+                                className="btn c-btn mr-6"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => this.sendMail()}
+                                className="btn c-btn"
+                            >
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </div>
             );
@@ -99,3 +115,7 @@ class Confirm extends Component {
 }
 
 export default Confirm;
+
+//need to do an axios call to firebase to grab their email and id which will just be Dansu.Mentoru@gmail.com
+//After grabbing email I need to correnspond that email and id to whichever card's contact button is clicked
+//whichever card is clicked I need that cards inputs to send through nodemailer to Dansu.Mentoru@gmail.com
