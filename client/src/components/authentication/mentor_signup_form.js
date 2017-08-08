@@ -25,9 +25,7 @@ class MentorsSignUp extends Component {
             name: vals.name
         };
         const { reset } = this.props;
-        // this.props.addPerson(data).then(() => {
-        // });
-
+        this.props.addPerson(data);
         reset();
         this.setState({
             successMessage: true
@@ -102,7 +100,7 @@ class MentorsSignUp extends Component {
                     style={this.styleObj}>
                     <div className="col-12">
                         <h2 className="header text-center">
-                            Sign Up to Become a Mentor
+                            Register to Become a Mentor
                         </h2>
                         <p className="text-center">
                             *BETA* We are currently operating only in California

@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'firebase';
 import { provider, auth } from '../firebase';
 import { Route } from 'react-router-dom';
+import AuthUser from '../hoc/auth_user';
 import Navbar from './navbar';
 import Footer from './footer';
 import Home from './home';
@@ -9,16 +10,21 @@ import Search from './search_list';
 import Login from './authentication/login';
 import MentorsSignUp from './authentication/mentor_signup_form';
 import MentorsRegister from './authentication/register';
+import Dashboard from './protected/dashboard';
 import ContactForm from './contact_mentor.js';
+
+import Test from './search_list_item';
 
 const App = () => {
 	return (
 		<div>
 			<Navbar />
+			<Route path="/test" component={Test} />
+			<Route path="/mentors/dashboard" component={AuthUser(Dashboard)} />
 			<Route path="/mentors/register" component={MentorsRegister} />
 			<Route path="/mentors/signup" component={MentorsSignUp} />
-			<Route exact path="/login" component={Login} />
-			<Route path="/results/:id" component={Search} />
+			<Route path="/mentors/login" component={Login} />
+			<Route path="/results/:zipcode" component={Search} />
 			<Route exact path="/" component={Home} />
 			<Route exact path="/contact" component={ContactForm} />
 			<Footer />
