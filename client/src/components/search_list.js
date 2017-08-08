@@ -20,7 +20,7 @@ class SearchList extends Component {
   charLimit(value) {
     for (let i = 0; i < value.length; i++) {
       if (value.length > 75) {
-        let result = value.substring(0, 75);
+        let result = value.substring(0, 200);
         return result + ' ...';
       } else {
         return value;
@@ -28,7 +28,6 @@ class SearchList extends Component {
     }
   }
 
-  // version 2: not working
   checkBounds(list) {
     let mentCord = {};
 
@@ -88,6 +87,7 @@ class SearchList extends Component {
                         Serving Location: {list[key].bio.location}
                       </p>
                     </div>
+                    <ContactForm />
                   </div>
                 </div>
               </div>
@@ -100,20 +100,10 @@ class SearchList extends Component {
   }
 
   render() {
-    console.log('mentors', this.props.mentors);
-    // const { mentors } = this.props;
-    // console.log('mentors', mentors);
-
-    // console.log('this.state.list', this.state.list);
-    // if (!list) {
-    //   return <div>loading...</div>;
-    // }
-
     return (
-      <div>
-        <div className="container">
-          <div className="row" />
-        </div>
+      <div className="container">
+        <div className="row" />
+        {list}
       </div>
     );
   }

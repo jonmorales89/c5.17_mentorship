@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from '../helper_functions';
-import { login, resetPassword } from '../../firebase/auth';
+import { login, resetPassword } from '../../actions';
 
 function setErrorMsg(error) {
     return {
@@ -11,47 +11,40 @@ function setErrorMsg(error) {
 }
 
 class Login extends Component {
-    handleSubmit = e => {
-        e.preventDefault();
-        login(this.email.value, this.pw.value)
-            .then(() => {
-                this.props.history.push('/mentors/dashboard');
-            })
-            .catch(error => {
-                this.setState(setErrorMsg('Invalid username/password.'));
-            });
-    };
+    constructor(props) {
+        super(props);
 
-    handleSignin(vals) {
-        this.props.signin(vals);
+        this.state = {
+            loginMessage: null
+        };
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.auth) {
-            this.props.history.push('/features');
-        }
+    handleLogin(vals) {
+        this.props.login(vals);
+        this.props.history.push('/mentors/dashboard');
     }
 
-    resetPassword = () => {
-        resetPassword(this.email.value)
+    handleReset(vals) {
+        this.props
+            .resetPassword(vals.email)
             .then(() =>
                 this.setState(
-                    setErrorMsg(
-                        `Password reset email sent to ${this.email.value}.`
-                    )
+                    setErrorMsg(`Password reset email sent to your email.`)
                 )
             )
             .catch(error =>
                 this.setState(setErrorMsg(`Email address not found.`))
             );
-    };
+    }
 
     render() {
-        const { handleSubmit, reset, signinError } = this.props;
+        const { handleSubmit, signinError } = this.props;
         return (
-            <div>
-                <h1>Sign In</h1>
-                <form onSubmit={handleSubmit(vals => this.handleSignin(vals))}>
+            <div className="my-5">
+                <h1 className="text-center">Login</h1>
+                <form
+                    className="col-4 mx-auto"
+                    onSubmit={handleSubmit(vals => this.handleLogin(vals))}>
                     <Field
                         name="email"
                         label="Email"
@@ -64,15 +57,18 @@ class Login extends Component {
                         type="password"
                         component={renderInput}
                     />
-                    <p className="text-danger">
-                        {signinError}
-                    </p>
-                    <button className="btn btn-outline-primary mr-2">
-                        Sign In
-                    </button>
-                    <button className="btn btn-outline-primary" onClick={reset}>
-                        Clear Form
-                    </button>
+                    <div className="text-center">
+                        <p
+                            onClick={handleSubmit(vals =>
+                                this.handleReset(vals)
+                            )}
+                            className="small my-0">
+                            Forgot your password?
+                        </p>
+                        <button className="btn btn-outline-primary mt-2">
+                            Sign In
+                        </button>
+                    </div>
                 </form>
             </div>
         );
@@ -105,20 +101,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { login })(Login);
-
-// {this.state.loginMessage &&
-//     <div className="alert alert-danger" role="alert">
-//         <span
-//             className="glyphicon glyphicon-exclamation-sign"
-//             aria-hidden="true"
-//         />
-//         <span className="sr-only">Error:</span>
-//         &nbsp;{this.state.loginMessage}{' '}
-//         <a
-//             href="#"
-//             onClick={this.resetPassword}
-//             className="alert-link">
-//             Forgot Password?
-//         </a>
-//     </div>}
+export default connect(mapStateToProps, { login, resetPassword })(Login);
