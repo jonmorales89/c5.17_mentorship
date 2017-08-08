@@ -97,7 +97,7 @@ export default class SearchList extends Component {
                         Serving Location: {data[key].bio.location}
                       </p>
                     </div>
-                    <ContactForm />
+                    <ContactForm email={data[key].email} />
                   </div>
                 </div>
               </div>

@@ -22,7 +22,8 @@ class Confirm extends Component {
         };
 
         const text = {
-            text: `${this.text_two.value} AND ${this.text_one.value}`
+            text: `${this.text_two.value} and ${this.text_one.value} and ${this
+                .email.value}`
         };
         console.log('TEXT OBJECT WORKS:', text);
 
