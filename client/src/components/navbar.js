@@ -11,7 +11,8 @@ const Navbar = props => {
         <li className="nav-item">
           <button
             className="btn btn-outline-default"
-            onClick={() => props.logout()}>
+            onClick={() => props.logout()}
+          >
             Logout
           </button>
         </li>
@@ -40,7 +41,8 @@ const Navbar = props => {
         data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
-        aria-label="Toggle navigation">
+        aria-label="Toggle navigation"
+      >
         <span className="navbar-toggler-icon" />
       </button>
       <Link className="navbar-brand" to="/">
