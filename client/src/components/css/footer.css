@@ -1,3 +1,49 @@
 footer {
     color: white;
 }
+
+.logoFooter {
+    font-weight: bold;
+}
+
+.row-fluid {
+    text-align: center;
+}
+
+.row-fluid > p {
+    font-size: 18px;
+}
+
+.division {
+    word-spacing: 10px;
+}
+
+hr {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10px;
+    border: 0;
+    box-shadow: 0 10px 10px -10px #598a9c inset;
+}
+
+
+.underline {
+    padding-bottom: 8px;
+    border-bottom: 1px groove #598a9c;
+    display: inline-block;
+}
+
+.icon {
+    position: absolute;
+}
+
+.textSize {
+    font-size: 20px;
+    list-style-type: none;
+}
+
+p {
+  font-size: 18px;
+    margin-bottom: 0;
+}
