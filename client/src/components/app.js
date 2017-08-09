@@ -12,7 +12,7 @@ import Login from './authentication/login';
 import MentorsSignUp from './authentication/mentor_signup_form';
 import MentorsRegister from './authentication/register';
 import Dashboard from './protected/dashboard';
-import ContactForm from './contact_mentor.js';
+import ContactForm from './contact_mentor_modal.js';
 
 import Test from './search_list_item';
 
@@ -25,7 +25,7 @@ const App = () => {
 			<Route path="/mentors/register" component={MentorsRegister} />
 			<Route path="/mentors/signup" component={MentorsSignUp} />
 			<Route path="/mentors/login" component={Login} />
-			<Route path="/results" component={Search} />
+			<Route path="/results/:zipcode" component={Search} />
 			<Route exact path="/" component={Home} />
 			<Route exact path="/contact" component={ContactForm} />
 			<Footer />
