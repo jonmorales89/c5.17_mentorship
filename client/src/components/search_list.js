@@ -135,17 +135,12 @@ export default class SearchList extends Component {
         const { list } = this.state;
         list.sort(function(item, item1){
           return item.props.dist - item1.props.dist;
-        })
+        });
         if (!list) {
             return <h1>Loading...</h1>;
         }
         return (
-            <div>
-              <div className="container">
-                <div className="row" />
-                  {list}
-              </div>
-            </div>
+            <div className="container"><div className="row">{list}</div></div>
         );
     }
 }
