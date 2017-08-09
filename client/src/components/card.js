@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import SearchModal from './search_list_modal';
+import Confirm from './contact_modal.js';
 
 class Card extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            showModal: false
+            showModal: false,
+            secondModal: false
         };
     }
 
@@ -50,11 +52,11 @@ class Card extends Component {
                 </div>
                 <SearchModal
                     name={data.name}
-                    aboutme={charLimit(data.bio.aboutme)}
+                    aboutme={data.bio.aboutme}
                     affiliates={data.bio.affiliates}
                     serving={data.bio.location}
                     showModal={this.state.showModal}
-                    toggleModal={() => this.toggleModal()}
+                    toggleModal={() => this.toggleModal}
                 />
             </div>
         );
