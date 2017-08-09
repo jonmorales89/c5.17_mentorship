@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { addPerson } from '../../actions/index';
+import { renderInput } from '../helper_functions';
 
 class MentorsSignUp extends Component {
     constructor(props) {
@@ -32,11 +33,6 @@ class MentorsSignUp extends Component {
         });
     }
 
-    styleObj = {
-        width: '50%',
-        minWidth: '30%'
-    };
-
     Message() {
         if (this.state.successMessage) {
             return (
@@ -48,25 +44,6 @@ class MentorsSignUp extends Component {
                 </div>
             );
         }
-    }
-
-    renderInput({ input, label, meta: { touched, error } }) {
-        return (
-            <div className="form-group my-1">
-                <label className="mr-2">
-                    {label}
-                </label>
-                <input
-                    {...input}
-                    name={input.name}
-                    type="text"
-                    className="form-control mr-2 mb-2"
-                />
-                <p className="form-text text-danger">
-                    {touched && error}
-                </p>
-            </div>
-        );
     }
 
     renderTextArea({ input, label, meta: { touched, error } }) {
@@ -90,74 +67,72 @@ class MentorsSignUp extends Component {
         );
     }
 
+    styleContainer = {
+        width: '50%',
+        minWidth: '30%'
+    };
+
+    styleForm = {};
+
     render() {
         const { handleSubmit } = this.props;
         return (
-            <div className="mdl-background-color">
-                <div
-                    id="MentorSignUp"
-                    className="my-5 row mx-auto"
-                    style={this.styleObj}>
-                    <div className="col-12">
-                        <h2 className="header text-center">
-                            Register to Become a Mentor
-                        </h2>
-                        <p className="text-center">
-                            *BETA* We are currently operating only in California
-                        </p>
-                    </div>
-                    <div className="col-12">
-                        <form
-                            className="form"
-                            onSubmit={handleSubmit(values =>
-                                this.submitForm(values)
-                            )}>
-                            <Field
-                                name="name"
-                                label="Name"
-                                component={this.renderInput}
-                            />
-                            <Field
-                                name="email"
-                                label="Email"
-                                component={this.renderInput}
-                            />
-                            <Field
-                                name="style"
-                                label="Style"
-                                component={this.renderInput}
-                            />
-                            <Field
-                                name="location"
-                                label="Serving City"
-                                component={this.renderInput}
-                            />
-                            <Field
-                                name="affiliates"
-                                label="Company(s)"
-                                component={this.renderInput}
-                            />
-                            <Field
-                                name="aboutme"
-                                label="About Me"
-                                component={this.renderTextArea}
-                            />
-                            <Field
-                                name="experience"
-                                label="Experience"
-                                component={this.renderTextArea}
-                            />
-                            <div className="d-block text-center">
-                                <button className="btn mdl-color--secondary-light mr-3">
-                                    Sign-Up
-                                </button>
-                                <button className="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--secondary">
-                                    <i className="material-icons">add</i>
-                                </button>
-                            </div>
-                            {this.Message()}
-                        </form>
-                    </div>
+            <div className="my-5 mx-auto" style={this.styleContainer}>
+                <div className="col-12">
+                    <form
+                        className="col-12 mx-auto my-0 py-3"
+                        onSubmit={handleSubmit(values =>
+                            this.submitForm(values)
+                        )}>
+                        <div className="col-12 my-0 text-center">
+                            <h2>Register to Become a Mentor</h2>
+                            <p>
+                                *BETA* We are currently operating only in
+                                California
+                            </p>
+                        </div>
+                        <Field
+                            name="name"
+                            label="Name"
+                            component={renderInput}
+                        />
+                        <Field
+                            name="email"
+                            label="Email"
+                            component={renderInput}
+                        />
+                        <Field
+                            name="style"
+                            label="Style"
+                            component={renderInput}
+                        />
+                        <Field
+                            name="location"
+                            label="Serving City"
+                            component={renderInput}
+                        />
+                        <Field
+                            name="affiliates"
+                            label="Company(s)"
+                            component={renderInput}
+                        />
+                        <Field
+                            name="aboutme"
+                            label="About Me"
+                            component={this.renderTextArea}
+                        />
+                        <Field
+                            name="experience"
+                            label="Experience"
+                            component={this.renderTextArea}
+                        />
+                        <div className="text-center">
+                            <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--primary-light">
+                                Register
+                            </button>
+                        </div>
+                        {this.Message()}
+                    </form>
                 </div>
             </div>
         );

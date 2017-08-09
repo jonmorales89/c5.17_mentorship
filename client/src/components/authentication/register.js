@@ -35,8 +35,7 @@ class Register extends Component {
         <h1 className="text-center">Mentor Registration</h1>
         <form
           onSubmit={handleSubmit(values => this.handleSubmit(values))}
-          className="form"
-        >
+          className="form">
           <Field
             name="email"
             type="email"
@@ -56,9 +55,11 @@ class Register extends Component {
             component={renderInput}
           />
           <SuccessMessage success={this.state.messageSuccess} />
-          <button type="submit" className="btn btn-primary">
-            Register
-          </button>
+          <div className="text-center">
+            <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--primary-light">
+              Register
+            </button>
+          </div>
         </form>
       </div>
     );
