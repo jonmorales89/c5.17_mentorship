@@ -17,7 +17,6 @@ export default () =>
                     </p>
                 </div>
           </div>
-
           <div className="a col-md-3">
               <h4 className="underline">Get to know us</h4>
               <div>
@@ -27,7 +26,6 @@ export default () =>
                   <p>Q&A</p>
               </div>
           </div>
-
           <div className="a col-md-3">
               <h4 className="underline">Connect with us</h4>
               <div className="icon">
@@ -44,7 +42,6 @@ export default () =>
           </div>
         </div>
           <br/>
-
           <br/>
           <hr/>
         <div className="row-fluid col-sm-12">

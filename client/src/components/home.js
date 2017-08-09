@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './searchbar';
-import './css/styles.css';
+import './css/bannerStyle.css';
 
 export default () => {
 	return (
