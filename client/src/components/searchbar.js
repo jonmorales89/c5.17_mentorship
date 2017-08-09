@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchList from './search_list';
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 
 
 class Search extends Component {
@@ -23,6 +23,7 @@ class Search extends Component {
      }
   }
   render() {
+    let zip = `/results/${this.state.value}`;
     return (
       <form onSubmit={this.handleSubmit}>
         <input
@@ -31,7 +32,7 @@ class Search extends Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <Link to={`/results/${this.state.value}`}><input type="submit" value="Submit" /></Link>
+        <Link to={zip}><input type="submit" value="Submit" /></Link>
       </form>
     );
   }
