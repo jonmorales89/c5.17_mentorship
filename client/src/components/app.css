@@ -1,26 +1,26 @@
 /*** MATERIAL DESIGN COLORS --- USE THESE **
 	INCLUDE THESE AT THE END OF YOUR CLASSNAMES FOR DESIRED COLORS
 */
-.mdl-color--secondary {
+.mdl-bgcolor--secondary {
 	background: #a33a51;
 }
 
-.mdl-color--secondary-light {
+.mdl-bgcolor--secondary-light {
 	background: #d8697d;
 }
 
-.mdl-color--secondary-dark {
+.mdl-bgcolor--secondary-dark {
 	background: #700029;
 }
 
-.mdl-color--primary {
-	background: #295c6d;
+.mdl-bgcolor--primary {
+	background: #2a5d6e;
 }
 
-.mdl-color--primary-light {
-	background: #58899b;
+.mdl-bgcolor--primary-light {
+	background: #598a9c;
 }
 
-.mdl-color--primary-dark {
-	background: #003242;
+.mdl-bgcolor--primary-dark {
+	background: #003343;
 }

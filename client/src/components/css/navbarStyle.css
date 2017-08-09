@@ -1,15 +1,7 @@
-
-/*.navbar {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    background-color: #003343;
-
-}
-
-.navbar-custom {
+.navbar-brand {
     font-size: 200%;
     color: white;
-    /*margin-top: -1.2%;
-    margin-bottom: -1%;
+    margin-bottom: 0.4%;
     font-weight: bold;
 }
 
@@ -18,8 +10,24 @@
     color: white;
 }
 
-.mdl-button:hover {
-    background-color: white;
+.login{
+    background-color: #d8697d;
 }
-*/
 
+.register{
+    background-color: #598a9c;
+}
+
+.login:hover {
+    background-color: #d8697d;
+}
+
+.register:hover {
+    background-color: #598a9c;
+}
+
+@media only screen and (max-width: 500px) {
+    .login{
+        margin-bottom: 8px;
+    }
+}
