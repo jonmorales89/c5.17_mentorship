@@ -4,16 +4,17 @@ import './css/footer.css';
 
 export default () =>
   <div>
-    <footer>
+    <footer className="mdl-bgcolor--primary-dark">
       <div className="container">
         <div className="row">
-          <div className="col-md-6 col-sm-12 footerleft ">
+          <div className="col-md-4 col-sm-12 footerleft ">
             <h3 className="logofooter">Logo Goes Here</h3>
             <h5 className="buff-f cap">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
 
               lacus eget metus euismod lobortis eget vel eros.
             </h5>
+            <p>© 2017 - All Rights Reserved by Dansu Mentors, Inc.</p>
           </div>
           <div className="col-md-4 col-sm-6 footerleft">
             <div className="logofooter"> Contact</div>
@@ -46,18 +47,6 @@ export default () =>
                 LinkedIn
               </a>
             </p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <div className="copyright">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <p>© 2017 - All Rights Reserved by Dansu Mentors, Inc.</p>
-          </div>
-          <div className="col-md-6">
             <ul className="bottom_ul">
               <li>
                 <a href="#">Home</a>
@@ -71,9 +60,12 @@ export default () =>
               <li>
                 <a href="#">Contact us</a>
               </li>
+              <li>
+                <a href="#">About Us</a>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-    </div>
-  </div>;
+    </footer>
+  </div>
