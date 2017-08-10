@@ -12,7 +12,7 @@ import Login from './authentication/login';
 import MentorsSignUp from './authentication/mentor_signup_form';
 import MentorsRegister from './authentication/register';
 import Dashboard from './protected/dashboard';
-import ContactForm from './contact_mentor.js';
+import ContactForm from './contact_mentor_modal.js';
 
 import Test from './search_list_item';
 
