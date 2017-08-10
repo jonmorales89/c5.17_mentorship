@@ -14,13 +14,10 @@ import MentorsRegister from './authentication/register';
 import Dashboard from './protected/dashboard';
 import ContactForm from './contact_mentor_modal.js';
 
-import Test from './search_list_item';
-
 const App = () => {
 	return (
 		<div>
 			<Navbar />
-			<Route path="/test" component={Test} />
 			<Route path="/mentors/dashboard" component={AuthUser(Dashboard)} />
 			<Route path="/mentors/register" component={MentorsRegister} />
 			<Route path="/mentors/signup" component={MentorsSignUp} />
