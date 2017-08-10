@@ -1,17 +1,12 @@
-.navbar-brand {
+.logo {
     font-size: 200%;
     color: white;
     margin-bottom: 0.4%;
     font-weight: bold;
 }
 
-ul.mr-auto li.nav-item:hover {
-    border: 1px solid white;
-}
-
 .nav-link {
     font-size: 130%;
-    color: white;
 }
 
 .login {
