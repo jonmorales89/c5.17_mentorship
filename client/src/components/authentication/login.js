@@ -37,14 +37,18 @@ class Login extends Component {
             );
     }
 
+    styleContainer = {
+        minHeight: '50vh'
+    };
+
     render() {
         const { handleSubmit, signinError } = this.props;
         return (
-            <div className="my-5">
-                <h1 className="text-center">Login</h1>
+            <div style={this.styleContainer} className="py-5">
                 <form
-                    className="col-4 mx-auto"
+                    className="col-4 mx-auto py-3"
                     onSubmit={handleSubmit(vals => this.handleLogin(vals))}>
+                    <h3 className="text-center">Login</h3>
                     <Field
                         name="email"
                         label="Email"
@@ -65,7 +69,7 @@ class Login extends Component {
                             className="small my-0">
                             Forgot your password?
                         </p>
-                        <button className="btn btn-outline-primary mt-2">
+                        <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--primary-light">
                             Sign In
                         </button>
                     </div>

@@ -10,15 +10,25 @@ export default class SearchList extends Component {
             data: {},
             list: []
         };
-        this.checkBounds = this.checkBounds.bind(this);
     }
     componentDidMount() {
+        console.log('CDM');
         db.ref('Mentors').on('value', snapshot => {
             const data = snapshot.val();
-            this.setState({ data });
-            this.checkBounds();
+            console.log('In firebase CB', data);
+            this.setState({ data: {...data} });
         });
     }
+    componentDidUpdate(prevProps, prevState){
+      const currentDataLen = Object.keys(this.state.data).length;
+      const prevDataLen = Object.keys(prevState.data).length;
+      const listLen = this.state.list.length;
+
+      if(prevDataLen === 0 && currentDataLen > 0){
+        this.checkBounds();
+      }
+    }
+
     degreesToRadians(degrees) {
       return degrees * Math.PI / 180;
     }
@@ -49,8 +59,10 @@ export default class SearchList extends Component {
     }
 
         checkBounds() {
+
         let mentCord = {};
         const { data } = this.state;
+        console.log('checkBounds called', data);
         const GOOGLE_URL =
             'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
             window.location.pathname.substring(
