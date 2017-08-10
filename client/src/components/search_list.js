@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { db } from '../firebase';
 import axios from 'axios';
 import Card from './card';
-import './css/card.css';
 
 export default class SearchList extends Component {
     constructor(props) {
@@ -66,16 +65,6 @@ export default class SearchList extends Component {
             }
         }
     }
-    affiliateLimit(value){
-        const text = value;
-        console.log(value);
-        if(text.includes(',')){
-            const end = text.indexOf(',');
-            return text.substring(0, end) + ' ...';
-        } else {
-            return text;
-        }
-    }
     cardClick() {
         this.setState({
             showModal: !this.state.showModal
@@ -131,7 +120,6 @@ export default class SearchList extends Component {
                                 data={data[key]}
                                 key={index}
                                 dist={distFromMentor}
-                                affiliateLimit={str => this.affiliateLimit(str)}
                                 charLimit={str => this.charLimit(str)}
                             />
                         );
@@ -151,11 +139,7 @@ export default class SearchList extends Component {
         }
         return (
             <div className="container">
-                <div className="mdl-layout">
-                    <div className="mdl-layout__content">
-                        <div className="mdl-grid">{list}</div>
-                    </div>
-                </div>
+                <div className="row">{list}</div>
             </div>
         );
     }
