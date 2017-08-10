@@ -1,7 +1,7 @@
 //make into a modal in such that when you sign up you also have to register
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authenticate } from '../../firebase/auth';
+import { createAccount } from '../../actions/';
 import { Field, reduxForm } from 'redux-form';
 import { renderInput } from '../helper_functions';
 import SuccessMessage from './successMessage';
@@ -18,14 +18,11 @@ class Register extends Component {
 
   handleSubmit(values) {
     const { reset } = this.props;
-    authenticate(values.email, values.password).catch(error => {
-      console.log('form submitted');
-      this.setState({
-        registerError: error,
-        messageSuccess: true
-      });
-      reset();
+    createAccount(values.email, values.password);
+    this.setState({
+      messageSuccess: true
     });
+    reset();
   }
 
   render() {
