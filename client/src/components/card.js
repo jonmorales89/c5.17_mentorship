@@ -14,7 +14,6 @@ class Card extends Component {
             showModal: !this.state.showModal
         });
     }
-
     render() {
         const { data, charLimit, affiliateLimit ,dist } = this.props;
         return (
@@ -43,16 +42,20 @@ class Card extends Component {
                            <div className="bold">Serving Location:</div>
                            <div>{data.bio.location}</div>
                        </div>
+
                     </div>
                     <div className="mdl-card__actions mdl-card--border">
                         <button className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</button>
                     </div>
+
+
             <SearchModal
                     name={data.name}
                     aboutme={data.bio.aboutme}
                     affiliates={data.bio.affiliates}
                     serving={data.bio.location}
                     showModal={this.state.showModal}
+                    email={data.bio.email}
                     toggleModal={() => this.toggleModal()}
             />
             </div>
