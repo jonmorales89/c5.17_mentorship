@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { renderInput } from '../helper_functions';
-import { login, resetPassword } from '../../actions';
+import { login, resetPassword, loginWithFacebook } from '../../actions';
 
 function setErrorMsg(error) {
     return {
@@ -69,8 +69,16 @@ class Login extends Component {
                             className="small my-0">
                             Forgot your password?
                         </p>
-                        <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--primary-light">
+                        <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light">
                             Sign In
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                this.props.loginWithFacebook();
+                            }}
+                            className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light">
+                            Facebook Login
                         </button>
                     </div>
                 </form>
@@ -105,4 +113,8 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { login, resetPassword })(Login);
+export default connect(mapStateToProps, {
+    login,
+    resetPassword,
+    loginWithFacebook
+})(Login);
