@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/modal.css';
+import SearchList from './search_list.js';
 import Confirm from './contact_modal.js';
 
 class SearchModal extends Component {

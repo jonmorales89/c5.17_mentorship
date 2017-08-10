@@ -4,12 +4,11 @@ import SearchModal from './search_list_modal';
 class Card extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            showModal: false
+            showModal: false,
+            secondModal: false
         };
     }
-
     toggleModal() {
         this.setState({
             showModal: !this.state.showModal
@@ -18,7 +17,6 @@ class Card extends Component {
 
     render() {
         const { data, charLimit, affiliateLimit ,dist } = this.props;
-
         return (
             <div
                 onClick={() => this.toggleModal()}

@@ -52,8 +52,8 @@ class Confirm extends Component {
     }
 
     render() {
-        const { text, className, message, title } = this.props;
-        if (this.state.showModal) {
+        const { text, className, message, title, showForm } = this.props;
+        if (showForm) {
             return (
                 <div className="c-modal">
                     <div className="c-modal-content">
@@ -87,13 +87,18 @@ class Confirm extends Component {
                             <button
                                 onClick={() => {
                                     this.setState({ showModal: false });
+                                    this.props.onClick();
                                 }}
                                 className="btn c-btn mr-6"
                             >
                                 Cancel
                             </button>
                             <button
-                                onClick={() => this.sendMail()}
+                                onClick={() => {
+                                    this.setState({ showForm: true });
+                                    this.props.onClick();
+                                    this.sendMail();
+                                }}
                                 className="btn c-btn"
                             >
                                 Submit
@@ -105,10 +110,10 @@ class Confirm extends Component {
         }
         return (
             <button
-                className={className}
-                onClick={() => this.setState({ showModal: true })}
+                className="btn btn-info"
+                onClick={() => this.props.onClick()}
             >
-                {text}
+                Contact Form
             </button>
         );
     }
