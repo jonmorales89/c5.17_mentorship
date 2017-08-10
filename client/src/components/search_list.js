@@ -11,15 +11,24 @@ export default class SearchList extends Component {
             list: [],
             showModal: false
         };
-        this.checkBounds = this.checkBounds.bind(this);
     }
     componentWillMount() {
         db.ref('Mentors').on('value', snapshot => {
             const data = snapshot.val();
-            this.setState({ data });
-            this.checkBounds();
+            console.log('In firebase CB', data);
+            this.setState({ data: {...data} });
         });
     }
+    componentDidUpdate(prevProps, prevState){
+      const currentDataLen = Object.keys(this.state.data).length;
+      const prevDataLen = Object.keys(prevState.data).length;
+      const listLen = this.state.list.length;
+
+      if(prevDataLen === 0 && currentDataLen > 0){
+        this.checkBounds();
+      }
+    }
+
     degreesToRadians(degrees) {
         return degrees * Math.PI / 180;
     }
