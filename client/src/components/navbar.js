@@ -19,12 +19,12 @@ const Navbar = props => {
     }
     return [
       <li key="1" className="nav-item">
-        <Link className="nav-link" to="/mentors/login">
+        <Link className="nav-link login mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--secondary-light mr-3" to="/mentors/login">
           Login
         </Link>
       </li>,
       <li key="2" className="nav-item">
-        <Link className="nav-link" to="/mentors/signup">
+        <Link className="nav-link register mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light" to="/mentors/signup">
           Register
         </Link>
       </li>
@@ -32,7 +32,7 @@ const Navbar = props => {
   }
 
   return (
-    <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse font">
+    <nav className="navbar navbar-toggleable-md navbar-inverse font mdl-bgcolor--primary-dark">
       <button
         className="navbar-toggler navbar-toggler-right"
         type="button"
@@ -43,7 +43,7 @@ const Navbar = props => {
         aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
       </button>
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand logo" to="/">
         DansuMentors
       </Link>
 
@@ -52,6 +52,26 @@ const Navbar = props => {
           <li className="nav-item">
             <Link className="nav-link" to="/results">
               Find a Mentor
+            </Link>
+          </li>
+          <li className="nav-item dropdown">
+            <Link className="nav-link mr-4 dropdown-toggle" to="/results">
+              Styles
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link mr-4" to="/results">
+              Community
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link mr-4" to="/results">
+              Become a DansuMentor
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/results">
+              How It Works
             </Link>
           </li>
         </ul>
