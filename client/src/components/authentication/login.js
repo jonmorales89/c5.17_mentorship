@@ -69,7 +69,7 @@ class Login extends Component {
                             className="small my-0">
                             Forgot your password?
                         </p>
-                        <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light">
+                        <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white mr-2">
                             Sign In
                         </button>
                         <button
@@ -77,7 +77,7 @@ class Login extends Component {
                             onClick={() => {
                                 this.props.loginWithFacebook();
                             }}
-                            className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light">
+                            className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white">
                             Facebook Login
                         </button>
                     </div>

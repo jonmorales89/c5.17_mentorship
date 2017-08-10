@@ -53,7 +53,7 @@ class Register extends Component {
           />
           <SuccessMessage success={this.state.messageSuccess} />
           <div className="text-center">
-            <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--primary-light">
+            <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white">
               Register
             </button>
           </div>

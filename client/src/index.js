@@ -13,7 +13,7 @@ const createStoreWithMiddleWare = applyMiddleware(thunk)(createStore);
 
 const store = createStoreWithMiddleWare(rootReducer);
 if (localStorage.getItem('token')) {
-	store.dispatch({ type: types.LOGIN });
+	store.dispatch({ type: types.LOGIN_SUCCESS });
 }
 
 ReactDOM.render(

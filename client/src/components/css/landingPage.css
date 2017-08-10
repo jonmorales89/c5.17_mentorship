@@ -1,0 +1,50 @@
+/*.homeForm {
+	width: 35%;
+	margin: 0 auto;
+}
+
+.homeInput {
+	width: 300px;
+}*/
+
+/*#homeTextBox {
+	position: absolute;
+	left: 50%;  horizontal alignment 
+	top: 50%;  vertical alignment 
+	transform: translate(-50%, -50%);
+}*/
+
+.homeBanner {
+	position: relative;
+	height: 70vh;
+}
+
+.homePhoto {
+	opacity: .5;
+	position: absolute;
+	left: 50%;
+	top: 60%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+}
+
+/*.homeText {
+}*/
+
+/*@include media-breakpoint-up(sm) {
+	.homeText {
+		font-size: 16px;
+	}
+}
+
+@include media-breakpoint-up(md) {
+	.homeText {
+		font-size: 20px;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.homeText {
+		font-size: 28px;
+	}
+}*/

@@ -10,7 +10,7 @@ const Navbar = props => {
       return (
         <li className="nav-item">
           <button
-            className="btn btn-outline-default"
+            className="btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white"
             onClick={() => props.logout()}>
             Logout
           </button>
@@ -19,12 +19,16 @@ const Navbar = props => {
     }
     return [
       <li key="1" className="nav-item">
-        <Link className="nav-link login mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--secondary-light mr-3" to="/mentors/login">
+        <Link
+          className="nav-link login mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--secondary-light mr-2 text-white"
+          to="/mentors/login">
           Login
         </Link>
       </li>,
       <li key="2" className="nav-item">
-        <Link className="nav-link register mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light" to="/mentors/signup">
+        <Link
+          className="nav-link register mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light text-white"
+          to="/mentors/signup">
           Register
         </Link>
       </li>
@@ -50,33 +54,35 @@ const Navbar = props => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link className="nav-link" to="/results">
+            <Link className="nav-link text-white text-center" to="/results">
               Find a Mentor
             </Link>
           </li>
           <li className="nav-item dropdown">
-            <Link className="nav-link mr-4 dropdown-toggle" to="/results">
+            <Link
+              className="nav-link dropdown-toggle text-white text-center"
+              to="/">
               Styles
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link mr-4" to="/results">
+            <Link className="nav-link text-white text-center" to="/">
               Community
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link mr-4" to="/results">
+            <Link className="nav-link text-white text-center" to="/">
               Become a DansuMentor
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/results">
+            <Link className="nav-link text-white text-center" to="/">
               How It Works
             </Link>
           </li>
         </ul>
         <form className="form-inline my-lg-0">
-          <ul className="navbar-nav mr-auto">
+          <ul className="navbar-nav">
             {loginOptions()}
           </ul>
         </form>
