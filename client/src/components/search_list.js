@@ -48,12 +48,20 @@ export default class SearchList extends Component {
         return earthRadius * c;
     }
     charLimit(value) {
-        for (let i = 0; i < value.length; i++) {
-            if (value.length > 75) {
-                let result = value.substring(0, 75);
-                return result + ' ...';
+        const mentorBio = value;
+        console.log(mentorBio);
+        for (let i = 0; i < mentorBio.length; i++) {
+            if (mentorBio.length > 60) {
+                let result = mentorBio.substring(0, 60);
+                if(result.length-1 !== ' '){
+                    for(let j = result.length-1; j >= 0; j--){
+                        if(result[j] === ' '){
+                            return result.substring(0, j) + ' ...';
+                        }
+                    }
+                }
             } else {
-                return value;
+                return mentorBio;
             }
         }
     }
@@ -131,7 +139,7 @@ export default class SearchList extends Component {
         }
         return (
             <div className="container">
-                {' '}<div className="row">{list}</div>
+                <div className="row">{list}</div>
             </div>
         );
     }

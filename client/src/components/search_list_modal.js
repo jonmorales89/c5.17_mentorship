@@ -27,7 +27,6 @@ class SearchModal extends Component {
             affiliates,
             serving
         } = this.props;
-
         if (showModal && !this.state.showForm) {
             return (
                 <div className="del-modal">
