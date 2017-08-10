@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './css/footer.css';
-import '../../../../bootstrap-social.css';
 
 export default () =>
   <div>
