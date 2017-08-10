@@ -14,12 +14,22 @@ export function getAllMentors() {
 	};
 }
 
-export function addPerson(person) {
+export function addMentee(person) {
+	db.ref('Mentees').push(person).then(resp => {
+		console.log('Data added:', resp.key);
+	});
+	return {
+		type: types.ADD_MENTEE,
+		payload: person
+	};
+}
+
+export function addMentor(person) {
 	db.ref('Mentors').push(person).then(resp => {
 		console.log('Data added:', resp.key);
 	});
 	return {
-		type: types.ADD_PERSON,
+		type: types.ADD_MENTOR,
 		payload: person
 	};
 }
@@ -47,9 +57,11 @@ export function logout() {
 
 export function login({ email, password }) {
 	return dispatch => {
-		firebaseAuth().signInWithEmailAndPassword(email, password).catch(error => {
-			console.log('action creator signerror', error);
-		});
+		firebaseAuth()
+			.signInWithEmailAndPassword(email, password)
+			.catch(error => {
+				console.log('action creator signerror', error);
+			});
 		firebaseAuth().currentUser.getIdToken(true).then(idToken => {
 			localStorage.setItem('token', idToken);
 			dispatch({

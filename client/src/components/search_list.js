@@ -83,7 +83,7 @@ export default class SearchList extends Component {
     }
     checkBounds() {
         let mentCord = {};
-        const { data, grab } = this.state;
+        const { data } = this.state;
         const GOOGLE_URL =
             'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
             window.location.pathname.substring(
