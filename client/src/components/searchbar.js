@@ -30,6 +30,7 @@ class Search extends Component {
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
+          className={`${this.props.InputClassName}`}
         />
         <Link to={zip}>
           <input type="submit" value="Submit" />

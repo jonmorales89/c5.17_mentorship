@@ -17,7 +17,7 @@ export default () => {
 					time
 				</h5>
 			</div>
-			<SearchBar className="text-center" />
+			<SearchBar className="text-center" InputClassName="" />
 		</div>
 	);
 };
