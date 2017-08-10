@@ -34,6 +34,7 @@ function authenticate(provider) {
 			.signInWithPopup(provider)
 			.then(result => {
 				console.log('signing in provider result', result);
+				localStorage.setItem('token', result.credential.accessToken);
 				dispatch(loginSuccess(result));
 			})
 			.catch(error => dispatch(loginError(error)));
@@ -108,7 +109,10 @@ export function resetPassword(email) {
 // Logs user out from firebase
 export function logout() {
 	return dispatch => {
-		auth.signOut().then(() => dispatch(signOutSuccess()));
+		auth.signOut().then(() => {
+			localStorage.removeItem('token');
+			dispatch(logoutSuccess());
+		});
 	};
 }
 

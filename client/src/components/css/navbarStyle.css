@@ -5,16 +5,20 @@
     font-weight: bold;
 }
 
+ul.mr-auto li.nav-item:hover {
+    border: 1px solid white;
+}
+
 .nav-link {
     font-size: 130%;
     color: white;
 }
 
-.login{
+.login {
     background-color: #d8697d;
 }
 
-.register{
+.register {
     background-color: #598a9c;
 }
 
@@ -27,7 +31,7 @@
 }
 
 @media only screen and (max-width: 500px) {
-    .login{
+    .login {
         margin-bottom: 10%;
     }
 }
