@@ -16,17 +16,17 @@ export default class SearchList extends Component {
         db.ref('Mentors').on('value', snapshot => {
             const data = snapshot.val();
             console.log('In firebase CB', data);
-            this.setState({ data: {...data} });
+            this.setState({ data: { ...data } });
         });
     }
-    componentDidUpdate(prevProps, prevState){
-      const currentDataLen = Object.keys(this.state.data).length;
-      const prevDataLen = Object.keys(prevState.data).length;
-      const listLen = this.state.list.length;
+    componentDidUpdate(prevProps, prevState) {
+        const currentDataLen = Object.keys(this.state.data).length;
+        const prevDataLen = Object.keys(prevState.data).length;
+        const listLen = this.state.list.length;
 
-      if(prevDataLen === 0 && currentDataLen > 0){
-        this.checkBounds();
-      }
+        if (prevDataLen === 0 && currentDataLen > 0) {
+            this.checkBounds();
+        }
     }
 
     degreesToRadians(degrees) {

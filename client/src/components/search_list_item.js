@@ -1,7 +1,4 @@
-
-
-const Item = () => (
-
+const Item = () =>
   <div className="col-xs-4" key={index}>
     <div className="card" style={{ width: '20rem' }}>
       <img
@@ -26,8 +23,6 @@ const Item = () => (
         </div>
       </div>
     </div>
-  </div>
+  </div>;
 
-)
-
-export default Item
+export default Item;
