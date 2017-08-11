@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { addMentor } from '../../actions/index';
+import { addMentee } from '../../actions/index';
 import { renderInput } from '../helper_functions';
 
-class MentorsSignUp extends Component {
+class MenteeSignUp extends Component {
     constructor(props) {
         super(props);
 
@@ -26,7 +26,7 @@ class MentorsSignUp extends Component {
             name: vals.name
         };
         const { reset } = this.props;
-        this.props.addMentor(data);
+        this.props.addMentee(data);
         reset();
         this.setState({
             successMessage: true
@@ -86,7 +86,7 @@ class MentorsSignUp extends Component {
                         )}
                     >
                         <div className="col-12 my-0 text-center">
-                            <h2>Register to Become a Mentor</h2>
+                            <h2>Register to Become a Mentee</h2>
                             <p>
                                 *BETA* We are currently operating only in
                                 California
@@ -128,7 +128,7 @@ class MentorsSignUp extends Component {
                             component={this.renderTextArea}
                         />
                         <div className="text-center">
-                            <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white">
+                            <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--primary-light">
                                 Register
                             </button>
                         </div>
@@ -160,6 +160,7 @@ function validate(values) {
     }
 
     if (!values.location || values.location.length != 5) {
+        console.log('values.location', values.location);
         errors.location = 'Please enter a valid zipcode!';
     }
 
@@ -174,9 +175,9 @@ function validate(values) {
     return errors;
 }
 
-MentorsSignUp = reduxForm({
+MenteeSignUp = reduxForm({
     form: 'mentors-sign-up',
-    validate: validate
-})(MentorsSignUp);
+    validate
+})(MenteeSignUp);
 
-export default connect(null, { addMentor })(MentorsSignUp);
+export default connect(null, { addMentee })(MenteeSignUp);

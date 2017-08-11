@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import './css/modal.css';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import SearchList from './search_list.js';
 >>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
+=======
+import SearchList from './search_list.js';
+>>>>>>> a3d3a21ca093b8b26570d4664ee84017d1b5c913
 import Confirm from './contact_modal.js';
 
 class SearchModal extends Component {

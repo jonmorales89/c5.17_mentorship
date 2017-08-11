@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { db } from '../firebase';
 import axios from 'axios';
 import Card from './card';
-<<<<<<< HEAD
 import './css/card.css';
 import Search from './searchbar';
-=======
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
 
 export default class SearchList extends Component {
     constructor(props) {
@@ -20,20 +17,20 @@ export default class SearchList extends Component {
     componentWillMount() {
         db.ref('Mentors').on('value', snapshot => {
             const data = snapshot.val();
-            this.setState({data});
+            this.setState({ data });
         });
     }
-    componentWillUnmount(){
-      db.ref('Mentors').off();
+    componentWillUnmount() {
+        db.ref('Mentors').off();
     }
-    componentDidUpdate(prevProps, prevState){
-      const currentDataLen = Object.keys(this.state.data).length;
-      const prevDataLen = Object.keys(prevState.data).length;
-      const listLen = this.state.list.length;
+    componentDidUpdate(prevProps, prevState) {
+        const currentDataLen = Object.keys(this.state.data).length;
+        const prevDataLen = Object.keys(prevState.data).length;
+        const listLen = this.state.list.length;
 
-      if(prevDataLen === 0 && currentDataLen > 0){
-        this.checkBounds();
-      }
+        if (prevDataLen === 0 && currentDataLen > 0) {
+            this.checkBounds();
+        }
     }
 
     degreesToRadians(degrees) {
@@ -59,9 +56,9 @@ export default class SearchList extends Component {
         for (let i = 0; i < mentorBio.length; i++) {
             if (mentorBio.length > 60) {
                 let result = mentorBio.substring(0, 60);
-                if(result.length-1 !== ' '){
-                    for(let j = result.length-1; j >= 0; j--){
-                        if(result[j] === ' '){
+                if (result.length - 1 !== ' ') {
+                    for (let j = result.length - 1; j >= 0; j--) {
+                        if (result[j] === ' ') {
                             return result.substring(0, j) + ' ...';
                         }
                     }
@@ -71,18 +68,15 @@ export default class SearchList extends Component {
             }
         }
     }
-<<<<<<< HEAD
-    affiliateLimit(value){
+    affiliateLimit(value) {
         const text = value;
-        if(text.includes(',')){
+        if (text.includes(',')) {
             const end = text.indexOf(',');
             return text.substring(0, end) + ' ...';
         } else {
             return text;
         }
     }
-=======
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
     cardClick() {
         this.setState({
             showModal: !this.state.showModal
@@ -90,7 +84,7 @@ export default class SearchList extends Component {
     }
     checkBounds() {
         let mentCord = {};
-        const { data, grab } = this.state;
+        const { data } = this.state;
         const GOOGLE_URL =
             'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
             window.location.pathname.substring(
@@ -156,16 +150,13 @@ export default class SearchList extends Component {
         }
         return (
             <div className="container">
-<<<<<<< HEAD
                 <div className="mdl-layout">
                     <div className="mdl-layout__content">
                         <div className="mdl-grid">
-                        {orderedList}</div>
+                            {orderedList}
+                        </div>
                     </div>
                 </div>
-=======
-                <div className="row">{list}</div>
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
             </div>
         );
     }

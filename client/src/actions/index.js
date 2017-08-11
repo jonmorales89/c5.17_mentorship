@@ -16,13 +16,22 @@ export function getAllMentors() {
 	};
 }
 
-// Adds results from mentor_signup_form to database
-export function addPerson(person) {
+export function addMentee(person) {
+	db.ref('Mentees').push(person).then(resp => {
+		console.log('Data added:', resp.key);
+	});
+	return {
+		type: types.ADD_MENTEE,
+		payload: person
+	};
+}
+
+export function addMentor(person) {
 	db.ref('Mentors').push(person).then(resp => {
 		console.log('Data added:', resp.key);
 	});
 	return {
-		type: types.ADD_PERSON,
+		type: types.ADD_MENTOR,
 		payload: person
 	};
 }

@@ -86,11 +86,8 @@ class Confirm extends Component {
                         <div className="right">
                             <button
                                 onClick={() => {
-<<<<<<< HEAD
                                     this.setState({ showModal: false });
-=======
                                     this.setState({ showForm: true });
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
                                     this.props.onClick();
                                 }}
                                 className="btn c-btn mr-6"
