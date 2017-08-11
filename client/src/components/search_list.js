@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { db } from '../firebase';
 import axios from 'axios';
 import Card from './card';
+<<<<<<< HEAD
 import './css/card.css';
 import Search from './searchbar';
+=======
+>>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
 
 export default class SearchList extends Component {
     constructor(props) {
@@ -68,6 +71,7 @@ export default class SearchList extends Component {
             }
         }
     }
+<<<<<<< HEAD
     affiliateLimit(value){
         const text = value;
         if(text.includes(',')){
@@ -77,6 +81,8 @@ export default class SearchList extends Component {
             return text;
         }
     }
+=======
+>>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
     cardClick() {
         this.setState({
             showModal: !this.state.showModal
@@ -131,7 +137,6 @@ export default class SearchList extends Component {
                                 data={data[key]}
                                 key={index}
                                 dist={distFromMentor}
-                                affiliateLimit={str => this.affiliateLimit(str)}
                                 charLimit={str => this.charLimit(str)}
                             />
                         );
@@ -151,12 +156,16 @@ export default class SearchList extends Component {
         }
         return (
             <div className="container">
+<<<<<<< HEAD
                 <div className="mdl-layout">
                     <div className="mdl-layout__content">
                         <div className="mdl-grid">
                         {orderedList}</div>
                     </div>
                 </div>
+=======
+                <div className="row">{list}</div>
+>>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
             </div>
         );
     }

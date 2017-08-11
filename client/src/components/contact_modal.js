@@ -8,7 +8,7 @@ class Confirm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showModal: false,
+            secondModal: false,
             email: '',
             text_one: '',
             text_two: '',
@@ -48,7 +48,7 @@ class Confirm extends Component {
             .catch(error => {
                 console.warn('Error adding to server', error);
             });
-        this.setState({ showModal: false });
+        this.setState({ showForm: false });
     }
 
     render() {
@@ -86,7 +86,11 @@ class Confirm extends Component {
                         <div className="right">
                             <button
                                 onClick={() => {
+<<<<<<< HEAD
                                     this.setState({ showModal: false });
+=======
+                                    this.setState({ showForm: true });
+>>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
                                     this.props.onClick();
                                 }}
                                 className="btn c-btn mr-6"
