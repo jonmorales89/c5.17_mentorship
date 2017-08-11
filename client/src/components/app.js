@@ -14,11 +14,13 @@ import MentorsRegister from './authentication/register';
 import Dashboard from './protected/mentor_dashboard';
 import ContactForm from './contact_mentor_modal.js';
 import MenteeSignUp from './authentication/mentee_signup_form';
+import Confirm from './contact_mentor_modal.js';
 
 const App = () => {
 	return (
 		<div>
 			<Navbar />
+			<Route path="/confirm" component={Confirm} />
 			<Route path="/mentee" component={MenteeSignUp} />
 			<Route path="/mentors/dashboard" component={Dashboard} />
 			<Route path="/mentors/register" component={MentorsRegister} />
