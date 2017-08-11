@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './css/bootstrap-social.css';
 import './css/footer.css';
 
 export default () =>
@@ -51,7 +52,11 @@ export default () =>
         <hr />
         <div className="row-fluid col-sm-12">
           <p>
+<<<<<<< HEAD
+            Copyright © 2017 Dansu
+=======
             Copyright © 2017 Dansu{' '}
+>>>>>>> a3d3a21ca093b8b26570d4664ee84017d1b5c913
             <span className="division">Mentors | All</span> Rights Reserved
           </p>
         </div>

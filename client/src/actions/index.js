@@ -1,7 +1,9 @@
 import types from './types';
-import { db, firebaseAuth } from '../firebase';
+import { db, auth } from '../firebase/index';
+import firebase from 'firebase';
 import axios from 'axios';
 
+// Get all mentors from database, set into redux state
 export function getAllMentors() {
 	return dispatch => {
 		db.ref('Mentors').on('value', snapshot => {
@@ -34,35 +36,59 @@ export function addMentor(person) {
 	};
 }
 
-export function authenticate(email, pw) {
+// Beginning of authenticating different providers
+function authenticate(provider) {
 	return dispatch => {
-		firebaseAuth().createUserWithEmailAndPassword(email, pw).then(() => {
-			saveUser;
-			dispatch({
-				type: types.REGISTER
-			});
-		});
+		auth
+			.signInWithPopup(provider)
+			.then(result => {
+				console.log('signing in provider result', result);
+				localStorage.setItem('token', result.credential.accessToken);
+				dispatch(loginSuccess(result));
+			})
+			.catch(error => dispatch(loginError(error)));
 	};
 }
 
-export function logout() {
+// Catches and returns errors from login
+export function loginError(error) {
+	return {
+		type: types.LOGIN_ERROR,
+		payload: error
+	};
+}
+
+// Catches and returns login success results
+export function loginSuccess(result) {
+	return {
+		type: types.LOGIN_SUCCESS,
+		payload: result.user
+	};
+}
+
+// Creates a user via firebase only authenticator
+export function createAccount(email, pw) {
 	return dispatch => {
-		firebaseAuth().signOut();
-		localStorage.removeItem('token');
-		dispatch({
-			types: types.LOGOUT
-		});
+		auth()
+			.createUserWithEmailAndPassword(email, pw)
+			.then(resp => {
+				console.log('user created successful!');
+				dispatch({
+					type: types.REGISTER
+				});
+			})
+			.catch(error => {
+				console.log('error creating user', error);
+			});
 	};
 }
 
 export function login({ email, password }) {
 	return dispatch => {
-		firebaseAuth()
-			.signInWithEmailAndPassword(email, password)
-			.catch(error => {
-				console.log('action creator signerror', error);
-			});
-		firebaseAuth().currentUser.getIdToken(true).then(idToken => {
+		auth.signInWithEmailAndPassword(email, password).catch(error => {
+			console.log('action creator signerror', error);
+		});
+		auth.currentUser.getIdToken(true).then(idToken => {
 			localStorage.setItem('token', idToken);
 			dispatch({
 				type: types.LOGIN
@@ -71,16 +97,37 @@ export function login({ email, password }) {
 	};
 }
 
-export function resetPassword(email) {
-	return firebaseAuth().sendPasswordResetEmail(email);
+export function loginWithFacebook() {
+	const provider = new firebase.auth.FacebookAuthProvider();
+	provider.addScope('public_profile');
+	return authenticate(provider);
 }
 
-export function saveUser(user) {
-	return db.ref
-		.child(`users/${user.uid}/info`)
-		.set({
-			email: user.email,
-			uid: user.uid
-		})
-		.then(() => user);
+// export function signInWithGoogle() {
+// 	return authenticate(new firebase.auth.GoogleAuthProvider());
+// }
+
+// export function signInWithGithub() {
+//   return authenticate(new firebase.auth.GithubAuthProvider());
+// }
+
+export function resetPassword(email) {
+	return auth().sendPasswordResetEmail(email);
+}
+
+// Logs user out from firebase
+export function logout() {
+	return dispatch => {
+		auth.signOut().then(() => {
+			localStorage.removeItem('token');
+			dispatch(logoutSuccess());
+		});
+	};
+}
+
+// Returns action of logout success
+export function logoutSuccess() {
+	return {
+		type: types.LOGOUT_SUCCESS
+	};
 }

@@ -1,0 +1,59 @@
+.container {
+    padding: 80px 120px;
+}
+
+.carousel-inner img {
+    width: 100%; /* Set width to 100% */
+    opacity: 0.6;
+    margin: auto;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+
+.test {
+ position: absolute;
+    top: 30%;
+}
+
+h5 {
+    color: #003242;
+    font-size: 220%;
+    font-weight: bold;
+}
+
+h1 {
+    color: #003242;
+    font-size: 460%;
+    font-weight: bold;
+}
+
+input[type=text], select {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 10px 10px;
+    display: inline-block;
+    border: 1px solid #d8697d;
+    border-radius: 5px;
+}
+
+.body{
+    border-radius: 5px;
+    background-color: #295c6d;
+    padding: 1%;
+    margin: auto;
+    width: 60%;
+    opacity: 0.8;
+}
+
+.buttonSize {
+    height: 4.5vh;
+    font-size: 160%;
+.login:hover {
+    background-color: #d8697d;
+}
+
+}
