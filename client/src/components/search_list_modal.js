@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import './css/modal.css';
-<<<<<<< HEAD
-=======
-import SearchList from './search_list.js';
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
 import Confirm from './contact_modal.js';
 
 class SearchModal extends Component {
@@ -30,10 +26,6 @@ class SearchModal extends Component {
             affiliates,
             serving
         } = this.props;
-<<<<<<< HEAD
-
-=======
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
         if (showModal && !this.state.showForm) {
             return (
                 <div className="del-modal">
@@ -62,7 +54,6 @@ class SearchModal extends Component {
                             showForm={this.state.showForm}
                             onClick={() => this.toggleForm()}
                         />
-<<<<<<< HEAD
                         <div>
                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
@@ -81,8 +72,6 @@ class SearchModal extends Component {
 
                            </form>
                         </div>
-=======
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
                     </div>
                 </div>
             );

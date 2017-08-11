@@ -16,12 +16,7 @@ class Card extends Component {
         });
     }
     render() {
-<<<<<<< HEAD
         const { data, charLimit, affiliateLimit ,dist } = this.props;
-=======
-        const { data, charLimit, dist } = this.props;
-
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
         return (
             <div
                 onClick={() => this.toggleModal()}
@@ -50,7 +45,6 @@ class Card extends Component {
                             </p>
                         </div>
                     </div>
-<<<<<<< HEAD
                     <div className="mdl-card__supporting-text">
                         <div className="bold">About Me:</div>
                        <div>
@@ -74,23 +68,14 @@ class Card extends Component {
 
 
             <SearchModal
-=======
-                </div>
-                <SearchModal
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
                     name={data.name}
                     aboutme={data.bio.aboutme}
                     affiliates={data.bio.affiliates}
                     serving={data.bio.location}
                     showModal={this.state.showModal}
-<<<<<<< HEAD
                     email={data.bio.email}
                     toggleModal={() => this.toggleModal()}
             />
-=======
-                    toggleModal={() => this.toggleModal}
-                />
->>>>>>> 98c7892e5a7198f9cd3a5c4852a6e7b6d50a31a8
             </div>
         );
     }
