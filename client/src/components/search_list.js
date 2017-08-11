@@ -18,17 +18,23 @@ export default class SearchList extends Component {
         db.ref('Mentors').on('value', snapshot => {
             const data = snapshot.val();
             this.setState({ data });
+            this.renderAll();
+            console.log("state:", this.state);
         });
     }
     componentWillUnmount() {
         db.ref('Mentors').off();
     }
     componentDidUpdate(prevProps, prevState) {
+        const path = window.location.pathname.substring(
+          window.location.pathname.lastIndexOf('/') + 1,
+          window.location.pathname.length
+        );
         const currentDataLen = Object.keys(this.state.data).length;
         const prevDataLen = Object.keys(prevState.data).length;
         const listLen = this.state.list.length;
 
-        if (prevDataLen === 0 && currentDataLen > 0) {
+        if (prevDataLen === 0 && currentDataLen > 0 && path != 'results') {
             this.checkBounds();
         }
     }
@@ -82,6 +88,21 @@ export default class SearchList extends Component {
             showModal: !this.state.showModal
         });
     }
+    renderAll() {
+      const { data } = this.state;
+      const list = Object.keys(data).map((key, index) => {
+          const item = (
+              <Card
+                  data={data[key]}
+                  key={index}
+                  charLimit={str => this.charLimit(str)}
+                  affiliateLimit={str => this.affiliateLimit(str)}
+              />
+          );
+          this.setState({ list: [...this.state.list, item] });
+        });
+      }
+
     checkBounds() {
         let mentCord = {};
         const { data } = this.state;
@@ -142,12 +163,31 @@ export default class SearchList extends Component {
         });
     }
     render() {
+        const path = window.location.pathname.substring(
+          window.location.pathname.lastIndexOf('/') + 1,
+          window.location.pathname.length
+        );
+        console.log("Path: ", path);
         const { list } = this.state;
+        console.log("List: ", list)
         const orderedList = list.sort(function(item, item1) {
             return item.props.dist - item1.props.dist;
         });
         if (!list) {
             return <h1>Loading...</h1>;
+        }
+        if(path === 'results'){
+          return (
+            <div className="container">
+                <div className="mdl-layout">
+                    <div className="mdl-layout__content">
+                        <div className="mdl-grid">
+                            {list}
+                        </div>
+                    </div>
+                </div>
+            </div>
+          )
         }
         return (
             <div className="container">
