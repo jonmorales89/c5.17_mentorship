@@ -24,17 +24,19 @@ class Search extends Component {
   render() {
     let zip = `/results/${this.state.value}`;
     return (
-      <form className={`${this.props.className}`} onSubmit={this.handleSubmit}>
+      <form className="body text-center" onSubmit={this.handleSubmit}>
+          <div className="subBody">
         <input
           placeholder="Enter your zipcode"
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
-          className={`${this.props.InputClassName}`}
+          className={`${this.props.className}`}
         />
         <Link to={zip}>
-          <input type="submit" value="Submit" />
+          <input className="buttonSize mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white ml-3" type="submit" value="Submit" />
         </Link>
+          </div>
       </form>
     );
   }

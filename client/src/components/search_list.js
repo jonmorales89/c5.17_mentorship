@@ -68,7 +68,7 @@ export default class SearchList extends Component {
             }
         }
     }
-    affiliateLimit(value) {
+    affiliateLimit(value){
         const text = value;
         if (text.includes(',')) {
             const end = text.indexOf(',');
