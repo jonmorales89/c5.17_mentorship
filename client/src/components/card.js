@@ -42,16 +42,33 @@ class Card extends Component {
                      </div>
                      <div>
                          <div className="bold">Serving Location:</div>
-                         <div>{data.bio.location}</div>
+                         <div>{this.props.location}</div>
                      </div>
                   </div>
                   <div className="mdl-card__actions mdl-card--border">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+                       <input type="hidden" name="business"
+                           value={data.bio.email}/>
+
+                       <input type="hidden" name="cmd" value="_donations"/>
+
+                       <input type="hidden" name="currency_code" value="USD"/>
+
+                       <input type="image" name="submit"
+                       src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png"
+                       alt="Donate"/>
+                       <img alt="" width="1" height="1"
+                       src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
+
+                    </form>
                       <button className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</button>
                   </div>
           <SearchModal
                   name={data.name}
                   aboutme={data.bio.aboutme}
                   affiliates={data.bio.affiliates}
+                  email={data.bio.email}
                   serving={data.bio.location}
                   showModal={this.state.showModal}
                   toggleModal={() => this.toggleModal()}

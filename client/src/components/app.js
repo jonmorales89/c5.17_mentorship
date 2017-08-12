@@ -22,8 +22,7 @@ const App = () => {
 			<Route path="/mentors/register" component={MentorsRegister} />
 			<Route path="/mentors/signup" component={MentorsSignUp} />
 			<Route path="/mentors/login" component={Login} />
-			<Route path="/results/:zipcode" component={Search} />
-			<Route exact path="/results" component={Search} />
+			<Route path="/results" component={Search} />
 			<Route exact path="/" component={Home} />
 			<Route exact path="/contact" component={ContactForm} />
 			<Footer />

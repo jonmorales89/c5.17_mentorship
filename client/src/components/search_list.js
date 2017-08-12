@@ -18,7 +18,13 @@ export default class SearchList extends Component {
         db.ref('Mentors').on('value', snapshot => {
             const data = snapshot.val();
             this.setState({ data });
-            this.renderAll();
+            const path = window.location.pathname.substring(
+              window.location.pathname.lastIndexOf('/') + 1,
+              window.location.pathname.length
+            );
+            if(path === 'results'){
+              this.renderAll();
+            }
             console.log("state:", this.state);
         });
     }
@@ -134,6 +140,8 @@ export default class SearchList extends Component {
                     data[key].bio.location +
                     '&sensor=false';
                 axios.get(`${URL}`).then(resp => {
+                    console.log("Axios resp: ", resp);
+                    let location = resp.data.results[0].formatted_address;
                     mentCord = resp.data.results[0].geometry.location;
                     let distFromMentor = this.distanceFromCoords(
                         mentCord.lat,
@@ -154,6 +162,7 @@ export default class SearchList extends Component {
                                 dist={distFromMentor}
                                 charLimit={str => this.charLimit(str)}
                                 affiliateLimit={str => this.affiliateLimit(str)}
+                                location={location}
                             />
                         );
                         this.setState({ list: [...this.state.list, item] });
