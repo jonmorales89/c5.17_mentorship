@@ -88,13 +88,11 @@ class MentorsSignUp extends Component {
                                 this.submitForm(values)
                             )}>
                             <Field
-                                name="name"
-                                label="Name"
+                                hintText="Hint Text"
                                 component={this.renderInput}
                             />
                             <Field
-                                name="email"
-                                label="Email"
+                                hinyText="hello"
                                 component={this.renderInput}
                             />
                             <Field
