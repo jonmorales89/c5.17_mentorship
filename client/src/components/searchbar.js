@@ -25,7 +25,6 @@ class Search extends Component {
     let zip = `/results/${this.state.value}`;
     return (
       <form className="body text-center" onSubmit={this.handleSubmit}>
-          <div className="subBody">
         <input
           placeholder="Enter your zipcode"
           type="text"
@@ -34,9 +33,8 @@ class Search extends Component {
           className={`${this.props.className}`}
         />
         <Link to={zip}>
-          <input className="buttonSize mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white ml-3" type="submit" value="Submit" />
+            <input className="buttonSize mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white" type="submit" value="Submit" />
         </Link>
-          </div>
       </form>
     );
   }
