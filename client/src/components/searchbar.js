@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SearchList from './search_list';
-import {Link, Route} from 'react-router-dom';
-
+import { Link, Route } from 'react-router-dom';
 
 class Search extends Component {
   constructor(props) {
@@ -18,21 +17,24 @@ class Search extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if(this.state.value === '' || this.state.value.length !== 5){
-      alert("Please input a valid zip code!")
-     }
+    if (this.state.value === '' || this.state.value.length !== 5) {
+      alert('Please input a valid zip code!');
+    }
   }
   render() {
     let zip = `/results/${this.state.value}`;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="body text-center" onSubmit={this.handleSubmit}>
         <input
           placeholder="Enter your zipcode"
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
+          className={`${this.props.className}`}
         />
-        <Link to={zip}><input type="submit" value="Submit" /></Link>
+        <Link to={zip}>
+            <input className="buttonSize mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white" type="submit" value="Submit" />
+        </Link>
       </form>
     );
   }

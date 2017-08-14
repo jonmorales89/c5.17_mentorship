@@ -26,6 +26,4 @@
     color: #fff;
     background: #d8697d;
 }
-.mdl-card__title{
-    border-bottom: 2px solid #58899b;
-}
+.mdl-card__title{border-bottom: 3px solid #58899b;}

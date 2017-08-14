@@ -3,6 +3,7 @@ import { db } from '../firebase';
 import axios from 'axios';
 import Card from './card';
 import './css/card.css';
+import Search from './searchbar';
 
 export default class SearchList extends Component {
     constructor(props) {
@@ -16,9 +17,11 @@ export default class SearchList extends Component {
     componentWillMount() {
         db.ref('Mentors').on('value', snapshot => {
             const data = snapshot.val();
-            console.log('In firebase CB', data);
-            this.setState({ data: {...data} });
+            this.setState({data});
         });
+    }
+    componentWillUnmount(){
+      db.ref('Mentors').off();
     }
     componentDidUpdate(prevProps, prevState){
       const currentDataLen = Object.keys(this.state.data).length;
@@ -50,7 +53,6 @@ export default class SearchList extends Component {
     }
     charLimit(value) {
         const mentorBio = value;
-        console.log(mentorBio);
         for (let i = 0; i < mentorBio.length; i++) {
             if (mentorBio.length > 60) {
                 let result = mentorBio.substring(0, 60);
@@ -68,7 +70,6 @@ export default class SearchList extends Component {
     }
     affiliateLimit(value){
         const text = value;
-        console.log(value);
         if(text.includes(',')){
             const end = text.indexOf(',');
             return text.substring(0, end) + ' ...';
@@ -119,7 +120,6 @@ export default class SearchList extends Component {
                         searchCoord.lat,
                         searchCoord.lng
                     );
-                    console.log('Distance from mentor: ', distFromMentor);
                     if (
                         mentCord.lat > area(lat, lng).latitude_min &&
                         mentCord.lat < area(lat, lng).latitude_max &&
@@ -131,7 +131,6 @@ export default class SearchList extends Component {
                                 data={data[key]}
                                 key={index}
                                 dist={distFromMentor}
-                                affiliateLimit={str => this.affiliateLimit(str)}
                                 charLimit={str => this.charLimit(str)}
                             />
                         );
@@ -143,7 +142,7 @@ export default class SearchList extends Component {
     }
     render() {
         const { list } = this.state;
-        list.sort(function(item, item1) {
+        const orderedList = list.sort(function(item, item1) {
             return item.props.dist - item1.props.dist;
         });
         if (!list) {
@@ -153,7 +152,8 @@ export default class SearchList extends Component {
             <div className="container">
                 <div className="mdl-layout">
                     <div className="mdl-layout__content">
-                        <div className="mdl-grid">{list}</div>
+                        <div className="mdl-grid">
+                        {orderedList}</div>
                     </div>
                 </div>
             </div>

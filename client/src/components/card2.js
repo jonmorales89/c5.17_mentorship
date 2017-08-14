@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/modal.css';
+import SearchList from './search_list.js';
 import Confirm from './contact_modal.js';
 
 class SearchModal extends Component {
@@ -26,6 +27,7 @@ class SearchModal extends Component {
             affiliates,
             serving
         } = this.props;
+
         if (showModal && !this.state.showForm) {
             return (
                 <div className="del-modal">
@@ -54,24 +56,6 @@ class SearchModal extends Component {
                             showForm={this.state.showForm}
                             onClick={() => this.toggleForm()}
                         />
-                        <div>
-                           <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-                               <input type="hidden" name="business"
-                                   value={this.props.email}/>
-
-                               <input type="hidden" name="cmd" value="_donations"/>
-
-                               <input type="hidden" name="currency_code" value="USD"/>
-
-                               <input type="image" name="submit"
-                               src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png"
-                               alt="Donate"/>
-                               <img alt="" width="1" height="1"
-                               src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
-
-                           </form>
-                        </div>
                     </div>
                 </div>
             );

@@ -1,37 +1,18 @@
 import React from 'react';
 import SearchBar from './searchbar';
-import './css/styles.css';
+import './css/landingPage.css';
 
 export default () => {
 	return (
-		<div>
-			<SearchBar />
-			<div
-				id="carouselExampleSlidesOnly"
-				className="carousel slide"
-				data-ride="carousel">
-				<div className="blur carousel-inner" role="listbox">
-					<div className="carousel-item active">
-						<img
-							className="d-block2 img-fluid"
-							src="./dansu1.jpg"
-							alt="First slide"
-						/>
-					</div>
-					<div className="carousel-item">
-						<img
-							className="d-block2 img-fluid"
-							src="./dansu2.jpg"
-							alt="Second slide"
-						/>
-					</div>
-					<div className="carousel-item">
-						<img
-							className="d-block2 img-fluid"
-							src="./dansu3.jpg"
-							alt="Third slide"
-						/>
-					</div>
+		<div className="carousel slide" data-ride="carousel">
+			<div className="carousel-inner">
+				<div className="item active">
+					<img src="./dansu1.png" alt="banner picture" />
+                    <div className="carousel-caption test">
+                        <h1>Live 1:1 Q&A from industry and community dancers</h1>
+                        <h5>DansuMentors is your live 1:1 expert dance mentor helping you in real time</h5>
+                        <SearchBar className="inputSearch" />
+                    </div>
 				</div>
 			</div>
 		</div>
