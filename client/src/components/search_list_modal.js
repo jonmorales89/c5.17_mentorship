@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/modal.css';
 import SearchList from './search_list.js';
-import Confirm from './contact_modal.js';
+import ContactForm from './contact_modal.js';
 
 class SearchModal extends Component {
     constructor(props) {
@@ -51,7 +51,7 @@ class SearchModal extends Component {
                         >
                             Cancel
                         </button>
-                        <Confirm
+                        <ContactForm
                             showForm={this.state.showForm}
                             onClick={() => this.toggleForm()}
                         />
@@ -97,7 +97,7 @@ class SearchModal extends Component {
             );
         } else if (this.state.showForm) {
             return (
-                <Confirm
+                <ContactForm
                     showForm={this.state.showForm}
                     onClick={() => this.toggleForm()}
                 />

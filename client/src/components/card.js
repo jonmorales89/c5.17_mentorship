@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchModal from './search_list_modal';
-import Confirm from './contact_modal.js';
+import ContactForm from './contact_modal.js';
 import './css/card.css';
 
 class Card extends Component {

@@ -36,6 +36,7 @@ export default class SearchList extends Component {
     degreesToRadians(degrees) {
         return degrees * Math.PI / 180;
     }
+
     distanceFromCoords(lat1, lon1, lat2, lon2) {
         const earthRadius = 6371;
         let dLat = this.degreesToRadians(lat2 - lat1);
@@ -51,6 +52,7 @@ export default class SearchList extends Component {
         let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return earthRadius * c;
     }
+
     charLimit(value) {
         const mentorBio = value;
         for (let i = 0; i < mentorBio.length; i++) {
@@ -68,7 +70,8 @@ export default class SearchList extends Component {
             }
         }
     }
-    affiliateLimit(value){
+
+    affiliateLimit(value) {
         const text = value;
         if (text.includes(',')) {
             const end = text.indexOf(',');
@@ -77,11 +80,13 @@ export default class SearchList extends Component {
             return text;
         }
     }
+
     cardClick() {
         this.setState({
             showModal: !this.state.showModal
         });
     }
+
     checkBounds() {
         let mentCord = {};
         const { data } = this.state;
@@ -132,6 +137,7 @@ export default class SearchList extends Component {
                                 key={index}
                                 dist={distFromMentor}
                                 charLimit={str => this.charLimit(str)}
+                                affiliateLimit={str => this.affiliateLimit(str)}
                             />
                         );
                         this.setState({ list: [...this.state.list, item] });
@@ -140,6 +146,7 @@ export default class SearchList extends Component {
             });
         });
     }
+
     render() {
         const { list } = this.state;
         const orderedList = list.sort(function(item, item1) {
