@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './css/bootstrap-social.css';
-import './css/footer.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./css/bootstrap-social.css";
+import "./css/footer.css";
 
 export default () =>
   <div>

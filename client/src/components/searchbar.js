@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import SearchList from './search_list';
-import { Link, Route } from 'react-router-dom';
+import React, { Component } from "react";
+import SearchList from "./search_list";
+import { Link, Route } from "react-router-dom";
 
 class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = { value: "" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,8 +17,8 @@ class Search extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    if (this.state.value === '' || this.state.value.length !== 5) {
-      alert('Please input a valid zip code!');
+    if (this.state.value === "" || this.state.value.length !== 5) {
+      alert("Please input a valid zip code!");
     }
   }
   render() {
