@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/modal.css';
+// import SearchList from './search_list.js';
 import ContactForm from './contact_modal.js';
 import Paypal from './paypal.js';
 
@@ -17,10 +18,12 @@ class SearchModal extends Component {
     this.setState({ showForm: !this.state.showForm });
     this.props.toggleModal();
   }
+
   handleSubmit(event) {
     this.props.handleSubmit();
     event.preventDefault();
   }
+  
   render() {
     const {
       secondModal,
