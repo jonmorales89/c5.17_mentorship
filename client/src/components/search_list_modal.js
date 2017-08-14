@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/modal.css';
-import SearchList from './search_list.js';
+// import SearchList from './search_list.js';
 import ContactForm from './contact_modal.js';
 
 class SearchModal extends Component {
