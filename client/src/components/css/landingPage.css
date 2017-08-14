@@ -1,50 +1,64 @@
-/*.homeForm {
-	width: 35%;
-	margin: 0 auto;
+.container {
+    padding: 80px 120px;
 }
 
-.homeInput {
-	width: 300px;
-}*/
-
-/*#homeTextBox {
-	position: absolute;
-	left: 50%;  horizontal alignment 
-	top: 50%;  vertical alignment 
-	transform: translate(-50%, -50%);
-}*/
-
-.homeBanner {
-	position: relative;
-	height: 70vh;
+.carousel-inner img {
+    width: 100%; /* Set width to 100% */
+    opacity: 0.6;
+    margin: auto;
 }
 
-.homePhoto {
-	opacity: .5;
-	position: absolute;
-	left: 50%;
-	top: 60%;
-	transform: translate(-50%, -50%);
-	z-index: -1;
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
 }
 
-/*.homeText {
-}*/
-
-/*@include media-breakpoint-up(sm) {
-	.homeText {
-		font-size: 16px;
-	}
+.test {
+    position: absolute;
+    top: 25%;
 }
 
-@include media-breakpoint-up(md) {
-	.homeText {
-		font-size: 20px;
-	}
+h5 {
+    color: #003242;
+    font-size: 220%;
+    font-weight: bold;
+    margin-bottom: 2.5%;
 }
 
-@include media-breakpoint-up(lg) {
-	.homeText {
-		font-size: 28px;
-	}
-}*/
+h1 {
+    color: #003242;
+    font-size: 420%;
+    font-weight: bold;
+}
+
+input[type=text], select {
+    width: 80%;
+    padding: 2% 2.4%;
+    margin: 1% 1%;
+    display: inline-block;
+    border: 1px solid #d8697d;
+    border-radius: 5px;
+    height: 5.2vh;
+    opacity: initial;
+}
+
+.body{
+    border-radius: 5px;
+    padding: 1%;
+    margin: auto;
+    width: 60%;
+    height: auto;
+    background: rgba(41, 92, 109, 0.5);
+}
+
+.buttonSize {
+    height: 5vh;
+    font-size: 140%;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+}
+
+.buttonSize:hover {
+    background-color: #d8697d;
+}

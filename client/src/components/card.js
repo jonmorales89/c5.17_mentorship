@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import SearchModal from "./search_list_modal";
-import Confirm from "./contact_modal.js";
-import Paypal from "./paypal.js";
-import "./css/card.css";
+import React, { Component } from 'react';
+import SearchModal from './search_list_modal';
+import Confirm from './contact_modal.js';
+import Paypal from './paypal.js';
+import './css/card.css';
 
 class Card extends Component {
   constructor(props) {
@@ -69,5 +69,4 @@ class Card extends Component {
     );
   }
 }
-
 export default Card;

@@ -103,6 +103,7 @@ function validate(vals) {
 
 Login = reduxForm({
     form: 'login',
+
     validate
 })(Login);
 
