@@ -164,11 +164,11 @@ function validate(values) {
     }
 
     if (!values.aboutme || values.aboutme.length < 75) {
-        errors.aboutme = 'Hey, tell us more about yourself!';
+        errors.aboutme = 'Hey, tell us more about yourself! (min. 75 characters)';
     }
 
     if (!values.experience || values.experience.length < 75) {
-        errors.experience = "Hey, tell us what you've been doing!";
+        errors.experience = "Hey, tell us what you've been doing! (min. 75 characters)";
     }
 
     return errors;

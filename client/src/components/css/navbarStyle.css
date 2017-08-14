@@ -1,7 +1,7 @@
 .logo {
     font-size: 200%;
     color: white;
-    margin-bottom: 0.4%;
+    margin-bottom: 0.2%;
     font-weight: bold;
 }
 
@@ -11,10 +11,12 @@
 
 .login {
     background-color: #d8697d;
+    margin: auto;
 }
 
 .register {
     background-color: #598a9c;
+    margin: auto;
 }
 
 .login:hover {

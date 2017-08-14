@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchModal from './search_list_modal';
 import ContactForm from './contact_modal.js';
+import Paypal from './paypal.js';
 import './css/card.css';
 
 class Card extends Component {
@@ -22,8 +23,7 @@ class Card extends Component {
       <div
         onClick={() => this.toggleModal()}
         className="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp"
-        dist={dist}
-      >
+        dist={dist}>
         <div className="mdl-card__title mdl-card--expand">
           <h6 className="mdl-card__title-text">
             {data.name}
@@ -50,6 +50,7 @@ class Card extends Component {
           </div>
         </div>
         <div className="mdl-card__actions mdl-card--border">
+          <Paypal email={data.bio.email} />
           <button className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             Read More
           </button>
@@ -58,13 +59,14 @@ class Card extends Component {
           name={data.name}
           aboutme={data.bio.aboutme}
           affiliates={data.bio.affiliates}
+          email={data.bio.email}
           serving={data.bio.location}
           showModal={this.state.showModal}
           toggleModal={() => this.toggleModal()}
+          email={data.bio.email}
         />
       </div>
     );
   }
 }
-
 export default Card;
