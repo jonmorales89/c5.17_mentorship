@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import axios from "axios";
-import "./css/modal.css";
+import React, { Component } from 'react';
+import axios from 'axios';
+import './css/modal.css';
 
-const BASE_URL = "http://localhost:3001/mail";
+const BASE_URL = 'http://localhost:3001/mail';
 
-class Confirm extends Component {
+class ContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       secondModal: false,
-      email: "",
-      text_one: "",
-      text_two: "",
-      name: ""
+      email: '',
+      text_one: '',
+      text_two: '',
+      name: ''
     };
   }
 
@@ -43,10 +43,10 @@ class Confirm extends Component {
     axios
       .post(`${BASE_URL}`, { data })
       .then(resp => {
-        console.log("Its working!", resp);
+        console.log('Its working!', resp);
       })
       .catch(error => {
-        console.warn("Error adding to server", error);
+        console.warn('Error adding to server', error);
       });
     this.setState({ showForm: false });
   }
@@ -115,8 +115,4 @@ class Confirm extends Component {
   }
 }
 
-export default Confirm;
-
-//need to do an axios call to firebase to grab their email and id which will just be Dansu.Mentoru@gmail.com
-//After grabbing email I need to correnspond that email and id to whichever card's contact button is clicked
-//whichever card is clicked I need that cards inputs to send through nodemailer to Dansu.Mentoru@gmail.com
+export default ContactForm;

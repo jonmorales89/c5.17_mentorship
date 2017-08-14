@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { db } from "../firebase";
-import axios from "axios";
-import Card from "./card";
-import "./css/card.css";
-import Search from "./searchbar";
+import React, { Component } from 'react';
+import { db } from '../firebase';
+import axios from 'axios';
+import Card from './card';
+import './css/card.css';
+import Search from './searchbar';
 
 export default class SearchList extends Component {
   constructor(props) {
@@ -15,31 +15,31 @@ export default class SearchList extends Component {
     };
   }
   componentWillMount() {
-    db.ref("Mentors").on("value", snapshot => {
+    db.ref('Mentors').on('value', snapshot => {
       const data = snapshot.val();
       this.setState({ data });
       const path = window.location.pathname.substring(
-        window.location.pathname.lastIndexOf("/") + 1,
+        window.location.pathname.lastIndexOf('/') + 1,
         window.location.pathname.length
       );
-      if (path === "results") {
+      if (path === 'results') {
         this.renderAll();
       }
     });
   }
   componentWillUnmount() {
-    db.ref("Mentors").off();
+    db.ref('Mentors').off();
   }
   componentDidUpdate(prevProps, prevState) {
     const path = window.location.pathname.substring(
-      window.location.pathname.lastIndexOf("/") + 1,
+      window.location.pathname.lastIndexOf('/') + 1,
       window.location.pathname.length
     );
     const currentDataLen = Object.keys(this.state.data).length;
     const prevDataLen = Object.keys(prevState.data).length;
     const listLen = this.state.list.length;
 
-    if (prevDataLen === 0 && currentDataLen > 0 && path != "results") {
+    if (prevDataLen === 0 && currentDataLen > 0 && path != 'results') {
       this.checkBounds();
     }
   }
@@ -64,10 +64,10 @@ export default class SearchList extends Component {
     for (let i = 0; i < mentorBio.length; i++) {
       if (mentorBio.length > 60) {
         let result = mentorBio.substring(0, 60);
-        if (result.length - 1 !== " ") {
+        if (result.length - 1 !== ' ') {
           for (let j = result.length - 1; j >= 0; j--) {
-            if (result[j] === " ") {
-              return result.substring(0, j) + " ...";
+            if (result[j] === ' ') {
+              return result.substring(0, j) + ' ...';
             }
           }
         }
@@ -78,9 +78,9 @@ export default class SearchList extends Component {
   }
   affiliateLimit(value) {
     const text = value;
-    if (text.includes(",")) {
-      const end = text.indexOf(",");
-      return text.substring(0, end) + " ...";
+    if (text.includes(',')) {
+      const end = text.indexOf(',');
+      return text.substring(0, end) + ' ...';
     } else {
       return text;
     }
@@ -109,12 +109,12 @@ export default class SearchList extends Component {
     let mentCord = {};
     const { data } = this.state;
     const GOOGLE_URL =
-      "http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" +
+      'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
       window.location.pathname.substring(
-        window.location.pathname.lastIndexOf("/") + 1,
+        window.location.pathname.lastIndexOf('/') + 1,
         window.location.pathname.length
       ) +
-      "&sensor=false";
+      '&sensor=false';
     axios.get(`${GOOGLE_URL}`).then(resp => {
       const lat = resp.data.results[0].geometry.location.lat;
       const lng = resp.data.results[0].geometry.location.lng;
@@ -132,9 +132,9 @@ export default class SearchList extends Component {
       };
       const list = Object.keys(data).map((key, index) => {
         const URL =
-          "http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" +
+          'http://maps.googleapis.com/maps/api/geocode/json?components=postal_code:' +
           data[key].bio.location +
-          "&sensor=false";
+          '&sensor=false';
         axios.get(`${URL}`).then(resp => {
           let location = resp.data.results[0].formatted_address;
           mentCord = resp.data.results[0].geometry.location;
@@ -168,7 +168,7 @@ export default class SearchList extends Component {
   }
   render() {
     const path = window.location.pathname.substring(
-      window.location.pathname.lastIndexOf("/") + 1,
+      window.location.pathname.lastIndexOf('/') + 1,
       window.location.pathname.length
     );
     const { list } = this.state;
@@ -178,7 +178,7 @@ export default class SearchList extends Component {
     if (!list) {
       return <h1>Loading...</h1>;
     }
-    if (path === "results") {
+    if (path === 'results') {
       return (
         <div className="container">
           <div className="mdl-layout">

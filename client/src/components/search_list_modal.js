@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "./css/modal.css";
-import Confirm from "./contact_modal.js";
-import Paypal from "./paypal.js";
+import React, { Component } from 'react';
+import './css/modal.css';
+import ContactForm from './contact_modal.js';
+import Paypal from './paypal.js';
 
 class SearchModal extends Component {
   constructor(props) {
@@ -56,21 +56,13 @@ class SearchModal extends Component {
                 className="btn btn-outline-danger ">
                 Cancel
               </button>
-              <Confirm
-                showForm={this.state.showForm}
-                onClick={() => this.toggleForm()}
-              />
+              <ContactForm showForm={this.state.showForm} onClick={() => this.toggleForm()} />
             </div>
           </div>
         </div>
       );
     } else if (this.state.showForm) {
-      return (
-        <Confirm
-          showForm={this.state.showForm}
-          onClick={() => this.toggleForm()}
-        />
-      );
+      return <ContactForm showForm={this.state.showForm} onClick={() => this.toggleForm()} />;
     }
     return <div onClick={() => this.toggleModal} />;
   }
