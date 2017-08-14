@@ -18,10 +18,12 @@ class SearchModal extends Component {
     this.setState({ showForm: !this.state.showForm });
     this.props.toggleModal();
   }
+
   handleSubmit(event) {
     this.props.handleSubmit();
     event.preventDefault();
   }
+  
   render() {
     const {
       secondModal,
