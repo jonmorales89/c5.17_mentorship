@@ -1,18 +1,17 @@
 .mdl-card_searchList {
-    height: 200px;
-    background: #e1e2e1;
+    height: 220px;
+    background: #cecece;
     color: #fff;
     border-bottom: 3px solid #58899b;
 }
 .card-image{
     position: absolute;
     border-radius: 50%;
-    left: 33%;
-    top: 5%;
+    left: 20%;
 }
 .mdl-card_modal_img {
     position: relative;
-    left: 5%;
+    right: 7%;
     border-radius: 50%;
     bottom: 10%;
 }
@@ -22,6 +21,11 @@
     color: #fff;
     border-bottom: 3px solid #d8697d;
 }
+.card-title-text-position {
+    position: absolute;
+    font-weight: 700;
+    color: #fff;
+}
 .mdl-card_z {
     z-index: unset;
 }
@@ -30,7 +34,7 @@
     margin: 8px 0;
     color: #295c6d;
 }
-.mdl-button{
+.mdl-button-fl-right{
     float: right;
 }
 .mdl-chip{
@@ -50,18 +54,44 @@
 .paypal{
     float: right;
 }
-
+@media only screen and (max-width: 1025px) {
+    .card-image {
+        left: 15%;
+    }
+}
 @media only screen and (max-width: 840px){
     .card-image{
-        left: 25%;
+        left: 15%;
+        width: 150px;
+    }
+    .mdl-card_modal_img{
+
     }
     .mdl-button{
         padding: 0 8px;
     }
 }
-
 @media only screen and (min-width: 768px) and (max-width: 839px){
     .card-image{
-        left: 33%;
+        left: 18%;
+    }
+    .mdl-card_modal_img{
+
+    }
+}
+@media only screen and (max-width: 479px){
+    .card-image{
+        left: 22%;
+    }
+    .mdl-card_modal_img{
+
+    }
+}
+@media only screen and (max-width: 320px){
+    .card-image{
+        left: 11%;
+    }
+    .mdl-card_modal_img{
+
     }
 }
