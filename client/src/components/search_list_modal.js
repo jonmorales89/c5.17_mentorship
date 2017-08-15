@@ -62,14 +62,16 @@ class SearchModal extends Component {
                   </div>
                 </div>
               </div>
+              <div className="mdl-card__actions mdl-card--border">
               <button
                 onClick={() => {
                   toggleModal();
                 }}
-                className="btn btn-outline-danger ">
+                className="mdl-button mdl-button-fl-right mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Cancel
               </button>
               <ContactForm showForm={this.state.showForm} onClick={() => this.toggleForm()} />
+              </div>
             </div>
           </div>
       );

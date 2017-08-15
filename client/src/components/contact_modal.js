@@ -108,7 +108,7 @@ class ContactForm extends Component {
       );
     }
     return (
-      <button className="btn btn-info" onClick={() => this.props.onClick()}>
+      <button className="mdl-button mdl-button-fl-right mdl-button--colored mdl-js-button mdl-js-ripple-effect" onClick={() => this.props.onClick()}>
         Contact Form
       </button>
     );
