@@ -59,22 +59,22 @@ const Navbar = props => {
             </Link>
           </li>
           <li className="nav-item dropdown">
-            <Link className="nav-link dropdown-toggle text-white" to="/">
+            <Link className="nav-link dropdown-toggle text-gray disabled" to="/">
               Styles
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/">
+            <Link className="nav-link text-gray disabled" to="/">
               Community
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/">
+            <Link className="nav-link text-white" to="/mentors/signup">
               Become a DansuMentor
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/">
+            <Link className="nav-link text-gray disabled" to="/">
               How It Works
             </Link>
           </li>

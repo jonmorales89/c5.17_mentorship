@@ -37,32 +37,46 @@ class SearchModal extends Component {
     } = this.props;
     if (showModal && !this.state.showForm) {
       return (
-        <div>
-          <div className="del-modal">
-            <div className="del-modal-content">
-              <p>
-                TITLE: {name}
-              </p>
-              <p>
-                About me: {aboutme}
-              </p>
-              <p>
-                Affiliates: {affiliates}
-              </p>
-              <p>
-                Serving City: {serving}
-              </p>
+          <div className="del-modal mdl-card">
+            <div className="del-modal-content mdl-shadow--2dp">
+              <div className="mdl-card__title mdl-card_modal mdl-card--expand">
+                <h6 className="mdl-card__title-text">
+                  {name}
+                </h6>
+                <img className="mdl-card_modal_img" src="http://via.placeholder.com/100x100" />
+              </div>
+              <div className="mdl-card__supporting-text">
+                <div className="bold">About Me:</div>
+                <div>
+                    {aboutme}
+                </div>
+                <div>
+                  <div className="bold">Affiliates:</div>
+                  <span className="mdl-chip">
+              <span className="mdl-chip__text">
+                {affiliates}
+              </span>
+            </span>
+                </div>
+                <div>
+                  <div className="bold">Serving Location:</div>
+                  <div>
+                      {serving}
+                  </div>
+                </div>
+              </div>
+              <div className="mdl-card__actions mdl-card--border">
               <button
                 onClick={() => {
                   toggleModal();
                 }}
-                className="btn btn-outline-danger ">
+                className="mdl-button mdl-button-fl-right mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                 Cancel
               </button>
               <ContactForm showForm={this.state.showForm} onClick={() => this.toggleForm()} />
+              </div>
             </div>
           </div>
-        </div>
       );
     } else if (this.state.showForm) {
       return <ContactForm showForm={this.state.showForm} onClick={() => this.toggleForm()} />;

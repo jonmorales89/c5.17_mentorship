@@ -9,7 +9,7 @@ class Paypal extends Component {
   }
   render() {
     return (
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+      <form className="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="business" value={this.state.email} />
 
         <input type="hidden" name="cmd" value="_donations" />
@@ -18,8 +18,8 @@ class Paypal extends Component {
         <input
           type="image"
           name="submit"
-          src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png"
           alt="Donate"
+          className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
         />
         <img
           alt=""
