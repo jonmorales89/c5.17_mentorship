@@ -39,3 +39,6 @@
         font-size: 117%;
     }
 }
+.mdl-button {
+    line-height: 204%;
+}
