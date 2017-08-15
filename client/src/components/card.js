@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import SearchModal from './search_list_modal';
-import ContactForm from './contact_modal.js';
-import Paypal from './paypal.js';
-import './css/card.css';
+import React, { Component } from "react";
+import SearchModal from "./search_list_modal";
+import ContactForm from "./contact_modal.js";
+import Paypal from "./paypal.js";
+import "./css/card.css";
 
 class Card extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Card extends Component {
     });
   }
   render() {
-    const { data, charLimit, affiliateLimit, dist } = this.props;
+    const { data, charLimit, affiliateLimit, dist, location } = this.props;
     return (
       <div
         onClick={() => this.toggleModal()}
@@ -43,9 +43,12 @@ class Card extends Component {
             </span>
           </div>
           <div>
-            <div className="bold">Serving Location:</div>
+            <div className="bold">Location:</div>
             <div>
-              {data.bio.location}
+              {this.props.miles || this.props.miles === 0
+                ? this.props.miles + " miles from "
+                : ""}
+              {this.props.location ? this.props.location : data.bio.location}
             </div>
           </div>
         </div>
