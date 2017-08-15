@@ -1,64 +1,213 @@
-.container {
-    padding: 80px 120px;
-}
-
 .carousel-inner img {
     width: 100%; /* Set width to 100% */
     opacity: 0.6;
     margin: auto;
 }
 
-@media (max-width: 600px) {
-    .carousel-caption {
-        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+/*mobile screen size*/
+@media (max-width: 415px) {
+    .sub {
+        color: #003242;
+        font-size: 80%;
+        line-height: 138%;
+        margin-bottom: 4%;
+    }
+
+    .title {
+        color: #003242;
+        font-size: 139%;
+        font-weight: bold;
+
+    }
+
+    .test {
+        position: absolute;
+        top: 0%;
+    }
+
+    input[type=text], select {
+        width: 80%;
+        padding: 5% 1.4%;
+        margin: 0% 11%;
+        display: inline-block;
+        border: 1px solid #d8697d;
+        border-radius: 5px;
+        height: 94%;
+        opacity: initial;
+    }
+
+    .body {
+        border-radius: 5px;
+        margin-left: 4%;
+        width: 63%;
+        height: 22%;
+        background: rgba(41, 92, 109, 0.5);
+    }
+    .mdl-button {
+        line-height: 20px;
+    }
+    .buttonSize {
+        height: 96%;
+        font-size: 76%;
+        margin-top: -13%;
+        margin-right: -46%;
     }
 }
 
-.test {
-    position: absolute;
-    top: 25%;
+/*iPhone 5 size only*/
+@media (max-width: 321px) {
+    .sub {
+        color: #003242;
+        font-size: 56%;
+        margin-bottom: 4%;
+        line-height: 144%;
+    }
+
+    .title {
+        color: #003242;
+        font-size: 122%;
+        font-weight: bold;
+
+    }
+
+    .test {
+        position: absolute;
+        top: 0%;
+    }
+
+    input[type=text], select {
+        width: 98.2%;
+        padding: 5% 1.4%;
+        margin: 0% 11% 0% 1%;
+        display: inline-block;
+        border: 1px solid #d8697d;
+        border-radius: 5px;
+        height: 94%;
+        opacity: initial;
+    }
+
+    .body {
+        border-radius: 5px;
+        margin-left: 2%;
+        margin-top: -2%;
+        width: 62%;
+        height: 23%;
+        background: rgba(41, 92, 109, 0.5);
+    }
+    .mdl-button {
+        line-height: 20px;
+    }
+    .buttonSize {
+        height: 96%;
+        font-size: 76%;
+        margin-top: -14%;
+        margin-right: -54%;
+    }
 }
 
-h5 {
-    color: #003242;
-    font-size: 220%;
-    font-weight: bold;
-    margin-bottom: 2.5%;
+/*iPad and iPad Pro screen size*/
+@media (min-width: 767px) {
+    .sub {
+        color: #003242;
+        font-size: 170%;
+        margin-top: 2%;
+        margin-bottom: 6%;
+    }
+
+    .title {
+        color: #003242;
+        font-size: 296%;
+        line-height: 84%;
+        margin-top: 4%;
+        font-weight: bold;
+
+    }
+
+    .test {
+        position: absolute;
+        top: 0%;
+    }
+
+    input[type=text], select {
+        width: 97.9%;
+        padding: 5% 1.4%;
+        margin: 0% 11% 0% 1%;
+        display: inline-block;
+        border: 1px solid #d8697d;
+        border-radius: 5px;
+        height: 94%;
+        opacity: initial;
+    }
+
+    .body {
+        border-radius: 5px;
+        margin-left: 8%;
+        margin-top: -2%;
+        width: 70%;
+        height: 16%;
+        background: rgba(41, 92, 109, 0.5);
+    }
+
+    .buttonSize {
+        height:102%;
+        font-size: 76%;
+        margin-top: -11%;
+        margin-right: -22%;
+    }
 }
 
-h1 {
-    color: #003242;
-    font-size: 420%;
-    font-weight: bold;
-}
+/*other than mobile screen size*/
+@media (min-width: 1025px) {
+    .sub {
+        color: #003242;
+        font-size: 212%;
+        font-weight: bold;
+        margin-bottom: 2.5%;
+        width: 100%;
+    }
 
-input[type=text], select {
-    width: 80%;
-    padding: 2% 2.4%;
-    margin: 1% 1%;
-    display: inline-block;
-    border: 1px solid #d8697d;
-    border-radius: 5px;
-    height: 5.2vh;
-    opacity: initial;
-}
+    .title {
+        color: #003242;
+        font-size: 380%;
+        font-weight: bold;
+        width: 100%;
+    }
 
-.body{
-    border-radius: 5px;
-    padding: 1%;
-    margin: auto;
-    width: 60%;
-    height: auto;
-    background: rgba(41, 92, 109, 0.5);
-}
+    .test {
+        position: absolute;
+        top: 25%;
+    }
 
-.buttonSize {
-    height: 5vh;
-    font-size: 140%;
-    margin-top: 0.5em;
-    margin-right: 0.5em;
+    input[type=text], select {
+        width: 80%;
+        padding: 2% 2.4%;
+        margin: 1% 1%;
+        display: inline-block;
+        border: 1px solid #d8697d;
+        border-radius: 5px;
+        height: 5.2vh;
+        opacity: initial;
+    }
+
+    .body {
+        border-radius: 5px;
+        padding: 1%;
+        margin-left: 9%;
+        margin-top: 2%;
+        width: 68%;
+        height: auto;
+        background: rgba(41, 92, 109, 0.5);
+    }
+
+    .buttonSize {
+        height: 7vh;
+        font-size: 220%;
+        margin-top: 0%;
+        margin-right: -26%;
+    }
 }
 
 .buttonSize:hover {
     background-color: #d8697d;
 }
+

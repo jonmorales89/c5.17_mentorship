@@ -50,10 +50,12 @@ export default () =>
         <br />
         <br />
         <hr />
-        <div className="row-fluid col-sm-12">
+        <div className="copyRight row-fluid col-sm-12">
           <p>
             Copyright © 2017 Dansu
             <span className="division">Mentors | All</span> Rights Reserved
+            <br/>
+            <br/>
           </p>
         </div>
       </div>
