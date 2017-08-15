@@ -20,7 +20,6 @@ export default class SearchList extends Component {
 	componentWillMount() {
 		db.ref('Mentees').on('value', snapshot => {
 			const data = snapshot.val();
-			console.log('In firebase CB', data);
 			this.setState({ data: { ...data } });
 			this.renderCards(data);
 		});
@@ -28,7 +27,6 @@ export default class SearchList extends Component {
 
 	charLimit(value) {
 		const mentorBio = value;
-		console.log(mentorBio);
 		for (let i = 0; i < mentorBio.length; i++) {
 			if (mentorBio.length > 60) {
 				let result = mentorBio.substring(0, 60);

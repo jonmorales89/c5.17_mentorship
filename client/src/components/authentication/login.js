@@ -21,6 +21,7 @@ class Login extends Component {
 
     handleLogin(vals) {
         this.props.login(vals);
+        this.props.history.push('/mentors/dashboard');
     }
 
     handleReset(vals) {
