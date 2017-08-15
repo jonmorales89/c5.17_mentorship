@@ -36,10 +36,11 @@ class SearchModal extends Component {
       return (
           <div className="del-modal mdl-card">
             <div className="del-modal-content mdl-shadow--2dp">
-              <div className="mdl-card__title mdl-card--expand">
+              <div className="mdl-card__title mdl-card_modal mdl-card--expand">
                 <h6 className="mdl-card__title-text">
-                  Name: {name}
+                  {name}
                 </h6>
+                <img className="mdl-card_modal_img" src="http://via.placeholder.com/100x100" />
               </div>
               <div className="mdl-card__supporting-text">
                 <div className="bold">About Me:</div>
