@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import SearchModal from './search_list_modal';
-import ContactForm from './contact_modal.js';
-import Paypal from './paypal.js';
-import './css/card.css';
+import React, { Component } from "react";
+import SearchModal from "./search_list_modal";
+import ContactForm from "./contact_modal.js";
+import Paypal from "./paypal.js";
+import "./css/card.css";
 
 class Card extends Component {
   constructor(props) {
@@ -25,7 +25,10 @@ class Card extends Component {
         className="mdl-cell mdl-cell--4-col mdl-card mdl-card_z mdl-shadow--2dp"
         dist={dist}>
         <div className="mdl-card__title mdl-card_searchList mdl-card--expand">
-          <img className="card-image" src="https://graph.facebook.com/10211383358873877/picture?width=175&height=175" />
+          <img
+            className="card-image"
+            src="https://graph.facebook.com/10211383358873877/picture?width=175&height=175"
+          />
           <h6 className="card-title-text-position mdl-card__title-text">
             {data.name}
           </h6>
@@ -44,9 +47,12 @@ class Card extends Component {
             </span>
           </div>
           <div>
-            <div className="bold">Serving Location:</div>
+            <div className="bold">Location:</div>
             <div>
-              {data.bio.location}
+              {this.props.miles || this.props.miles === 0
+                ? this.props.miles + " miles from "
+                : ""}
+              {this.props.location ? this.props.location : data.bio.location}
             </div>
           </div>
         </div>
