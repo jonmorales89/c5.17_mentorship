@@ -44,8 +44,10 @@ function authenticate(provider) {
 			.signInWithPopup(provider)
 			.then(result => {
 				console.log('signing in provider result', result);
-				localStorage.setItem('token', result.credential.accessToken);
-				dispatch(loginSuccess(result));
+				if (result.credential.accessToken) {
+					localStorage.setItem('token', result.credential.accessToken);
+					dispatch(loginSuccess(result));
+				}
 			})
 			.catch(error => dispatch(loginError(error)));
 	};

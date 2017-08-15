@@ -45,7 +45,6 @@ export default class SearchList extends Component {
 
 	affiliateLimit(value) {
 		const text = value;
-		console.log(value);
 		if (text.includes(',')) {
 			const end = text.indexOf(',');
 			return text.substring(0, end) + ' ...';
