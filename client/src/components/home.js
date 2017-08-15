@@ -9,8 +9,8 @@ export default () => {
         <div className="item active">
           <img src="./dansu1.png" alt="banner picture" />
           <div className="carousel-caption test">
-            <h1>Live 1:1 Q&A from industry and community dancers</h1>
-            <h5>DansuMentors is your live 1:1 expert dance mentor helping you in real time</h5>
+            <p className="title">Live 1:1 Q&A from industry and community dancers</p>
+            <p className="sub">DansuMentors is your live 1:1 expert dance mentor helping you in real time</p>
             <SearchBar className="inputSearch" />
           </div>
         </div>
