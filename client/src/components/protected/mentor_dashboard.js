@@ -18,9 +18,15 @@ export default class SearchList extends Component {
 	}
 
 	componentWillMount() {
-		db.ref('Mentees').on('value', snapshot => {
+		// db.ref('Mentees').on('value', snapshot => {
+		// 	const data = snapshot.val();
+		// 	console.log('In firebase CB', data);
+		// 	this.setState({ data: { ...data } });
+		// 	this.renderCards(data);
+		// });
+		db.ref('Mentors').on('value', snapshot => {
 			const data = snapshot.val();
-			console.log('In firebase CB', data);
+			console.log('Mentors firebase CB', data);
 			this.setState({ data: { ...data } });
 			this.renderCards(data);
 		});
@@ -68,6 +74,7 @@ export default class SearchList extends Component {
 				<Card
 					data={data[key]}
 					key={index}
+					id={key}
 					affiliateLimit={str => this.affiliateLimit(str)}
 					charLimit={str => this.charLimit(str)}
 				/>

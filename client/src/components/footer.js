@@ -35,15 +35,15 @@ export default () =>
           <div className="a col-md-3">
             <h4 className="underline">Connect with us</h4>
             <div className="icon">
-              <Link className="btn btn-social-icon btn-facebook mr-3" to="/">
+              <a href="https://facebook.com/" className="btn btn-social-icon btn-facebook mr-3" >
                 <span className="fa fa-facebook" />
-              </Link>
-              <Link className="btn btn-social-icon btn-twitter mr-3" to="/">
+              </a>
+              <a href="https://twitter.com/"className="btn btn-social-icon btn-twitter mr-3" >
                 <span className="fa fa-twitter" />
-              </Link>
-              <Link className="btn btn-social-icon btn-google" to="/">
+              </a>
+              <a href="https://accounts.google.com/SignUp?hl=en" className="btn btn-social-icon btn-google" >
                 <span className="fa fa-google" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
