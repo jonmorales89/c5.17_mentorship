@@ -28,6 +28,7 @@ export function addMentee(person) {
 
 export function addMentor(person) {
 	db.ref('Mentors').push(person).then(resp => {
+		console.log('resp addmentor data', resp);
 		console.log('Data added:', resp.key);
 	});
 	return {
@@ -36,7 +37,7 @@ export function addMentor(person) {
 	};
 }
 
-// Beginning of authenticating different providers
+// Authenticating different providers
 function authenticate(provider) {
 	return dispatch => {
 		auth
@@ -67,18 +68,23 @@ export function loginSuccess(result) {
 }
 
 // Creates a user via firebase only authenticator
-export function createAccount(email, pw) {
+export function createAccount(userInfo) {
 	return dispatch => {
-		auth()
-			.createUserWithEmailAndPassword(email, pw)
+		auth
+			.createUserWithEmailAndPassword(userInfo.email, userInfo.pw)
 			.then(resp => {
-				console.log('user created successful!');
+				console.log('createAccount resp', resp);
 				dispatch({
-					type: types.REGISTER
+					type: types.REGISTER,
+					uid: resp.uid
 				});
 			})
 			.catch(error => {
-				console.log('error creating user', error);
+				console.log('Error creating account', error.message, error.code);
+				dispatch({
+					type: types.REGISTER,
+					payload: 'Error creating user'
+				});
 			});
 	};
 }

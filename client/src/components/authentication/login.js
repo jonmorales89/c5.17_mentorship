@@ -21,20 +21,13 @@ class Login extends Component {
 
     handleLogin(vals) {
         this.props.login(vals);
-        this.props.history.push('/mentors/dashboard');
     }
 
     handleReset(vals) {
         this.props
             .resetPassword(vals.email)
-            .then(() =>
-                this.setState(
-                    setErrorMsg(`Password reset email sent to your email.`)
-                )
-            )
-            .catch(error =>
-                this.setState(setErrorMsg(`Email address not found.`))
-            );
+            .then(() => this.setState(setErrorMsg(`Password reset email sent to your email.`)))
+            .catch(error => this.setState(setErrorMsg(`Email address not found.`)));
     }
 
     styleContainer = {
@@ -49,12 +42,7 @@ class Login extends Component {
                     className="col-4 mx-auto py-3"
                     onSubmit={handleSubmit(vals => this.handleLogin(vals))}>
                     <h3 className="text-center">Login</h3>
-                    <Field
-                        name="email"
-                        label="Email"
-                        type="email"
-                        component={renderInput}
-                    />
+                    <Field name="email" label="Email" type="email" component={renderInput} />
                     <Field
                         name="password"
                         label="Password"
@@ -63,9 +51,7 @@ class Login extends Component {
                     />
                     <div className="text-center">
                         <p
-                            onClick={handleSubmit(vals =>
-                                this.handleReset(vals)
-                            )}
+                            onClick={handleSubmit(vals => this.handleReset(vals))}
                             className="small my-0">
                             Forgot your password?
                         </p>
