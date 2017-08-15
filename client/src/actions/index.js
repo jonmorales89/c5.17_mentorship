@@ -28,6 +28,7 @@ export function addMentee(person) {
 
 export function addMentor(person) {
 	db.ref('Mentors').push(person).then(resp => {
+		console.log('resp addmentor data', resp);
 		console.log('Data added:', resp.key);
 	});
 	return {
@@ -36,15 +37,17 @@ export function addMentor(person) {
 	};
 }
 
-// Beginning of authenticating different providers
+// Authenticating different providers
 function authenticate(provider) {
 	return dispatch => {
 		auth
 			.signInWithPopup(provider)
 			.then(result => {
 				console.log('signing in provider result', result);
-				localStorage.setItem('token', result.credential.accessToken);
-				dispatch(loginSuccess(result));
+				if (result.credential.accessToken) {
+					localStorage.setItem('token', result.credential.accessToken);
+					dispatch(loginSuccess(result));
+				}
 			})
 			.catch(error => dispatch(loginError(error)));
 	};
@@ -67,33 +70,62 @@ export function loginSuccess(result) {
 }
 
 // Creates a user via firebase only authenticator
-export function createAccount(email, pw) {
+export function createAccount(userInfo) {
 	return dispatch => {
-		auth()
-			.createUserWithEmailAndPassword(email, pw)
+		auth
+			.createUserWithEmailAndPassword(userInfo.email, userInfo.pw)
 			.then(resp => {
-				console.log('user created successful!');
+				console.log('createAccount resp', resp);
+				var user = auth.currentUser;
+				console.log('user', user);
+				// var name, email, photoUrl, uid, emailVerified;
+
+				// if (user != null) {
+				//   name = user.displayName;
+				//   email = user.email;
+				//   photoUrl = user.photoURL;
+				//   emailVerified = user.emailVerified;
+				uid = user.uid;
 				dispatch({
-					type: types.REGISTER
+					type: types.REGISTER,
+					uid: resp.uid
 				});
 			})
 			.catch(error => {
-				console.log('error creating user', error);
+				console.log('Error creating account', error.message, error.code);
+				dispatch({
+					type: types.REGISTER,
+					payload: 'Error creating user'
+				});
 			});
 	};
 }
 
 export function login({ email, password }) {
 	return dispatch => {
-		auth.signInWithEmailAndPassword(email, password).catch(error => {
-			console.log('action creator signerror', error);
-		});
-		auth.currentUser.getIdToken(true).then(idToken => {
-			localStorage.setItem('token', idToken);
-			dispatch({
-				type: types.LOGIN
-			});
-		});
+		// If email and password is provided, attempt to log-in
+		if ((email, password)) {
+			// No user is signed in.
+			auth
+				.signInWithEmailAndPassword(email, password)
+				.then(user => {
+					console.log('user logging in, user:', user);
+					auth.currentUser.getIdToken(true).then(idToken => {
+						localStorage.setItem('token', idToken);
+					});
+					dispatch({
+						types: types.LOGIN_SUCCESS,
+						username: user.username,
+						uid: user.uid
+					});
+				})
+				.catch(e => {
+					console.log('Error logging in:', e);
+					dispatch({
+						types: types.LOGIN_ERROR
+					});
+				});
+		}
 	};
 }
 
@@ -118,10 +150,19 @@ export function resetPassword(email) {
 // Logs user out from firebase
 export function logout() {
 	return dispatch => {
-		auth.signOut().then(() => {
-			localStorage.removeItem('token');
-			dispatch(logoutSuccess());
-		});
+		auth
+			.signOut()
+			.then(() => {
+				localStorage.removeItem('token');
+				dispatch(logoutSuccess());
+			})
+			.catch(e => {
+				console.warn('Error logging out:', e);
+				dispatch({
+					types: types.AUTH_ERROR,
+					payload: e
+				});
+			});
 	};
 }
 

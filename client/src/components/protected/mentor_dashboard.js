@@ -34,7 +34,6 @@ export default class SearchList extends Component {
 
 	charLimit(value) {
 		const mentorBio = value;
-		console.log(mentorBio);
 		for (let i = 0; i < mentorBio.length; i++) {
 			if (mentorBio.length > 60) {
 				let result = mentorBio.substring(0, 60);
@@ -53,7 +52,6 @@ export default class SearchList extends Component {
 
 	affiliateLimit(value) {
 		const text = value;
-		console.log(value);
 		if (text.includes(',')) {
 			const end = text.indexOf(',');
 			return text.substring(0, end) + ' ...';
