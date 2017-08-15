@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { addMentor } from '../../actions/index';
-import { renderInput } from '../helper_functions';
+import { renderTextArea } from '../helper_functions';
 
 class MentorsSignUp extends Component {
     constructor(props) {
@@ -38,33 +38,11 @@ class MentorsSignUp extends Component {
             return (
                 <div className="form-group has-success">
                     <div className="form-control-feedback text-center">
-                        Success! You've done it. Thank you for your
-                        participation!
+                        Success! You've done it. Thank you for your participation!
                     </div>
                 </div>
             );
         }
-    }
-
-    renderTextArea({ input, label, meta: { touched, error } }) {
-        return (
-            <div className="form-group my-1">
-                <label>
-                    {label}
-                </label>
-                <textarea
-                    {...input}
-                    name={input.name}
-                    type="text"
-                    className="form-control mr-2 mb-2"
-                />
-                {
-                    <p className="form-text text-danger">
-                        {touched && error}
-                    </p>
-                }
-            </div>
-        );
     }
 
     styleContainer = {
@@ -74,6 +52,26 @@ class MentorsSignUp extends Component {
 
     styleForm = {};
 
+    renderInput(values) {
+        const { type, meta: { touched, error }, label, input } = values;
+        const hasError = touched && error;
+        return (
+            <div className={`form-group ${hasError ? 'has-danger' : ''}`}>
+                <label>
+                    {label}
+                </label>
+                <input
+                    {...values.input}
+                    name={input.name}
+                    className={`form-control ${hasError ? 'form-control-danger' : ''}`}
+                />
+                <div className="form-control-feedback">
+                    {hasError ? error : ''}
+                </div>
+            </div>
+        );
+    }
+
     render() {
         const { handleSubmit } = this.props;
         return (
@@ -81,52 +79,22 @@ class MentorsSignUp extends Component {
                 <div className="col-12">
                     <form
                         className="col-12 mx-auto my-0 py-3"
-                        onSubmit={handleSubmit(values =>
-                            this.submitForm(values)
-                        )}
-                    >
+                        onSubmit={handleSubmit(values => this.submitForm(values))}>
                         <div className="col-12 my-0 text-center">
                             <h2>Register to Become a Mentor</h2>
-                            <p>
-                                *BETA* We are currently operating only in
-                                California
-                            </p>
+                            <p>*BETA* We are currently operating only in California</p>
                         </div>
-                        <Field
-                            name="name"
-                            label="Name"
-                            component={renderInput}
-                        />
-                        <Field
-                            name="email"
-                            label="Email"
-                            component={renderInput}
-                        />
-                        <Field
-                            name="style"
-                            label="Style"
-                            component={renderInput}
-                        />
+                        <Field name="name" label="Name" component={this.renderInput} />
+                        <Field name="email" label="Email" component={this.renderInput} />
+                        <Field name="style" label="Style" component={this.renderInput} />
                         <Field
                             name="location"
                             label="Serving Zipcode"
-                            component={renderInput}
+                            component={this.renderInput}
                         />
-                        <Field
-                            name="affiliates"
-                            label="Company(s)"
-                            component={renderInput}
-                        />
-                        <Field
-                            name="aboutme"
-                            label="About Me"
-                            component={this.renderTextArea}
-                        />
-                        <Field
-                            name="experience"
-                            label="Experience"
-                            component={this.renderTextArea}
-                        />
+                        <Field name="affiliates" label="Company(s)" component={this.renderInput} />
+                        <Field name="aboutme" label="About Me" component={renderTextArea} />
+                        <Field name="experience" label="Experience" component={renderTextArea} />
                         <div className="text-center">
                             <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white">
                                 Register
