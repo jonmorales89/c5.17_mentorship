@@ -21,16 +21,19 @@ class ContactForm extends Component {
       email: e.target.value
     });
   }
+
   textInputOne(e) {
     this.setState({
       text_one: e.target.value
     });
   }
+
   textInputTwo(e) {
     this.setState({
       text_two: e.target.value
     });
   }
+
   nameInput(e) {
     this.setState({
       name: e.target.value
@@ -107,6 +110,7 @@ class ContactForm extends Component {
         </div>
       );
     }
+    
     return (
       <button className="btn btn-info" onClick={() => this.props.onClick()}>
         Contact Form

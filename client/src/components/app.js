@@ -18,7 +18,7 @@ const App = () => {
 	return (
 		<div>
 			<Navbar />
-			<Route path="/mentors/dashboard" component={AuthUser(Dashboard)} />
+			<Route path="/mentors/dashboard" component={Dashboard} />
 			<Route path="/mentors/register" component={MentorsRegister} />
 			<Route path="/mentors/signup" component={MentorsSignUp} />
 			<Route path="/mentors/login" component={Login} />
