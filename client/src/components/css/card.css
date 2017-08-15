@@ -7,7 +7,7 @@
 .card-image{
     position: absolute;
     border-radius: 50%;
-    left: 30%;
+    left: 33%;
     top: 5%;
 }
 .mdl-card_modal_img {
@@ -49,4 +49,19 @@
 }
 .paypal{
     float: right;
+}
+
+@media only screen and (max-width: 840px){
+    .card-image{
+        left: 25%;
+    }
+    .mdl-button{
+        padding: 0 8px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 839px){
+    .card-image{
+        left: 33%;
+    }
 }
