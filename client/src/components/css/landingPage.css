@@ -105,27 +105,30 @@
     }
 }
 
-/*iPad and iPad Pro screen size*/
-@media (min-width: 767px) {
+/*Ipad and Ipad Pro screen size*/
+@media only screen and (max-width: 1024px) and (min-width: 767px) {
+    .carousel-inner img {
+        height: 66vh;
+    }
     .sub {
         color: #003242;
-        font-size: 170%;
-        margin-top: 2%;
-        margin-bottom: 6%;
+        font-size: 242%;
+        margin-top: 4%;
+        margin-bottom: 8%;
     }
 
     .title {
         color: #003242;
-        font-size: 296%;
+        font-size: 395%;
         line-height: 84%;
-        margin-top: 4%;
+        margin-top: 14%;
         font-weight: bold;
 
     }
 
     .test {
         position: absolute;
-        top: 0%;
+        top: 10%;
     }
 
     input[type=text], select {
@@ -135,24 +138,24 @@
         display: inline-block;
         border: 1px solid #d8697d;
         border-radius: 5px;
-        height: 94%;
+        height: 36%;
         opacity: initial;
     }
 
     .body {
         border-radius: 5px;
-        margin-left: 8%;
+        margin-left: 14%;
         margin-top: -2%;
-        width: 70%;
-        height: 16%;
+        width: 60%;
+        height: 6%;
         background: rgba(41, 92, 109, 0.5);
     }
 
     .buttonSize {
-        height:102%;
-        font-size: 76%;
-        margin-top: -11%;
-        margin-right: -22%;
+        height:95%;
+        font-size: 80%;
+        margin-top: -10%;
+        margin-right: -24%;
     }
 }
 
@@ -163,6 +166,7 @@
         font-size: 212%;
         font-weight: bold;
         margin-bottom: 2.5%;
+        line-height: 98%;
         width: 100%;
     }
 
@@ -171,6 +175,8 @@
         font-size: 380%;
         font-weight: bold;
         width: 100%;
+        margin-bottom: 2%;
+        line-height: 88%;
     }
 
     .test {
@@ -191,19 +197,22 @@
 
     .body {
         border-radius: 5px;
-        padding: 1%;
-        margin-left: 9%;
+        padding-right: 7%;
+        padding-top: 0.5%;
+        padding-bottom: 0.5%;
+        margin-left: 19%;
         margin-top: 2%;
-        width: 68%;
+        width: 60%;
         height: auto;
         background: rgba(41, 92, 109, 0.5);
     }
 
     .buttonSize {
-        height: 7vh;
-        font-size: 220%;
-        margin-top: 0%;
-        margin-right: -26%;
+        height: 5vh;
+        font-size: 177%;
+        margin-top: 1%;
+        margin-right: -11%;
+        width: 25%;
     }
 }
 
