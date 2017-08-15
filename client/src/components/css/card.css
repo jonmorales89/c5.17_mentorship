@@ -1,10 +1,11 @@
-.mdl-card__title {
+.mdl-card_searchList {
     height: 200px;
     background: url('https://dummyimage.com/318X180/b3b3b3/fff.png') top;
     background-size: cover;
     color: #fff;
+    border-bottom: 3px solid #58899b;
 }
-.mdl-card {
+.mdl-card_z {
     z-index: unset;
 }
 .bold{
@@ -26,4 +27,9 @@
     color: #fff;
     background: #d8697d;
 }
-.mdl-card__title{border-bottom: 3px solid #58899b;}
+.mdl-card__supporting-text{
+    
+}
+.paypal{
+    float: right;
+}

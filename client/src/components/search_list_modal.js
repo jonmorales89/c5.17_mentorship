@@ -34,21 +34,33 @@ class SearchModal extends Component {
     } = this.props;
     if (showModal && !this.state.showForm) {
       return (
-        <div>
-          <div className="del-modal">
-            <div className="del-modal-content">
-              <p>
-                TITLE: {name}
-              </p>
-              <p>
-                About me: {aboutme}
-              </p>
-              <p>
-                Affiliates: {affiliates}
-              </p>
-              <p>
-                Serving City: {serving}
-              </p>
+          <div className="del-modal mdl-card">
+            <div className="del-modal-content mdl-shadow--2dp">
+              <div className="mdl-card__title mdl-card--expand">
+                <h6 className="mdl-card__title-text">
+                  Name: {name}
+                </h6>
+              </div>
+              <div className="mdl-card__supporting-text">
+                <div className="bold">About Me:</div>
+                <div>
+                    {aboutme}
+                </div>
+                <div>
+                  <div className="bold">Affiliates:</div>
+                  <span className="mdl-chip">
+              <span className="mdl-chip__text">
+                {affiliates}
+              </span>
+            </span>
+                </div>
+                <div>
+                  <div className="bold">Serving Location:</div>
+                  <div>
+                      {serving}
+                  </div>
+                </div>
+              </div>
               <button
                 onClick={() => {
                   toggleModal();
@@ -59,7 +71,6 @@ class SearchModal extends Component {
               <ContactForm showForm={this.state.showForm} onClick={() => this.toggleForm()} />
             </div>
           </div>
-        </div>
       );
     } else if (this.state.showForm) {
       return <ContactForm showForm={this.state.showForm} onClick={() => this.toggleForm()} />;
