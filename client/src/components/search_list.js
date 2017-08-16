@@ -14,6 +14,7 @@ export default class SearchList extends Component {
       showModal: false
     };
   }
+
   componentWillMount() {
     db.ref("Mentors").on("value", snapshot => {
       const data = snapshot.val();
@@ -27,9 +28,11 @@ export default class SearchList extends Component {
       }
     });
   }
+
   componentWillUnmount() {
     db.ref("Mentors").off();
   }
+
   componentDidUpdate(prevProps, prevState) {
     const path = window.location.pathname.substring(
       window.location.pathname.lastIndexOf("/") + 1,
@@ -47,6 +50,7 @@ export default class SearchList extends Component {
   degreesToRadians(degrees) {
     return degrees * Math.PI / 180;
   }
+
   distanceFromCoords(lat1, lon1, lat2, lon2) {
     const earthRadius = 6371;
     let dLat = this.degreesToRadians(lat2 - lat1);
@@ -59,6 +63,7 @@ export default class SearchList extends Component {
     let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return earthRadius * c;
   }
+
   distanceInMiles(lat1, lon1, lat2, lon2) {
     var radlat1 = Math.PI * lat1 / 180;
     var radlat2 = Math.PI * lat2 / 180;
@@ -72,6 +77,7 @@ export default class SearchList extends Component {
     dist = dist * 60 * 1.1515;
     return dist;
   }
+
   charLimit(value) {
     const mentorBio = value;
     for (let i = 0; i < mentorBio.length; i++) {
@@ -89,6 +95,7 @@ export default class SearchList extends Component {
       }
     }
   }
+
   affiliateLimit(value) {
     const text = value;
     if (text.includes(",")) {
@@ -98,11 +105,13 @@ export default class SearchList extends Component {
       return text;
     }
   }
+
   cardClick() {
     this.setState({
       showModal: !this.state.showModal
     });
   }
+
   renderAll() {
     const { data } = this.state;
     const list = Object.keys(data).map((key, index) => {
@@ -117,6 +126,7 @@ export default class SearchList extends Component {
       this.setState({ list: [...this.state.list, item] });
     });
   }
+
   checkBounds() {
     let mentCord = {};
     const { data } = this.state;
@@ -191,6 +201,7 @@ export default class SearchList extends Component {
       });
     });
   }
+  
   render() {
     const path = window.location.pathname.substring(
       window.location.pathname.lastIndexOf("/") + 1,

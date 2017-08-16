@@ -110,9 +110,8 @@ export function login({ email, password }) {
 				.signInWithEmailAndPassword(email, password)
 				.then(user => {
 					console.log('user logging in, user:', user);
-					auth.currentUser.getIdToken(true).then(idToken => {
-						localStorage.setItem('token', idToken);
-					});
+					localStorage.setItem('token', user.uid);
+
 					dispatch({
 						types: types.LOGIN_SUCCESS,
 						username: user.username,
