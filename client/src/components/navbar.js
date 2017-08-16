@@ -20,14 +20,14 @@ const Navbar = props => {
     return [
       <li key="1" className="nav-item">
         <Link
-          className="nav-link login mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--secondary-light mr-3 text-white text-center"
+          className="nav-link login button-fix mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--secondary-light mr-3 text-white text-center"
           to="/mentors/login">
           Login
         </Link>
       </li>,
       <li key="2" className="nav-item">
         <Link
-          className="nav-link register mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light text-white text-center"
+          className="nav-link button-fix register mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light text-white text-center"
           to="/mentors/signup">
           Register
         </Link>
