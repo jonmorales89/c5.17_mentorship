@@ -7,10 +7,10 @@
 /*mobile screen size*/
 @media (max-width: 415px) {
     .carousel-inner img {
-        width: 298vw;
+        width: 294vw;
         height: 64vh;
         opacity: 0.6;
-        margin-left: -100%;
+        margin-left: -97%;
     }
     .sub {
         color: #003242;
