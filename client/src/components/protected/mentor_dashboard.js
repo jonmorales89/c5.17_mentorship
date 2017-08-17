@@ -20,17 +20,19 @@ export default class SearchList extends Component {
 
 	componentWillMount() {
 		var uid = window.localStorage.getItem('token');
-		db.ref(`Mentors/uid/${uid}/mentee/uid`).on('value', snapshot => {
-			const menteeList = snapshot.val();
-			var mentees = Object.values(menteeList).map(mentee => {
-				db.ref(`Mentees/${mentee}`).on('value', snapshot => {
-					var data = snapshot.val()
-					console.log('data:',data);
-					this.setState({ data: [ ...this.state.data,  data ]});
-
-				})
+		if(uid){
+			console.log('uid for dashboard',uid);
+			db.ref(`Mentors/uid/${uid}/mentee/uid`).on('value', snapshot => {
+				const menteeList = snapshot.val();
+				var mentees = Object.values(menteeList).map(mentee => {
+					db.ref(`Mentees/${mentee}`).on('value', snapshot => {
+						var data = snapshot.val()
+						console.log('data:',data);
+						this.setState({ data: [ ...this.state.data,  data ]});
+					})
+				});
 			});
-		});
+		}
 	}
 
 	charLimit(value) {

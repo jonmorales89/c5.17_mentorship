@@ -78,13 +78,6 @@ export function createAccount(userInfo) {
 				console.log('createAccount resp', resp);
 				var user = auth.currentUser;
 				console.log('user', user);
-				// var name, email, photoUrl, uid, emailVerified;
-
-				// if (user != null) {
-				//   name = user.displayName;
-				//   email = user.email;
-				//   photoUrl = user.photoURL;
-				//   emailVerified = user.emailVerified;
 				uid = user.uid;
 				dispatch({
 					type: types.REGISTER,
@@ -111,9 +104,10 @@ export function login({ email, password }) {
 				.then(user => {
 					console.log('user logging in, user:', user);
 					localStorage.setItem('token', user.uid);
-
+					var token = localStorage.getItem('token');
+					console.log('token should be uid',token);
 					dispatch({
-						types: types.LOGIN_SUCCESS,
+						type: types.LOGIN_SUCCESS,
 						username: user.username,
 						uid: user.uid
 					});
