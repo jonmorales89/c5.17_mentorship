@@ -4,31 +4,32 @@ import axios from 'axios';
 import Card from '../../components/card.js';
 import '../css/card.css';
 
-//Mentor Profile Picture
-//Dashboard searchbar
 
 export default class SearchList extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: {},
-			list: [],
+			data: [],
 			showModal: false
 		};
 	}
 
+	//reference the person's uid whoever is logged in
+	//with that uid we will db.ref with Mentees/uid and compare to make sure that they match
+	//after they match we call this.renderCards(data) 
+
 	componentWillMount() {
-		// db.ref('Mentees').on('value', snapshot => {
-		// 	const data = snapshot.val();
-		// 	console.log('In firebase CB', data);
-		// 	this.setState({ data: { ...data } });
-		// 	this.renderCards(data);
-		// });
-		db.ref('Mentors').on('value', snapshot => {
-			const data = snapshot.val();
-			console.log('Mentors firebase CB', data);
-			this.setState({ data: { ...data } });
-			this.renderCards(data);
+		var uid = window.localStorage.getItem('token');
+		db.ref(`Mentors/uid/${uid}/mentee/uid`).on('value', snapshot => {
+			const menteeList = snapshot.val();
+			var mentees = Object.values(menteeList).map(mentee => {
+				db.ref(`Mentees/${mentee}`).on('value', snapshot => {
+					var data = snapshot.val()
+					console.log('data:',data);
+					this.setState({ data: [ ...this.state.data,  data ]});
+
+				})
+			});
 		});
 	}
 
@@ -77,21 +78,27 @@ export default class SearchList extends Component {
 					charLimit={str => this.charLimit(str)}
 				/>
 			);
-			this.setState({ list: [...this.state.list, item] });
+			return item;
 		});
+		return list;
 	}
 
 	render() {
-		const { list } = this.state;
-		if (!list) {
+		const { data } = this.state;
+
+		console.log('state.data:', data);
+
+		if (!data) {
 			return <h1>Loading...</h1>;
 		}
+
+
 		return (
 			<div className="container">
 				<div className="mdl-layout">
 					<div className="mdl-layout__content">
 						<div className="mdl-grid">
-							{list}
+							{this.renderCards(data)}
 						</div>
 					</div>
 				</div>
@@ -99,3 +106,4 @@ export default class SearchList extends Component {
 		);
 	}
 }
+// /uUKyyP8iVkNp0oCIFtyIq3tbCs93

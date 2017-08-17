@@ -12,18 +12,19 @@ class Card extends Component {
       secondModal: false
     };
   }
+
   toggleModal() {
     this.setState({
       showModal: !this.state.showModal
     });
   }
+
   render() {
     const { data, charLimit, affiliateLimit, dist } = this.props;
     return (
       <div
         onClick={() => this.toggleModal()}
-        className="mdl-cell mdl-cell--4-col mdl-card mdl-card_z mdl-shadow--2dp"
-        dist={dist}>
+        className="mdl-cell mdl-cell--4-col mdl-card mdl-card_z mdl-shadow--2dp">
         <div className="mdl-card__title mdl-card_searchList mdl-card--expand">
           <img
             className="card-image"
@@ -75,4 +76,5 @@ class Card extends Component {
     );
   }
 }
+
 export default Card;

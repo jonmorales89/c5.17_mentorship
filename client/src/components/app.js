@@ -13,12 +13,14 @@ import MentorsSignUp from "./authentication/mentor_signup_form";
 import MentorsRegister from "./authentication/register";
 import Dashboard from "./protected/mentor_dashboard";
 import ContactForm from "./contact_modal.js";
+import MenteeSignUp from "./authentication/mentee_signup_form.js";
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <Route path="/mentors/dashboard" component={Dashboard} />
+      <Route path="/mentee" component={MenteeSignUp} />
+      <Route path="/mentors/dashboard" component={AuthUser(Dashboard)} />
       <Route path="/mentors/register" component={MentorsRegister} />
       <Route path="/mentors/signup" component={MentorsSignUp} />
       <Route path="/mentors/login" component={Login} />

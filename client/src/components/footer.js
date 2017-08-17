@@ -27,7 +27,6 @@ export default () =>
             <h4 className="underline">Get to know us</h4>
             <div>
               <p>About us</p>
-              <p>Address</p>
               <p>Contacts</p>
               <p>FAQ</p>
             </div>

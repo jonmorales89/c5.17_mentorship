@@ -21,6 +21,7 @@ class Search extends Component {
       alert("Please input a valid zip code!");
     }
   }
+  
   render() {
     let zip = `/results/${this.state.value}`;
     return (
