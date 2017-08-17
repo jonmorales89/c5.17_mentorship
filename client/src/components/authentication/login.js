@@ -20,8 +20,7 @@ class Login extends Component {
     }
 
     handleLogin(vals) {
-        this.props.login(vals);
-        this.props.history.push('/mentors/dashboard');
+        this.props.login(vals)
     }
 
     handleReset(vals) {
@@ -36,7 +35,7 @@ class Login extends Component {
     };
 
     render() {
-        const { handleSubmit, signinError } = this.props;
+        const {handleSubmit, signinError } = this.props;
         return (
             <div style={this.styleContainer} className="py-5">
                 <form
@@ -56,7 +55,10 @@ class Login extends Component {
                             className="small my-0">
                             Forgot your password?
                         </p>
-                        <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white mr-2">
+                         <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white mr-2"
+                         // onClick={() => {
+                         //        this.props.history.push('/mentors/dashboard');}}
+                         >
                             Sign In
                         </button>
                         <button

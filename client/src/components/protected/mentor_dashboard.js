@@ -22,11 +22,7 @@ export default class SearchList extends Component {
 		var uid = window.localStorage.getItem('token');
 		db.ref(`Mentors/uid/${uid}/mentee/uid`).on('value', snapshot => {
 			const menteeList = snapshot.val();
-			console.log('In firebase CB', menteeList);
 			var mentees = Object.values(menteeList).map(mentee => {
-				console.log('map running')
-				console.log('mentee inside map:',mentee);
-				
 				db.ref(`Mentees/${mentee}`).on('value', snapshot => {
 					var data = snapshot.val()
 					console.log('data:',data);
@@ -34,8 +30,6 @@ export default class SearchList extends Component {
 
 				})
 			});
-			console.log('mentees',mentees);
-			// this.renderCards(this.state.data);
 		});
 	}
 
@@ -112,3 +106,4 @@ export default class SearchList extends Component {
 		);
 	}
 }
+// /uUKyyP8iVkNp0oCIFtyIq3tbCs93
