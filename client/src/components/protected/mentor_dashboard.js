@@ -27,7 +27,7 @@ export default class SearchList extends Component {
 				})
 			});
 		}
-	}
+	)};
 
 	charLimit(value) {
 		const mentorBio = value;

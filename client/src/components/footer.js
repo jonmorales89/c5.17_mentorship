@@ -12,14 +12,7 @@ export default () =>
             <h3 className="underline">DansuMentors</h3>
             <div>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Accusantium adipisci architecto, culpa deleniti doloremque
-                doloribus eligendi fugit illo ipsum iusto, maxime minima, neque
-                porro sunt tenetur totam velit vero! Animi.Lorem ipsum dolor sit
-                amet, consectetur adipisicing elit. Aspernatur autem eius harum
-                nisi placeat repellendus sed sint temporibus ullam voluptatibus.
-                Dicta dolore labore minima optio provident qui, totam. Modi,
-                odio.
+                We dance.
               </p>
             </div>
           </div>
