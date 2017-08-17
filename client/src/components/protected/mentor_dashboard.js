@@ -14,12 +14,9 @@ export default class SearchList extends Component {
 		};
 	}
 
-	//reference the person's uid whoever is logged in
-	//with that uid we will db.ref with Mentees/uid and compare to make sure that they match
-	//after they match we call this.renderCards(data) 
-
-	componentWillMount() {
+	componentDidMount() {
 		var uid = window.localStorage.getItem('token');
+		console.log("UID:", uid);	
 		db.ref(`Mentors/uid/${uid}/mentee/uid`).on('value', snapshot => {
 			const menteeList = snapshot.val();
 			var mentees = Object.values(menteeList).map(mentee => {
@@ -27,7 +24,6 @@ export default class SearchList extends Component {
 					var data = snapshot.val()
 					console.log('data:',data);
 					this.setState({ data: [ ...this.state.data,  data ]});
-
 				})
 			});
 		});
@@ -92,7 +88,6 @@ export default class SearchList extends Component {
 			return <h1>Loading...</h1>;
 		}
 
-
 		return (
 			<div className="container">
 				<div className="mdl-layout">
@@ -106,4 +101,3 @@ export default class SearchList extends Component {
 		);
 	}
 }
-// /uUKyyP8iVkNp0oCIFtyIq3tbCs93

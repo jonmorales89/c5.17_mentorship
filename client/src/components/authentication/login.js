@@ -22,6 +22,11 @@ class Login extends Component {
     handleLogin(vals) {
         this.props.login(vals)
     }
+    
+    mentorDashBoard(e){
+        console.log('click works', this.props);
+        this.props.history.push('/mentors/dashboard')
+    }
 
     handleReset(vals) {
         this.props
@@ -56,8 +61,10 @@ class Login extends Component {
                             Forgot your password?
                         </p>
                          <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white mr-2"
-                         // onClick={() => {
-                         //        this.props.history.push('/mentors/dashboard');}}
+                         type="button"
+                         onClick={(e) => {
+                            this.mentorDashBoard(e);
+                        }}
                          >
                             Sign In
                         </button>

@@ -111,9 +111,8 @@ export function login({ email, password }) {
 				.then(user => {
 					console.log('user logging in, user:', user);
 					localStorage.setItem('token', user.uid);
-
 					dispatch({
-						types: types.LOGIN_SUCCESS,
+						type: types.LOGIN_SUCCESS,
 						username: user.username,
 						uid: user.uid
 					});
