@@ -78,3 +78,6 @@ class Card extends Component {
 }
 
 export default Card;
+
+// Example photo: Dennis
+// "https://graph.facebook.com/10211383358873877/picture?width=175&height=175"

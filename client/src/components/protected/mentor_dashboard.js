@@ -26,7 +26,7 @@ export default class SearchList extends Component {
 					this.setState({ data: [ ...this.state.data,  data ]});
 				})
 			});
-		});
+		}
 	}
 
 	charLimit(value) {

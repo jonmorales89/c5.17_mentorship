@@ -19,8 +19,14 @@ class Login extends Component {
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth) {
+            this.props.history.push('/mentors/dashboard');
+        }
+    }
+
     handleLogin(vals) {
-        this.props.login(vals)
+        this.props.login(vals);
     }
     
     mentorDashBoard(e){
@@ -106,7 +112,8 @@ Login = reduxForm({
 function mapStateToProps(state) {
     return {
         signinError: state.auth.error,
-        auth: state.auth.authorized
+        auth: state.auth.authorized,
+        uid: state.auth.uid
     };
 }
 
