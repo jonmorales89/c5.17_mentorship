@@ -6,6 +6,12 @@
 
 /*mobile screen size*/
 @media (max-width: 415px) {
+    .carousel-inner img {
+        width: 294vw;
+        height: 64vh;
+        opacity: 0.6;
+        margin-left: -97%;
+    }
     .sub {
         color: #003242;
         font-size: 80%;
@@ -15,14 +21,15 @@
 
     .title {
         color: #003242;
-        font-size: 139%;
+        line-height: 82%;
+        font-size: 253%;
         font-weight: bold;
 
     }
 
     .test {
         position: absolute;
-        top: 0%;
+        top: 20%;
     }
 
     input[type=text], select {
@@ -38,41 +45,46 @@
 
     .body {
         border-radius: 5px;
-        margin-left: 4%;
+        margin-left: 7%;
         width: 63%;
-        height: 22%;
-        background: rgba(41, 92, 109, 0.5);
+        height: 6%;
     }
     .mdl-button {
         line-height: 20px;
     }
     .buttonSize {
-        height: 96%;
+        height: 100%;
         font-size: 76%;
-        margin-top: -26%;
-        margin-right: -145%;
+        margin-top: -25%;
+        margin-right: -138%;
     }
 }
 
 /*iPhone 5 size only*/
 @media (max-width: 321px) {
+    .carousel-inner img {
+        width: 170vh;
+        height: 64vh;
+        opacity: 0.6;
+        margin-left: -100%;
+    }
     .sub {
         color: #003242;
-        font-size: 56%;
-        margin-bottom: 4%;
+        font-size: 94%;
+        margin-bottom: 6%;
         line-height: 144%;
     }
 
     .title {
         color: #003242;
-        font-size: 122%;
+        font-size: 178%;
         font-weight: bold;
-
+        line-height: 98%;
     }
 
     .test {
         position: absolute;
-        top: 0%;
+        top: 20%;
     }
 
     input[type=text], select {
@@ -91,8 +103,7 @@
         margin-left: 2%;
         margin-top: -2%;
         width: 62%;
-        height: 23%;
-        background: rgba(41, 92, 109, 0.5);
+        height: 10%;
     }
     .mdl-button {
         line-height: 20px;
@@ -100,7 +111,7 @@
     .buttonSize {
         height: 96%;
         font-size: 76%;
-        margin-top: -30%;
+        margin-top: -33%;
         margin-right: -150%;
     }
 }
@@ -109,6 +120,8 @@
 @media only screen and (max-width: 1024px) and (min-width: 767px) {
     .carousel-inner img {
         height: 66vh;
+        width: 234vw;
+        margin-left: -68%;
     }
     .sub {
         color: #003242;
@@ -148,7 +161,6 @@
         margin-top: -2%;
         width: 60%;
         height: 6%;
-        background: rgba(41, 92, 109, 0.5);
     }
 
     .buttonSize {
@@ -210,7 +222,7 @@
     .buttonSize {
         height: 5vh;
         font-size: 177%;
-        margin-top: 0;
+        margin-top: -0.5%;
         margin-right: -11%;
         width: 25%;
     }
