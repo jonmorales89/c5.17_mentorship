@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SearchModal from "./search_list_modal";
-import ContactForm from "./contact_modal.js";
 import Paypal from "./paypal.js";
 import "./css/card.css";
 
@@ -21,7 +20,6 @@ class Card extends Component {
     const { data, charLimit, affiliateLimit, dist } = this.props;
     return (
       <div
-        onClick={() => this.toggleModal()}
         className="mdl-cell mdl-cell--4-col mdl-card mdl-card_z mdl-shadow--2dp"
         dist={dist}>
         <div className="mdl-card__title mdl-card_searchList mdl-card--expand">
@@ -39,14 +37,6 @@ class Card extends Component {
             {charLimit(data.bio.aboutme)}
           </div>
           <div>
-            <div className="bold">Affiliates:</div>
-            <span className="mdl-chip">
-              <span className="mdl-chip__text">
-                {affiliateLimit(data.bio.affiliates)}
-              </span>
-            </span>
-          </div>
-          <div>
             <div className="bold">Location:</div>
             <div>
               {this.props.miles || this.props.miles === 0
@@ -57,7 +47,7 @@ class Card extends Component {
           </div>
         </div>
         <div className="mdl-card__actions mdl-card--border">
-          <button className="mdl-button mdl-button-fl-right mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <button onClick={() => this.toggleModal()} className="mdl-button mdl-button-fl-right mdl-button--colored mdl-js-button mdl-js-ripple-effect">
             Read More
           </button>
           <Paypal email={data.bio.email} />
