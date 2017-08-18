@@ -7,9 +7,12 @@ const cors = require('cors');
 const app = express();
 const PORT = 3001;
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.disable('x-powered-by');
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+
 
 app.post('/mail', (req, res) => {
   // If you're going to use your own email
