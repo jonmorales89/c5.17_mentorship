@@ -62,9 +62,7 @@ class Login extends Component {
                             Forgot your password?
                         </p>
                          <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white mr-2"
-                         // onClick={() => {
-                         //        this.props.history.push('/mentors/dashboard');}}
-                         >
+                         type="button">
                             Sign In
                         </button>
                         <button
