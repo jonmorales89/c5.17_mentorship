@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './css/modal.css';
 
-const BASE_URL = '/mail';
+// const BASE_URL = 'http://localhost:3000/mail' <= Use this path for development
+const BASE_URL = '/mail'; // Use this path for production
 
 class ContactForm extends Component {
   constructor(props) {
