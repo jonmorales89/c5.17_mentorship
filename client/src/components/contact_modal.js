@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './css/modal.css';
 
-const BASE_URL = 'http://dansumentors.com:3000/mail';
+const BASE_URL = '/mail';
 
 class ContactForm extends Component {
   constructor(props) {
