@@ -10,8 +10,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, 'client', 'dist')));
 
-
-
 app.post('/mail', (req, res) => {
   // If you're going to use your own email
   // You may have to allow less secure apps
