@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.15.4"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "nodemailer-prototype": "file:nodemailer"
   },
   "devDependencies": {},
   "scripts": {
