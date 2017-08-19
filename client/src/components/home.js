@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './searchbar';
-import './css/landingPage.css';
+import './css/landing_page.css';
 
 export default () => {
   return (
@@ -9,8 +9,8 @@ export default () => {
         <div className="item active">
           <img src="./dansu1.png" alt="banner picture" />
           <div className="carousel-caption test">
-            <p className="title">Community Dance Instructors</p>
-            <p className="sub">DansuMentors are your expert dance mentors helping you achieve your goals</p>
+            <p className="title">Be a part of your dance community. Find a mentor near you.</p>
+            <p className="sub">Connect. Learn. Thrive.</p>
             <SearchBar className="inputSearch" />
           </div>
         </div>

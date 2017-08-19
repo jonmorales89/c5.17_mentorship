@@ -12,11 +12,11 @@ export default () =>
             <h3 className="underline">DansuMentors</h3>
             <div>
               <p>
-                We dance.
+                Link up with a mentor near you. Be a part of Orange County's hip-hop dance community.   
               </p>
             </div>
           </div>
-          <div className="a col-md-3">
+          <div className="col-md-3">
             <h4 className="underline">Get to know us</h4>
             <div>
               <p>About us</p>
@@ -45,7 +45,7 @@ export default () =>
         <div className="copyRight row-fluid col-sm-12">
           <p>
             Copyright © 2017 Dansu
-            <span className="division">Mentors | All</span> Rights Reserved
+            <span className="division">Mentors | All</span> Rights Reserve<a href="https://www.guildwars2.com/en/path-of-fire/">d</a>
             <br/>
             <br/>
           </p>
