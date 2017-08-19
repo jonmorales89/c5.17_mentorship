@@ -1,5 +1,5 @@
 footer {
-    color: white;
+    color: #e0e0e0;
 }
 
 .logoFooter {
@@ -32,6 +32,7 @@ hr {
     padding-bottom: 8px;
     border-bottom: 1px groove #598a9c;
     display: inline-block;
+    color: white;
 }
 
 .icon {
@@ -46,4 +47,8 @@ hr {
 p {
   font-size: 18px;
     margin-bottom: 0;
+}
+
+a {
+    color: inherit;
 }

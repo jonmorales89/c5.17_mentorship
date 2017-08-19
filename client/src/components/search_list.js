@@ -214,19 +214,19 @@ export default class SearchList extends Component {
     if (!list) {
       return <h1>Loading...</h1>;
     }
-    if (path === "results") {
-      return (
-        <div className="container">
-          <div className="mdl-layout">
-            <div className="mdl-layout__content">
-              <div className="mdl-grid">
-                {list}
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
+    // if (path === "results") {
+    //   return (
+    //     <div className="container">
+    //       <div className="mdl-layout">
+    //         <div className="mdl-layout__content">
+    //           <div className="mdl-grid">
+    //             {list}
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   );
+    // }
     return (
       <div className="container">
         <div className="mdl-layout">

@@ -67,6 +67,12 @@ class ContactForm extends Component {
               placeholder="Name"
               onChange={e => this.nameInput(e)}
             />
+            <input
+              type="text"
+              className="materialFormBorders form-control mb-3"
+              placeholder="Email"
+              onChange={e => this.emailInput(e)}
+            />
             <textarea
               type="text"
               className="materialFormBorders form-control mb-3"
@@ -80,12 +86,6 @@ class ContactForm extends Component {
               rows="7"
               placeholder="Questions"
               onChange={e => this.textInputTwo(e)}
-            />
-            <input
-              type="text"
-              className="materialFormBorders form-control mb-3"
-              placeholder="Email"
-              onChange={e => this.emailInput(e)}
             />
             <div className="right">
               <button
@@ -114,7 +114,7 @@ class ContactForm extends Component {
     
     return (
       <button className="mdl-button mdl-button-fl-right mdl-button--colored mdl-js-button mdl-js-ripple-effect" onClick={() => this.props.onClick()}>
-        Contact Form
+        Contact
       </button>
     );
   }

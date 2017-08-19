@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../actions";
-import "./css/navbarStyle.css";
+import "./css/navbar.css";
 
 const Navbar = props => {
   function loginOptions() {
@@ -10,7 +10,7 @@ const Navbar = props => {
       return (
         <li className="nav-item">
           <button
-            className="btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white"
+            className="btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light"
             onClick={() => props.logout()}>
             Logout
           </button>
@@ -20,14 +20,14 @@ const Navbar = props => {
     return [
       <li key="1" className="nav-item">
         <Link
-          className="nav-link login button-fix mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--secondary-light mr-3 text-white text-center"
+          className="nav-link login button-fix mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--secondary-light mr-3 text-center"
           to="/mentors/login">
           Login
         </Link>
       </li>,
       <li key="2" className="nav-item">
         <Link
-          className="nav-link button-fix register mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light text-white text-center"
+          className="nav-link button-fix register mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light text-center"
           to="/mentors/signup">
           Register
         </Link>
@@ -52,30 +52,15 @@ const Navbar = props => {
       </Link>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
+        <ul className="navbar-nav mr-auto menu_links">
           <li className="nav-item">
-            <Link className="nav-link text-white" to="/results">
+            <Link className="nav-link" to="/results">
               Find a Mentor
             </Link>
           </li>
-          <li className="nav-item dropdown">
-            <Link className="nav-link dropdown-toggle text-gray disabled" to="/">
-              Styles
-            </Link>
-          </li>
           <li className="nav-item">
-            <Link className="nav-link text-gray disabled" to="/">
-              Community
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/mentors/signup">
+            <Link className="nav-link" to="/mentors/signup">
               Become a DansuMentor
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link text-gray disabled" to="/">
-              How It Works
             </Link>
           </li>
         </ul>
