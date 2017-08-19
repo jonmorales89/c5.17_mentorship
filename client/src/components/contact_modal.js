@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './css/modal.css';
 
-const BASE_URL = 'http://localhost:3001/mail';
+// const BASE_URL = 'http://localhost:3000/mail' <= Use this path for development
+const BASE_URL = '/mail'; // Use this path for production
 
 class ContactForm extends Component {
   constructor(props) {
@@ -66,6 +67,12 @@ class ContactForm extends Component {
               placeholder="Name"
               onChange={e => this.nameInput(e)}
             />
+            <input
+              type="text"
+              className="materialFormBorders form-control mb-3"
+              placeholder="Email"
+              onChange={e => this.emailInput(e)}
+            />
             <textarea
               type="text"
               className="materialFormBorders form-control mb-3"
@@ -79,12 +86,6 @@ class ContactForm extends Component {
               rows="7"
               placeholder="Questions"
               onChange={e => this.textInputTwo(e)}
-            />
-            <input
-              type="text"
-              className="materialFormBorders form-control mb-3"
-              placeholder="Email"
-              onChange={e => this.emailInput(e)}
             />
             <div className="right">
               <button
@@ -113,7 +114,7 @@ class ContactForm extends Component {
     
     return (
       <button className="mdl-button mdl-button-fl-right mdl-button--colored mdl-js-button mdl-js-ripple-effect" onClick={() => this.props.onClick()}>
-        Contact Form
+        Contact
       </button>
     );
   }

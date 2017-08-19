@@ -6,7 +6,14 @@ const cors = require('cors');
 const app = express();
 const PORT = 3001;
 
+
+app.disable('x-powered-by');
+
 app.use(cors());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 

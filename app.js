@@ -2,18 +2,23 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
+
 
 const app = express();
 const PORT = 3000;
 
+app.disable('x-powered-by');
+
+app.use(bodyParser.json({type: '*/*'}));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(cors());
+
 app.use(express.static(path.resolve(__dirname, 'client', 'dist')));
 app.post('/mail', (req, res) => {
   // If you're going to use your own email
   // You may have to allow less secure apps
   // My Account >> Sign-in & Security >> Connected apps & sites >> Allow less secure apps: ON
-
   // You're free to use whatever service you would like
   console.log('This is the req.body', req.body);
 

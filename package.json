@@ -5,8 +5,9 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
     "express": "^4.15.4",
-    "nodemailer-prototype": "file:nodemailer"
+    "nodemailer": "^4.0.1"
   },
   "devDependencies": {},
   "scripts": {

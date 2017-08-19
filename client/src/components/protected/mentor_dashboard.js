@@ -14,26 +14,19 @@ export default class SearchList extends Component {
 		};
 	}
 
-	//reference the person's uid whoever is logged in
-	//with that uid we will db.ref with Mentees/uid and compare to make sure that they match
-	//after they match we call this.renderCards(data) 
-
 	componentWillMount() {
 		var uid = window.localStorage.getItem('token');
-		if(uid){
-			console.log('uid for dashboard',uid);
-			db.ref(`Mentors/uid/${uid}/mentee/uid`).on('value', snapshot => {
-				const menteeList = snapshot.val();
-				var mentees = Object.values(menteeList).map(mentee => {
-					db.ref(`Mentees/${mentee}`).on('value', snapshot => {
-						var data = snapshot.val()
-						console.log('data:',data);
-						this.setState({ data: [ ...this.state.data,  data ]});
-					})
-				});
+		console.log("UID:", uid);	
+		db.ref(`Mentors/uid/${uid}/mentee/uid`).on('value', snapshot => {
+			const menteeList = snapshot.val();
+			var mentees = Object.values(menteeList).map(mentee => {
+				db.ref(`Mentees/${mentee}`).on('value', snapshot => {
+					var data = snapshot.val()
+					this.setState({ data: [ ...this.state.data,  data ]});
+				})
 			});
 		}
-	}
+	)};
 
 	charLimit(value) {
 		const mentorBio = value;
@@ -88,12 +81,11 @@ export default class SearchList extends Component {
 	render() {
 		const { data } = this.state;
 
-		console.log('state.data:', data);
+		//console.log('state.data:', data);
 
 		if (!data) {
 			return <h1>Loading...</h1>;
 		}
-
 
 		return (
 			<div className="container">
@@ -108,4 +100,3 @@ export default class SearchList extends Component {
 		);
 	}
 }
-// /uUKyyP8iVkNp0oCIFtyIq3tbCs93

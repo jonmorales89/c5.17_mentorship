@@ -2,11 +2,18 @@
     font-size: 200%;
     color: white;
     margin-bottom: 0.2%;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .nav-link {
     font-size: 130%;
+    color: #e0e0e0;
+}
+
+.menu_links .nav-link:hover {
+    border-bottom-color: #18FFFF;
+    border-bottom: 1px solid;
+    color: floralwhite !important;
 }
 
 .login {
@@ -21,10 +28,12 @@
 
 .login:hover {
     background-color: #d8697d;
+    color: #fff !important;
 }
 
 .register:hover {
     background-color: #598a9c;
+    color: #fff !important;
 }
 
 @media only screen and (max-width: 500px) {

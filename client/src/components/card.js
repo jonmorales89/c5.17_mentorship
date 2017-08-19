@@ -21,6 +21,11 @@ class Card extends Component {
 
   render() {
     const { data, charLimit, affiliateLimit, dist } = this.props;
+    if(!data){
+      return(
+          <div>Loading...</div>
+        )
+    }
     return (
       <div
         onClick={() => this.toggleModal()}
