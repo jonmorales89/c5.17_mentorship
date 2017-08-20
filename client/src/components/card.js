@@ -28,7 +28,6 @@ class Card extends Component {
     return (
       <div
         className="mdl-cell mdl-cell--4-col mdl-card mdl-card_z mdl-shadow--2dp"
-        onClick={() => this.toggleModal()}
         dist={dist}>
         <div className="mdl-card__title mdl-card_searchList mdl-card--expand">
           <img
