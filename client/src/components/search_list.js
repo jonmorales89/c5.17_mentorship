@@ -81,12 +81,12 @@ export default class SearchList extends Component {
   charLimit(value) {
     const mentorBio = value;
     for (let i = 0; i < mentorBio.length; i++) {
-      if (mentorBio.length > 60) {
-        let result = mentorBio.substring(0, 60);
+      if (mentorBio.length > 62) {
+        let result = mentorBio.substring(0, 62);
         if (result.length - 1 !== " ") {
           for (let j = result.length - 1; j >= 0; j--) {
             if (result[j] === " ") {
-              return result.substring(0, j) + " ...";
+              return result.substring(0, j) + "...";
             }
           }
         }

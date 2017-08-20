@@ -68,10 +68,14 @@
 }
 
 .del-modal-content {
+    position: relative;
     margin: auto;
     background-color: white;
     width: 375px;
     box-shadow: 0 40px 40px 0 rgba(0, 0, 0, 0.2),
         0 40px 40px 0 rgba(0, 0, 0, 0.19);
     border-radius: 2px;
+}
+.buff{
+    height: 50px;
 }
