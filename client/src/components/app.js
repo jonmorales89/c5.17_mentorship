@@ -9,18 +9,18 @@ import Footer from "./footer";
 import Home from "./home";
 import Search from "./search_list";
 import Login from "./authentication/login";
-import MentorsSignUp from "./authentication/mentor_signup_form";
-import MentorsRegister from "./authentication/register";
+import MentorRegistration from "./authentication/mentor_registration";
 import Dashboard from "./protected/mentor_dashboard";
 import ContactForm from "./contact_modal.js";
+import MenteeSignUp from "./authentication/mentee_signup_form.js";
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <Route path="/mentors/dashboard" component={Dashboard} />
-      <Route path="/mentors/register" component={MentorsRegister} />
-      <Route path="/mentors/signup" component={MentorsSignUp} />
+      <Route path="/mentee" component={MenteeSignUp} />
+      <Route path="/mentors/dashboard" component={AuthUser(Dashboard)} />
+      <Route path="/mentors/signup" component={MentorRegistration} />
       <Route path="/mentors/login" component={Login} />
       <Route path="/results/:id" component={Search} />
       <Route exact path="/results" component={Search} />

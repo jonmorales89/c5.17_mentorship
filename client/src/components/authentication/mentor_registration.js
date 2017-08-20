@@ -3,8 +3,9 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { addMentor } from '../../actions/index';
 import { renderTextArea } from '../helper_functions';
+import RegisterModal from './registration_modal';
 
-class MentorsSignUp extends Component {
+class MentorRegistration extends Component {
     constructor(props) {
         super(props);
 
@@ -81,7 +82,7 @@ class MentorsSignUp extends Component {
                         className="col-12 mx-auto my-0 py-3"
                         onSubmit={handleSubmit(values => this.submitForm(values))}>
                         <div className="col-12 my-0 text-center">
-                            <h2>Register to Become a Mentor</h2>
+                            <h2>Become a Mentor</h2>
                             <p>*BETA* We are currently operating only in California</p>
                         </div>
                         <Field name="name" label="Name" component={this.renderInput} />
@@ -96,9 +97,9 @@ class MentorsSignUp extends Component {
                         <Field name="aboutme" label="About Me" component={renderTextArea} />
                         <Field name="experience" label="Experience" component={renderTextArea} />
                         <div className="text-center">
-                            <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white">
-                                Register
-                            </button>
+                            <RegisterModal className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white"
+                                text="Register" onClick={(values) => this.submitForm(values)}
+                            />    
                         </div>
                         {this.Message()}
                     </form>
@@ -139,12 +140,24 @@ function validate(values) {
         errors.experience = "Hey, tell us what you've been doing! (min. 75 characters)";
     }
 
+    if (!values.emailReg) {
+        errors.emailReg = "Please enter a valid email";
+    }
+
+    if (!values.passwordReg) {
+        errors.passwordReg = "Please enter password (min 6 characters)";
+    }
+
+    if (values.confirmPW !== values.passwordReg) {
+        errors.confirmPW = "Your passwords do not match";
+    }
+
     return errors;
 }
 
-MentorsSignUp = reduxForm({
+MentorRegistration = reduxForm({
     form: 'mentors-sign-up',
     validate: validate
-})(MentorsSignUp);
+})(MentorRegistration);
 
-export default connect(null, { addMentor })(MentorsSignUp);
+export default connect(null, { addMentor })(MentorRegistration);

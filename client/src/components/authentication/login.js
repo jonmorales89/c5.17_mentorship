@@ -19,9 +19,14 @@ class Login extends Component {
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth) {
+            this.props.history.push('/mentors/dashboard');
+        }
+    }
+
     handleLogin(vals) {
         this.props.login(vals);
-        this.props.history.push('/mentors/dashboard');
     }
 
     handleReset(vals) {
@@ -36,7 +41,7 @@ class Login extends Component {
     };
 
     render() {
-        const { handleSubmit, signinError } = this.props;
+        const {handleSubmit, signinError } = this.props;
         return (
             <div style={this.styleContainer} className="py-5">
                 <form
@@ -56,7 +61,8 @@ class Login extends Component {
                             className="small my-0">
                             Forgot your password?
                         </p>
-                        <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white mr-2">
+                         <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white mr-2"
+                         type="button">
                             Sign In
                         </button>
                         <button
@@ -97,7 +103,8 @@ Login = reduxForm({
 function mapStateToProps(state) {
     return {
         signinError: state.auth.error,
-        auth: state.auth.authorized
+        auth: state.auth.authorized,
+        uid: state.auth.uid
     };
 }
 

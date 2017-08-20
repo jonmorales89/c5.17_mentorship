@@ -160,7 +160,6 @@ function validate(values) {
     }
 
     if (!values.location || values.location.length != 5) {
-        console.log('values.location', values.location);
         errors.location = 'Please enter a valid zipcode!';
     }
 

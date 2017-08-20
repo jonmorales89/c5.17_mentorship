@@ -11,21 +11,29 @@ class Card extends Component {
       secondModal: false
     };
   }
+
   toggleModal() {
     this.setState({
       showModal: !this.state.showModal
     });
   }
+
   render() {
     const { data, charLimit, affiliateLimit, dist } = this.props;
+    if(!data){
+      return(
+          <div>Loading...</div>
+        )
+    }
     return (
       <div
         className="mdl-cell mdl-cell--4-col mdl-card mdl-card_z mdl-shadow--2dp"
+        onClick={() => this.toggleModal()}
         dist={dist}>
         <div className="mdl-card__title mdl-card_searchList mdl-card--expand">
           <img
             className="card-image"
-            src="https://graph.facebook.com/10211383358873877/picture?width=175&height=175"
+            src={data.bio.photo}
           />
           <h6 className="card-title-text-position mdl-card__title-text">
             {data.name}
@@ -65,4 +73,5 @@ class Card extends Component {
     );
   }
 }
+
 export default Card;

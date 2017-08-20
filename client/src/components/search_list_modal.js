@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './css/modal.css';
-// import SearchList from './search_list.js';
 import ContactForm from './contact_modal.js';
 import Paypal from './paypal.js';
 
@@ -26,16 +25,17 @@ class SearchModal extends Component {
   
   render() {
     const {
-      secondModal,
       showModal,
       toggleModal,
       name,
       aboutme,
       affiliates,
       serving,
-      email
+      email,
+      photo
     } = this.props;
     if (showModal && !this.state.showForm) {
+      //src={photo} 
       return (
           <div className="del-modal mdl-card">
             <div className="del-modal-content mdl-shadow--2dp">
@@ -43,7 +43,7 @@ class SearchModal extends Component {
                 <h6 className="mdl-card__title-text">
                   {name}
                 </h6>
-                <img className="mdl-card_modal_img" src="http://via.placeholder.com/100x100" />
+                <img className="mdl-card_modal_img" src={"http://via.placeholder.com/100x100"} />
               </div>
               <div className="mdl-card__supporting-text">
                 <div className="bold">About Me:</div>
