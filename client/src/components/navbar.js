@@ -28,7 +28,7 @@ const Navbar = props => {
       <li key="2" className="nav-item">
         <Link
           className="nav-link button-fix register mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--primary-light text-center"
-          to="/mentors/signup">
+          to="/mentors/register">
           Register
         </Link>
       </li>
@@ -59,7 +59,7 @@ const Navbar = props => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/mentors/signup">
+            <Link className="nav-link" to="/mentors/register">
               Become a DansuMentor
             </Link>
           </li>
