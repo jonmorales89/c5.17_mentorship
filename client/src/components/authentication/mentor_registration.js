@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { addMentor } from '../../actions/index';
-import { renderTextArea } from '../helper_functions';
-import RegisterModal from './registration_modal';
+import { addMentor, createAccount } from '../../actions/index';
+import { renderTextArea, renderInput } from '../helper_functions';
 
 class MentorRegistration extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            successMessage: false
+            successMessage: false,
+            showModal: false
         };
     }
 
     submitForm(vals) {
+        console.log('vals',vals,'in mentorregistration');
+        const { emailReg, passwordReg } = vals;
+        console.log('email reg and pwreg', emailReg, passwordReg);
         const data = {
             bio: {
                 aboutme: vals.aboutme,
@@ -27,6 +30,7 @@ class MentorRegistration extends Component {
             name: vals.name
         };
         const { reset } = this.props;
+        this.props.createAccount(emailReg,passwordReg);
         this.props.addMentor(data);
         reset();
         this.setState({
@@ -51,7 +55,43 @@ class MentorRegistration extends Component {
         minWidth: '30%'
     };
 
-    styleForm = {};
+    renderModal() {
+        const { handleSubmit } = this.props;
+        if(this.state.showModal) {
+          return (
+            <div className="c-modal">
+              <div className="c-modal-content">
+                <h1 className="text-center">Mentor Registration</h1>
+                  <Field name="emailReg" type="email" label="Email" component={renderInput} />
+                  <Field name="passwordReg" type="password" label="Password" component={renderInput} />
+                  <Field
+                    name="confirmPW"
+                    label="Confirm Password"
+                    type="password"
+                    component={renderInput}
+                  />
+                  <div>
+                    {/*this.props.msg ? this.props.msg :*/}
+                  </div>
+                  <div className="text-center">
+                    <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white mr-2"
+                    type="submit">
+                      Register
+                    </button>
+                      <button 
+                      className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white"
+                      onClick={() => this.setState({showModal: false})}>
+                      Cancel</button>
+                  </div>
+              </div>
+            </div>
+          );
+        }
+        return (
+            <button className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white" onClick={() => this.setState({showModal: true})}>Register</button>
+        )
+    }
+    
 
     renderInput(values) {
         const { type, meta: { touched, error }, label, input } = values;
@@ -72,6 +112,8 @@ class MentorRegistration extends Component {
             </div>
         );
     }
+
+
 
     render() {
         const { handleSubmit } = this.props;
@@ -97,9 +139,7 @@ class MentorRegistration extends Component {
                         <Field name="aboutme" label="About Me" component={renderTextArea} />
                         <Field name="experience" label="Experience" component={renderTextArea} />
                         <div className="text-center">
-                            <RegisterModal className="btn mt-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-bgcolor--secondary-light text-white"
-                                text="Register" onClick={(values) => this.submitForm(values)}
-                            />    
+                            {this.renderModal()}
                         </div>
                         {this.Message()}
                     </form>
@@ -160,4 +200,4 @@ MentorRegistration = reduxForm({
     validate: validate
 })(MentorRegistration);
 
-export default connect(null, { addMentor })(MentorRegistration);
+export default connect(null, { addMentor, createAccount })(MentorRegistration);
