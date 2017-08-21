@@ -20,7 +20,7 @@ const App = () => {
       <Navbar />
       <Route path="/mentee" component={MenteeSignUp} />
       <Route path="/mentors/dashboard" component={AuthUser(Dashboard)} />
-      <Route path="/mentors/signup" component={MentorRegistration} />
+      <Route path="/mentors/register" component={MentorRegistration} />
       <Route path="/mentors/login" component={Login} />
       <Route path="/results/:id" component={Search} />
       <Route exact path="/results" component={Search} />

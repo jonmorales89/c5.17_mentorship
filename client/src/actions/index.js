@@ -70,10 +70,10 @@ export function loginSuccess(result) {
 }
 
 // Creates a user via firebase only authenticator
-export function createAccount(userInfo) {
+export function createAccount(email, pw) {
 	return dispatch => {
 		auth
-			.createUserWithEmailAndPassword(userInfo.email, userInfo.pw)
+			.createUserWithEmailAndPassword(email, pw)
 			.then(resp => {
 				console.log('createAccount resp', resp);
 				var user = auth.currentUser;
