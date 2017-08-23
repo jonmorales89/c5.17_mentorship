@@ -1,0 +1,111 @@
+.mdl-card_searchList {
+    height: 220px;
+    background: #cecece;
+    color: #fff;
+    border-bottom: 3px solid #58899b;
+}
+.card-image{
+    position: absolute;
+    border-radius: 50%;
+    left: 20%;
+}
+.mdl-card_modal_img {
+    top: 6%;
+    right: 36%;
+    border-radius: 50%;
+    position: absolute;
+}
+.mdl-card_modal {
+    height: 200px;
+    background-color: #295c6d;
+    color: #fff;
+    border-bottom: 3px solid #d8697d;
+}
+.card-title-text-position {
+    position: absolute;
+    font-weight: 700;
+    color: #fff;
+}
+.mdl-card_z {
+    z-index: unset;
+}
+.bold{
+   font-weight: bold;
+    margin: 8px 0;
+    color: #295c6d;
+}
+.mdl-button-fl-right{
+    float: right;
+}
+.mdl-button-cancel{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    color: #fff !important;
+}
+.mdl-chip{
+    background: #d8697d;
+    color: #fff;
+}
+.mdl-button.mdl-button--colored{
+    color: #295c6d;
+}
+.mdl-button.mdl-button--colored:hover{
+    color: #fff;
+    background: #d8697d;
+}
+.mdl-card__supporting-text{
+    overflow: visible;
+    width: 95%;
+}
+.paypal{
+    float: right;
+}
+@media only screen and (max-width: 1025px) {
+    .card-image {
+        left: 15%;
+    }
+}
+@media only screen and (max-width: 840px){
+    .card-image{
+        left: 15%;
+        width: 150px;
+    }
+    .mdl-card_modal_img{
+
+    }
+    .mdl-button{
+        padding: 0 8px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 839px){
+    .card-image{
+        left: 24%;
+    }
+    .mdl-card_modal_img{
+        top: 7%;
+        right: 35%;
+    }
+}
+@media only screen and (max-width: 479px){
+    .card-image{
+        left: 22%;
+    }
+    .mdl-card_modal_img{
+        right: 34%;
+        top: 5%;
+    }
+}
+@media only screen and (max-width: 414px){
+    .card-image{
+        left: 27%
+    }
+}
+@media only screen and (max-width: 360px){
+    .card-image{
+        left: 19%;
+    }
+    .del-modal-content{
+        width: 100vw;
+    }
+}

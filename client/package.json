@@ -15,10 +15,20 @@
     "url": "https://github.com/Learning-Fuze/react_starter.git"
   },
   "dependencies": {
+    "axios": "^0.16.2",
+    "firebase": "^4.2.0",
+    "material-ui": "^0.18.7",
+    "nodemailer": "^4.0.1",
     "react": "^15.4.2",
+    "react-autosuggest": "^9.3.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
-    "redux": "^3.6.0"
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.6.0",
+    "redux-form": "^7.0.3",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0",
+    "sass": "^1.0.0-beta.2"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
